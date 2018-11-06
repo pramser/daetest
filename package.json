@@ -1,0 +1,25 @@
+{
+  "name": "test-mon",
+  "version": "0.1.0",
+  "author": "Patrick Ramser",
+  "license": "ISC",
+  "description": "Test results, coverage, and metrics aggregator.",
+  "homepage": "https://github.com/pramser/test-mon#readme",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pramser/test-mon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pramser/test-mon/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6"
+  }
+}
