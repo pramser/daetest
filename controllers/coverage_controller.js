@@ -1,22 +1,22 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
-var bodyParser = require("body-parser");
+var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.post("/", function(req, res) {
-  console.log("hello");
-  res.status(200).send({ id: "hello" });
+router.post('/', function(req, res) {
+  console.log('coverage post');
+  res.status(200).send({ id: 'coverage post' });
 });
 
-router.get("/", function(req, res) {
-  console.log("world");
-  res.status(200).send({ id: "world" });
+router.get('/', function(req, res) {
+  console.log('coverage get');
+  res.status(200).send({ id: 'coverage get' });
 });
 
-router.get("/:id", function(req, res) {
-  console.log("world");
+router.get('/:id', function(req, res) {
+  console.log('coverage by id');
   res.status(200).send({ id: req.params.id });
 });
 
