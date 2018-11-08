@@ -7,7 +7,7 @@
   "homepage": "https://github.com/pramser/test-mon#readme",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
