@@ -22,11 +22,14 @@ app.use('/results', results_controller);
 var coverage_controller = require('./controllers/coverage_controller');
 app.use('/coverage', coverage_controller);
 
+// Colors for my console.log()
+var colors = require('colors')
+
 // Kick-off SQLite synchronization...
 Models.sequelize.sync().then(() => {
   // Init server.
   app.listen(Settings.port, () => {
     console.clear();
-    console.log(`Server running on port ${Settings.port}...`);
+    console.log(`Server running on port ${Settings.port}...`.green);
   });
 });
