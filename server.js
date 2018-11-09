@@ -26,6 +26,7 @@ app.use('/coverage', coverage_controller);
 Models.sequelize.sync().then(() => {
   // Init server.
   app.listen(Settings.port, () => {
-    console.log(`Server running on port ${Settings.port}`);
+    console.clear();
+    console.log(`Server running on port ${Settings.port}...`);
   });
 });
