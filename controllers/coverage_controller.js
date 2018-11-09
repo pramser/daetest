@@ -15,7 +15,16 @@ router.use(bodyParser.json());
  */
 router.post('/', function(req, res) {
   console.log('coverage post');
-  res.status(200).send({ id: 'coverage post' });
+
+  var new_coverage = req.body;
+
+  Models.Coverage.create({
+    date: new Date(),
+    product: new_coverage.product,
+    content: new_coverage.content
+  }).then(coverage => {
+    res.status(200).send({ coverage });
+  });
 });
 
 /**
@@ -23,7 +32,12 @@ router.post('/', function(req, res) {
  */
 router.get('/', function(req, res) {
   console.log('coverage get');
-  res.status(200).send({ id: 'coverage get' });
+
+  Models.Coverage.findAll({
+    order: [['date', 'DESC']]
+  }).then(coverage => {
+    res.status(200).send({ coverage });
+  });
 });
 
 /**
