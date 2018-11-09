@@ -1,5 +1,7 @@
+// Dependencies
 require('dotenv').config({ silent: true });
 
+// .env supports overriding defaults
 module.exports = {
   port: process.env.PORT || 3000,
   env: process.env.ENV || 'development',

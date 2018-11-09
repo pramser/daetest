@@ -1,5 +1,9 @@
+// Dependencies
 const Moment = require('moment');
 
+/**
+ * Coverage model
+ */
 module.exports = (sequelize, DataTypes) => {
   let Coverage = sequelize.define('Coverage', {
     date: {

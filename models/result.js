@@ -1,5 +1,8 @@
 const Moment = require('moment');
 
+/**
+ * Result model
+ */
 module.exports = (sequelize, DataTypes) => {
   let Result = sequelize.define('Result', {
     date: {

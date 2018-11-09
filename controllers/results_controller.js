@@ -10,7 +10,9 @@ const Models = require('../models/');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-// POST: Results
+/**
+ * POST: Results
+ */
 router.post('/', function(req, res) {
   console.log('results post');
 
@@ -25,7 +27,9 @@ router.post('/', function(req, res) {
   });
 });
 
-// GET: Results
+/**
+ * GET: Results
+ */
 router.get('/', function(req, res) {
   console.log('results get');
 
@@ -36,7 +40,9 @@ router.get('/', function(req, res) {
   });
 });
 
-// GET: Results by Date
+/**
+ * GET: Results by Date
+ */
 router.get('/:date', function(req, res) {
   console.log('results by date');
   res.status(200).send({ date: req.params.date });
