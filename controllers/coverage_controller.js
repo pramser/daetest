@@ -1,6 +1,10 @@
+// Dependencies
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+
+// Models
+const Models = require('../models/');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());

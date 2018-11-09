@@ -1,5 +1,23 @@
-var app = require("./app");
+var express = require('express');
+var app = express();
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+var Settings = require('./settings');
+const Models = require('./models/');
+
+app.get('/', function(req, res) {
+  res.status(200).send({
+    id: 'homepage'
+  });
+});
+
+var results_controller = require('./controllers/results_controller');
+app.use('/results', results_controller);
+
+var coverage_controller = require('./controllers/coverage_controller');
+app.use('/coverage', coverage_controller);
+
+Models.sequelize.sync().then(() => {
+  app.listen(Settings.port, () => {
+    console.log(`Server running on port ${Settings.port}`);
+  });
 });
