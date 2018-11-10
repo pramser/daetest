@@ -4,7 +4,7 @@ var app = express();
 
 // Locals
 var Settings = require('./settings');
-const Models = require('./models/');
+const Models = require('./models');
 
 // Root mapped to '$/'
 // TODO: Is this necessary for simple API documentation?
@@ -23,7 +23,7 @@ var coverage_controller = require('./controllers/coverage_controller');
 app.use('/coverage', coverage_controller);
 
 // Colors for my console.log()
-var colors = require('colors')
+var colors = require('colors');
 
 // Kick-off SQLite synchronization...
 Models.sequelize.sync().then(() => {

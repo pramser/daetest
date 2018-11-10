@@ -1,0 +1,8 @@
+{
+    "name": "test-mon-client",
+    "version": "0.1.0",
+    "author": "Patrick Ramser",
+    "license": "ISC",
+    "description": "Test results, coverage, and metrics client.",
+    "homepage": "https://github.com/pramser/test-mon#readme"
+}
