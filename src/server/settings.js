@@ -1,22 +1,22 @@
 // Dependencies
-require('dotenv').config({ silent: true });
+require("dotenv").config({ silent: true });
 
 // .env supports overriding defaults
 module.exports = {
-  port: process.env.PORT || 3000,
-  env: process.env.ENV || 'development',
+  port: process.env.PORT || 3001,
+  env: process.env.ENV || "development",
 
   // Environment-dependent settings
   development: {
     db: {
-      dialect: 'sqlite',
-      storage: ':memory:'
+      dialect: "sqlite",
+      storage: ":memory:"
     }
   },
   production: {
     db: {
-      dialect: 'sqlite',
-      storage: 'db/database.sqlite'
+      dialect: "sqlite",
+      storage: "db/database.sqlite"
     }
   }
 };
