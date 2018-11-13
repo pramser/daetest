@@ -5,17 +5,19 @@
     "license": "ISC",
     "description": "Test results, coverage, and metrics client.",
     "homepage": "https://github.com/pramser/test-mon#readme",
-    "private" : true,
+    "private": true,
     "dependencies": {
+        "bootstrap": "^4.1.3",
         "react": "^16.4.1",
         "react-dom": "^16.4.1",
         "react-router-dom": "^4.3.1",
-        "react-scripts": "1.1.5"
-      },
-      "scripts": {
+        "react-scripts": "1.1.5",
+        "reactstrap": "^6.5.0"
+    },
+    "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
-      }
+    }
 }
