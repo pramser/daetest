@@ -13,9 +13,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route exact path="/" component={Dashboard} />
-        <Route exact path="/results" component={Results} />
-        <Route exact path="/coverage" component={Coverage} />
+        <div className="App-content">
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/results" component={Results} />
+          <Route exact path="/coverage" component={Coverage} />
+        </div>
       </div>
     );
   }
