@@ -4,5 +4,18 @@
     "author": "Patrick Ramser",
     "license": "ISC",
     "description": "Test results, coverage, and metrics client.",
-    "homepage": "https://github.com/pramser/test-mon#readme"
+    "homepage": "https://github.com/pramser/test-mon#readme",
+    "private" : true,
+    "dependencies": {
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1",
+        "react-router-dom": "^4.3.1",
+        "react-scripts": "1.1.5"
+      },
+      "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+      }
 }
