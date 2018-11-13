@@ -1,10 +1,10 @@
 // Dependencies
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
 
 // Models
-const Models = require('../models/');
+const Models = require("../models/");
 
 // Inits
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -13,15 +13,21 @@ router.use(bodyParser.json());
 /**
  * POST: Results
  */
-router.post('/', function(req, res) {
-  console.log('results post');
+router.post("/", function(req, res) {
+  var product_name = req.header("x-product-name");
+  var product_type = req.header("x-product-type");
 
-  var new_result = req.body;
+  var n_result = [
+    { testName: "test_did_something_well", isPassed: true },
+    { testName: "test_did_something_poor", isPassed: false }
+  ];
 
   Models.Result.create({
     date: new Date(),
-    product: new_result.product,
-    content: new_result.content
+    content: n_result,
+    product: product_name,
+    type: product_type,
+    total: n_result ? n_result.length : 0 // TODO: Fix this.
   }).then(result => {
     res.status(200).send({ result });
   });
@@ -30,11 +36,11 @@ router.post('/', function(req, res) {
 /**
  * GET: Results
  */
-router.get('/', function(req, res) {
-  console.log('results get');
+router.get("/", function(req, res) {
+  console.log("results get");
 
   Models.Result.findAll({
-    order: [['date', 'DESC']]
+    order: [["date", "DESC"]]
   }).then(results => {
     res.status(200).send({ results });
   });
@@ -43,8 +49,8 @@ router.get('/', function(req, res) {
 /**
  * GET: Results by Date
  */
-router.get('/:date', function(req, res) {
-  console.log('results by date');
+router.get("/:date", function(req, res) {
+  console.log("results by date");
   res.status(200).send({ date: req.params.date });
 });
 

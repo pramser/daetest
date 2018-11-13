@@ -1,18 +1,20 @@
-const Moment = require('moment');
+const Moment = require("moment");
 
 /**
  * Result model
  */
 module.exports = (sequelize, DataTypes) => {
-  let Result = sequelize.define('Result', {
+  let Result = sequelize.define("Result", {
     date: {
       type: DataTypes.DATE,
       get: function() {
-        return Moment(this.getDataValue('date')).format('MMMM Do, YYYY');
+        return Moment(this.getDataValue("date")).format("MMMM Do, YYYY");
       }
     },
+    content: DataTypes.JSON,
     product: DataTypes.STRING,
-    content: DataTypes.STRING
+    type: DataTypes.INTEGER,
+    total: DataTypes.INTEGER
   });
 
   return Result;
