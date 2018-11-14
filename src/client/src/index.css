@@ -14,3 +14,17 @@ body {
   align-content: center;
   justify-content: center;
 }
+
+.result {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: center;
+}
+
+.result-col {
+  flex: 1;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
