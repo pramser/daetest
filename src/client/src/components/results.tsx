@@ -1,6 +1,7 @@
 // Dependencies
 import React, { Component } from "react";
 import { Button } from "reactstrap";
+import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
 type Result = {
   date: Date;
@@ -31,28 +32,28 @@ class Results extends Component<{}, { results: Result[] }> {
           failed: 0
         },
         {
-          date: new Date("2018-11-01"),
+          date: new Date("2018-11-02"),
           product: "schedule",
           type: "int",
           passed: 95,
           failed: 5
         },
         {
-          date: new Date("2018-11-01"),
+          date: new Date("2018-11-02"),
           product: "schedule",
           type: "int",
           passed: 100,
           failed: 0
         },
         {
-          date: new Date("2018-11-01"),
+          date: new Date("2018-11-03"),
           product: "schedule",
           type: "int",
           passed: 100,
           failed: 0
         },
         {
-          date: new Date("2018-11-01"),
+          date: new Date("2018-11-15"),
           product: "schedule",
           type: "int",
           passed: 100,
@@ -75,7 +76,9 @@ class Results extends Component<{}, { results: Result[] }> {
         {this.state.results.map(
           ({ date, product, type, passed, failed }, r) => (
             <div className="result">
-              <span className="result-col">{date.toString()}</span>
+              <span className="result-col" title={date.toDateString()}>
+                {distanceInWordsToNow(date)} ago
+              </span>
               <span className="result-col">{product}</span>
               <span className="result-col">{type}</span>
               <span className="result-col">{passed}</span>
