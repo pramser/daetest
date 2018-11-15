@@ -2,54 +2,57 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 
-class Results extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      results: []
-    };
-  }
+type Result = {
+  date: Date;
+  product: string;
+  type: string;
+  passed: number;
+  failed: number;
+};
+
+class Results extends Component<{}, { results: Result[] }> {
+  state = { results: [] as Result[] };
 
   componentDidMount() {
     this.setState({
       results: [
         {
-          date: "2018-11-1",
+          date: new Date("2018-11-01"),
           product: "schedule",
           type: "int",
           passed: 100,
           failed: 0
         },
         {
-          date: "2018-11-1",
+          date: new Date("2018-11-01"),
           product: "schedule",
           type: "int",
           passed: 100,
           failed: 0
         },
         {
-          date: "2018-11-2",
+          date: new Date("2018-11-01"),
           product: "schedule",
           type: "int",
           passed: 95,
           failed: 5
         },
         {
-          date: "2018-11-2",
+          date: new Date("2018-11-01"),
           product: "schedule",
           type: "int",
           passed: 100,
           failed: 0
         },
         {
-          date: "2018-11-3",
+          date: new Date("2018-11-01"),
           product: "schedule",
           type: "int",
           passed: 100,
           failed: 0
         },
         {
-          date: "2018-11-3",
+          date: new Date("2018-11-01"),
           product: "schedule",
           type: "int",
           passed: 100,
@@ -72,7 +75,7 @@ class Results extends Component {
         {this.state.results.map(
           ({ date, product, type, passed, failed }, r) => (
             <div className="result">
-              <span className="result-col">{date}</span>
+              <span className="result-col">{date.toString()}</span>
               <span className="result-col">{product}</span>
               <span className="result-col">{type}</span>
               <span className="result-col">{passed}</span>

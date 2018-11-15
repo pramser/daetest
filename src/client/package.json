@@ -1,23 +1,36 @@
 {
-    "name": "test-mon-client",
-    "version": "0.1.0",
-    "author": "Patrick Ramser",
-    "license": "ISC",
-    "description": "Test results, coverage, and metrics client.",
-    "homepage": "https://github.com/pramser/test-mon#readme",
-    "private": true,
-    "dependencies": {
-        "bootstrap": "^4.1.3",
-        "react": "^16.4.1",
-        "react-dom": "^16.4.1",
-        "react-router-dom": "^4.3.1",
-        "react-scripts": "1.1.5",
-        "reactstrap": "^6.5.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
-    }
+  "name": "test-mon-client",
+  "version": "0.1.0",
+  "author": "Patrick Ramser",
+  "license": "ISC",
+  "description": "Test results, coverage, and metrics client.",
+  "homepage": "https://github.com/pramser/test-mon#readme",
+  "private": true,
+  "dependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^7.10.2",
+    "@types/react": "^16.7.6",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/reactstrap": "^6.4.2",
+    "bootstrap": "^4.1.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2",
+    "reactstrap": "^6.5.0",
+    "typescript": "^3.1.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

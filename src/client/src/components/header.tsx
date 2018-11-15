@@ -11,12 +11,11 @@ import {
 } from "reactstrap";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  }
+  state = {
+    isOpen: false
+  };
+
+  toggle = () => {};
 
   render() {
     return (
