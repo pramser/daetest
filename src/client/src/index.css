@@ -14,22 +14,3 @@ body {
   align-content: center;
   justify-content: center;
 }
-
-.result {
-  background-color: #ddd;
-  border-radius: 0.5em;
-  padding: 0.25em 0.5em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  display: flex;
-  flex-direction: row;
-  align-content: space-around;
-  justify-content: center;
-}
-
-.result-col {
-  flex: 1;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}

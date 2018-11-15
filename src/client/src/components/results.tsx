@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from "react";
-import { Button } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
 type Result = {
@@ -18,21 +18,21 @@ class Results extends Component<{}, { results: Result[] }> {
     this.setState({
       results: [
         {
-          date: new Date("2018-11-01"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        },
-        {
-          date: new Date("2018-11-01"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        },
-        {
           date: new Date("2018-11-02"),
+          product: "schedule",
+          type: "int",
+          passed: 100,
+          failed: 0
+        },
+        {
+          date: new Date("2018-11-01"),
+          product: "schedule",
+          type: "int",
+          passed: 100,
+          failed: 0
+        },
+        {
+          date: new Date("2018-11-05"),
           product: "schedule",
           type: "int",
           passed: 95,
@@ -73,19 +73,36 @@ class Results extends Component<{}, { results: Result[] }> {
     return (
       <div className="Results">
         <h1>Results</h1>
-        {this.state.results.map(
-          ({ date, product, type, passed, failed }, r) => (
-            <div className="result">
-              <span className="result-col" title={date.toDateString()}>
-                {distanceInWordsToNow(date)} ago
-              </span>
-              <span className="result-col">{product}</span>
-              <span className="result-col">{type}</span>
-              <span className="result-col">{passed}</span>
-              <span className="result-col">{failed}</span>
-            </div>
-          )
-        )}
+        <Table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Type</th>
+              <th>Passed</th>
+              <th>Failed</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.results
+              .sort((a, b) => b.date.getTime() - a.date.getTime())
+              .map(({ date, product, type, passed, failed }, r) => (
+                <tr onClick={() => alert("clicked row")} className="result">
+                  <td title={date.toDateString()}>
+                    {distanceInWordsToNow(date)} ago
+                  </td>
+                  <td>{product}</td>
+                  <td>{type}</td>
+                  <td>{passed}</td>
+                  <td>{failed}</td>
+                  <td>
+                    <Button size="sm">View</Button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
         <Button onClick={this.createResult}>POST result</Button>
       </div>
     );
