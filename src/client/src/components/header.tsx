@@ -9,8 +9,11 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-class Header extends Component {
+interface HeaderProps extends RouteComponentProps<any> {}
+
+class Header extends Component<HeaderProps> {
   state = {
     isOpen: false
   };
@@ -25,10 +28,20 @@ class Header extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/results">Results</NavLink>
+              <NavLink
+                active={this.props.location.pathname == "/results"}
+                href="/results"
+              >
+                Results
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/coverage">Coverage</NavLink>
+              <NavLink
+                active={this.props.location.pathname == "/coverage"}
+                href="/coverage"
+              >
+                Coverage
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
@@ -37,4 +50,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
