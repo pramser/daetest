@@ -5,7 +5,7 @@ class Coverage extends Component {
   render() {
     return (
       <div className="Coverage">
-        <span>Hello, coverage!</span>
+        <h1>Coverage</h1>
       </div>
     );
   }
