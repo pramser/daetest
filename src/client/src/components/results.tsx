@@ -1,5 +1,6 @@
 // Dependencies
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Table, Button } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
@@ -88,7 +89,7 @@ class Results extends Component<{}, { results: Result[] }> {
             {this.state.results
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map(({ date, product, type, passed, failed }, r) => (
-                <tr onClick={() => alert("clicked row")} className="result">
+                <tr className="result">
                   <td title={date.toDateString()}>
                     {distanceInWordsToNow(date)} ago
                   </td>
@@ -97,7 +98,7 @@ class Results extends Component<{}, { results: Result[] }> {
                   <td>{passed}</td>
                   <td>{failed}</td>
                   <td>
-                    <Button size="sm">View</Button>
+                    <Link to="/result">View</Link>
                   </td>
                 </tr>
               ))}

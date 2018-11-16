@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import Header from "./header";
 import Dashboard from "./dashboard";
 import Results from "./results";
+import ResultDetail from "./result_detail";
 import Coverage from "./coverage";
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/results" component={Results} />
           <Route exact path="/coverage" component={Coverage} />
+          <Route exact path="/result" component={ResultDetail} />
         </div>
       </div>
     );
