@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.Header {
+  background-color: #ffbb43;
+}
+
 .App-content {
   padding: 10px;
 }
