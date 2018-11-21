@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { Table, Button } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
+// Data
+import { results } from "../repositories/result_repository";
+
 type Result = {
   date: Date;
   product: string;
@@ -16,52 +19,7 @@ class Results extends Component<{}, { results: Result[] }> {
   state = { results: [] as Result[] };
 
   componentDidMount() {
-    this.setState({
-      results: [
-        {
-          date: new Date("2018-11-02"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        },
-        {
-          date: new Date("2018-11-01"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        },
-        {
-          date: new Date("2018-11-05"),
-          product: "schedule",
-          type: "int",
-          passed: 95,
-          failed: 5
-        },
-        {
-          date: new Date("2018-11-02"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        },
-        {
-          date: new Date("2018-11-03"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        },
-        {
-          date: new Date("2018-11-15"),
-          product: "schedule",
-          type: "int",
-          passed: 100,
-          failed: 0
-        }
-      ]
-    });
+    this.setState({ results });
   }
 
   createResult = () => {
@@ -73,7 +31,6 @@ class Results extends Component<{}, { results: Result[] }> {
   render() {
     return (
       <div className="Results">
-        <h1>Results</h1>
         <Table>
           <thead>
             <tr>

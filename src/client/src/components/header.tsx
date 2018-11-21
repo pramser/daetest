@@ -22,32 +22,34 @@ class Header extends Component<HeaderProps> {
 
   render() {
     return (
-      <Navbar className="Header" light expand="md">
-        <NavbarBrand className="Header-brand" href="/">
-          test-mon
-        </NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink
-                active={this.props.location.pathname == "/results"}
-                href="/results"
-              >
-                Results
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                active={this.props.location.pathname == "/coverage"}
-                href="/coverage"
-              >
-                Coverage
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
+      <header>
+        <Navbar className="Header" light expand="md">
+          <NavbarBrand className="Header-brand" href="/">
+            test-mon
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink
+                  active={this.props.location.pathname == "/results"}
+                  href="/results"
+                >
+                  Results
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  active={this.props.location.pathname == "/coverages"}
+                  href="/coverages"
+                >
+                  Coverage
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </header>
     );
   }
 }
