@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
+// Data
+import { coverages } from "../repositories/coverage_repository";
+
 type Coverage = {
   date: Date;
   product: string;
@@ -12,6 +15,10 @@ type Coverage = {
 
 class Coverages extends Component {
   state = { coverages: [] as Coverage[] };
+
+  componentDidMount() {
+    this.setState({ coverages });
+  }
 
   render() {
     return (

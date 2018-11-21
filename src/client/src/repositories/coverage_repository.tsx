@@ -1,4 +1,4 @@
-export const coverage = [
+export const coverages = [
   {
     date: new Date("2018-11-02"),
     product: "schedule",
