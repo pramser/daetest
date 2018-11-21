@@ -12,8 +12,12 @@ body {
   font-family: "Permanent Marker", cursive;
 }
 
+.Header-location {
+  margin: 0.25em 0.5em;
+}
+
 .App-content {
-  padding: 10px;
+  padding: 1em;
 }
 
 .Results {

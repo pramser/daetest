@@ -14,15 +14,19 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className="App-content">
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/results" component={Results} />
-          <Route exact path="/coverages" component={Coverages} />
-          <Route exact path="/result" component={ResultDetail} />
-        </div>
+        <Routes />
       </div>
     );
   }
 }
+
+const Routes = () => (
+  <div className="App-content">
+    <Route exact path="/" component={Dashboard} />
+    <Route exact path="/results" component={Results} />
+    <Route exact path="/coverages" component={Coverages} />
+    <Route exact path="/result" component={ResultDetail} />
+  </div>
+);
 
 export default App;

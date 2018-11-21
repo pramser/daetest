@@ -43,12 +43,13 @@ class Header extends Component<HeaderProps> {
                   active={this.props.location.pathname == "/coverages"}
                   href="/coverages"
                 >
-                  Coverage
+                  Coverages
                 </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
+        <h1 className="Header-location">{this.props.location.pathname}</h1>
       </header>
     );
   }
