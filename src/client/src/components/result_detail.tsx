@@ -1,43 +1,36 @@
 // Dependencies
 import React, { Component } from "react";
-import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from "reactstrap";
 
-type Result = {
-  date: Date;
-  product: string;
-  type: string;
-  passed: number;
-  failed: number;
+// Data
+import { result_data } from "../repositories/result_repository";
+
+type TestCase = {
+  test_name: string;
+  result: boolean;
 };
 
 class ResultDetail extends Component<
   {},
-  { result: Result; activeTab: string }
+  { result: TestCase[]; activeTab: string }
 > {
-  state = { result: {} as Result, activeTab: "tests" as string };
+  state = { result: [] as TestCase[], activeTab: "tests" as string };
 
   componentDidMount() {
     this.setState({
-      result: {
-        date: new Date("2018-11-01"),
-        product: "schedule",
-        type: "int",
-        passed: 95,
-        failed: 5
-      }
+      result: result_data
     });
   }
 
   toggle(tab: string) {
     if (this.state.activeTab !== tab) {
-      this.setState({ result: {} as Result, activeTab: tab });
+      this.setState({ activeTab: tab });
     }
   }
 
   render() {
     return (
       <div className="ResultDetail">
-        <h1>Result Detail</h1>
         <Nav tabs>
           <NavItem>
             <NavLink
@@ -57,8 +50,25 @@ class ResultDetail extends Component<
           </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="tests">Tests</TabPane>
-          <TabPane tabId="raw">Raw</TabPane>
+          <TabPane tabId="tests">
+            <Table>
+              <thead>
+                <tr>
+                  <th>Test Name</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.result.map(({ test_name, result }) => (
+                  <tr>
+                    <td>{test_name}</td>
+                    <td>{result ? "Pass" : "Fail"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </TabPane>
+          <TabPane tabId="raw">{JSON.stringify(this.state.result)}</TabPane>
         </TabContent>
       </div>
     );
