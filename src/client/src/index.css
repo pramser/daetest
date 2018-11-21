@@ -8,6 +8,10 @@ body {
   background-color: #ffbb43;
 }
 
+.Header-brand {
+  font-family: "Permanent Marker", cursive;
+}
+
 .App-content {
   padding: 10px;
 }

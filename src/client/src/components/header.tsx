@@ -23,7 +23,9 @@ class Header extends Component<HeaderProps> {
   render() {
     return (
       <Navbar className="Header" light expand="md">
-        <NavbarBrand href="/">test-mon</NavbarBrand>
+        <NavbarBrand className="Header-brand" href="/">
+          test-mon
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
