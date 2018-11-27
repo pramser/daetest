@@ -6,6 +6,7 @@ import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
 // Data
 import { coverages } from "../repositories/coverage_repository";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Coverage = {
   id: number;
@@ -14,17 +15,21 @@ type Coverage = {
   coverage: number;
 };
 
-class Coverages extends Component {
+class Coverages extends Component<any, any> {
   state = { coverages: [] as Coverage[] };
 
   componentDidMount() {
     this.setState({ coverages });
   }
 
+  handleRowClick(id: number) {
+    this.props.history.push(`/coverages/${id}`);
+  }
+
   render() {
     return (
       <div className="Coverages">
-        <Table>
+        <Table hover>
           <thead className="thead-dark">
             <tr>
               <th>Date</th>
@@ -37,14 +42,17 @@ class Coverages extends Component {
             {this.state.coverages
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map(({ id, date, product, coverage }, r) => (
-                <tr className="coverage">
+                <tr
+                  className="coverage"
+                  onClick={() => this.handleRowClick(id)}
+                >
                   <td title={date.toDateString()}>
                     {distanceInWordsToNow(date)} ago
                   </td>
                   <td>{product}</td>
-                  <td>{coverage}</td>
+                  <td>{`${coverage}%`}</td>
                   <td>
-                    <Link to={`/coverages/${id}`}>View</Link>
+                    <FontAwesomeIcon icon="chevron-right" color="gray" />
                   </td>
                 </tr>
               ))}

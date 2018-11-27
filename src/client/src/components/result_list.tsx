@@ -43,11 +43,12 @@ class ResultList extends Component<any, { results: Result[] }> {
         <Table hover>
           <thead className="thead-dark">
             <tr>
-              <th>Date</th>
-              <th>File</th>
-              <th>Product</th>
-              <th>Type</th>
+              <th>
+                <FontAwesomeIcon icon="chevron-up" color="white" />
+              </th>
+              <th>Tests</th>
               <th>Status</th>
+              <th>Assignee</th>
               <th />
             </tr>
           </thead>
@@ -56,12 +57,19 @@ class ResultList extends Component<any, { results: Result[] }> {
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map(({ id, date, product, type, passed, failed }, r) => (
                 <tr className="result" onClick={() => this.handleRowClick(id)}>
-                  <td title={date.toDateString()}>
-                    {distanceInWordsToNow(date)} ago
+                  <td style={{ flexDirection: "column" }}>
+                    <div>file_name.xml</div>
+                    <div>Description</div>
+                    <div style={{ flexDirection: "row" }}>
+                      <span>{product}</span>
+                      <span>
+                        <FontAwesomeIcon icon="calendar" />
+                        {distanceInWordsToNow(date)}
+                      </span>
+                      <span>{type}</span>
+                    </div>
                   </td>
-                  <td>file_name.xml</td>
-                  <td>{product}</td>
-                  <td>{type}</td>
+                  <td>1,000</td>
                   <td>
                     {getStatus(passed, failed) > 0 ? (
                       <FontAwesomeIcon icon="times" color="red" />
@@ -69,6 +77,7 @@ class ResultList extends Component<any, { results: Result[] }> {
                       <FontAwesomeIcon icon="check" color="green" />
                     )}
                   </td>
+                  <td>pramser</td>
                   <td>
                     <FontAwesomeIcon icon="chevron-right" color="grey" />
                   </td>

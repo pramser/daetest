@@ -13,12 +13,15 @@ import App from "./components/app";
 // Font-Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
+  faCalendar,
   faCheck,
-  faTimes,
-  faChevronRight
+  faChevronRight,
+  faChevronUp,
+  faClock,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCheck, faTimes, faChevronRight);
+library.add(faCalendar, faCheck, faChevronRight, faChevronUp, faClock, faTimes);
 
 // Entry-point for test-mon-client
 ReactDOM.render(
