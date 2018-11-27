@@ -10,6 +10,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Components
 import App from "./components/app";
 
+// Font-Awesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCheck,
+  faTimes,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCheck, faTimes, faChevronRight);
+
 // Entry-point for test-mon-client
 ReactDOM.render(
   <Router>

@@ -4,6 +4,7 @@ import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from "reactstrap";
 
 // Data
 import { result_data } from "../repositories/result_repository";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type TestCase = {
   test_name: string;
@@ -62,7 +63,13 @@ class ResultDetail extends Component<
                 {this.state.result.map(({ test_name, result }) => (
                   <tr>
                     <td>{test_name}</td>
-                    <td>{result ? "Pass" : "Fail"}</td>
+                    <td>
+                      {result ? (
+                        <FontAwesomeIcon icon="check" color="green" />
+                      ) : (
+                        <FontAwesomeIcon icon="times" color="red" />
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
