@@ -3,22 +3,23 @@ import React, { Component } from "react";
 import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from "reactstrap";
 
 // Data
-import { coverage_data } from "../repositories/coverage_repository";
+import { result_data } from "../../repositories/result_repository";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type TestCase = {
   test_name: string;
   result: boolean;
 };
 
-class CoverageDetail extends Component<
+class ResultDetail extends Component<
   {},
-  { coverage: TestCase[]; activeTab: string }
+  { result: TestCase[]; activeTab: string }
 > {
-  state = { coverage: [] as TestCase[], activeTab: "covs" as string };
+  state = { result: [] as TestCase[], activeTab: "tests" as string };
 
   componentDidMount() {
     this.setState({
-      coverage: coverage_data
+      result: result_data
     });
   }
 
@@ -30,14 +31,14 @@ class CoverageDetail extends Component<
 
   render() {
     return (
-      <div className="CoverageDetail">
+      <div className="ResultDetail">
         <Nav tabs>
           <NavItem>
             <NavLink
-              active={this.state.activeTab === "covs"}
-              onClick={() => this.toggle("covs")}
+              active={this.state.activeTab === "tests"}
+              onClick={() => this.toggle("tests")}
             >
-              Report
+              Tests
             </NavLink>
           </NavItem>
           <NavItem>
@@ -50,7 +51,7 @@ class CoverageDetail extends Component<
           </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="covs">
+          <TabPane tabId="tests">
             <Table>
               <thead>
                 <tr>
@@ -59,20 +60,26 @@ class CoverageDetail extends Component<
                 </tr>
               </thead>
               <tbody>
-                {this.state.coverage.map(({ test_name, result }) => (
+                {this.state.result.map(({ test_name, result }) => (
                   <tr>
                     <td>{test_name}</td>
-                    <td>{result ? "Pass" : "Fail"}</td>
+                    <td>
+                      {result ? (
+                        <FontAwesomeIcon icon="check" color="green" />
+                      ) : (
+                        <FontAwesomeIcon icon="times" color="red" />
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </Table>
           </TabPane>
-          <TabPane tabId="raw">{JSON.stringify(this.state.coverage)}</TabPane>
+          <TabPane tabId="raw">{JSON.stringify(this.state.result)}</TabPane>
         </TabContent>
       </div>
     );
   }
 }
 
-export default CoverageDetail;
+export default ResultDetail;

@@ -5,7 +5,7 @@ import { Table } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
 // Data
-import { coverages } from "../repositories/coverage_repository";
+import { coverages } from "../../repositories/coverage_repository";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Coverage = {

@@ -5,8 +5,8 @@ import { Route } from "react-router-dom";
 // Components
 import Header from "./components/header";
 import Dashboard from "./components/dashboard";
-import Results from "./components/results";
-import Coverages from "./components/coverages";
+import Results from "./components/results/results";
+import Coverages from "./components/coverages/coverages";
 
 class App extends Component {
   render() {

@@ -4,7 +4,7 @@ import { Table, Button } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
 // Data
-import { results } from "../repositories/result_repository";
+import { results } from "../../repositories/result_repository";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Result = {
