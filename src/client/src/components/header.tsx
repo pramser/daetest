@@ -10,6 +10,7 @@ import {
   NavLink
 } from "reactstrap";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HeaderProps extends RouteComponentProps<any> {}
 
@@ -35,6 +36,10 @@ class Header extends Component<HeaderProps> {
                   active={this.props.location.pathname == "/results"}
                   href="/results"
                 >
+                  <FontAwesomeIcon
+                    icon="vial"
+                    style={{ marginRight: "0.25em" }}
+                  />
                   Results
                 </NavLink>
               </NavItem>
@@ -43,6 +48,10 @@ class Header extends Component<HeaderProps> {
                   active={this.props.location.pathname == "/coverages"}
                   href="/coverages"
                 >
+                  <FontAwesomeIcon
+                    icon="poll-h"
+                    style={{ marginRight: "0.25em" }}
+                  />
                   Coverages
                 </NavLink>
               </NavItem>

@@ -18,10 +18,21 @@ import {
   faChevronRight,
   faChevronUp,
   faClock,
-  faTimes
+  faPollH,
+  faTimes,
+  faVial
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCalendar, faCheck, faChevronRight, faChevronUp, faClock, faTimes);
+library.add(
+  faCalendar,
+  faCheck,
+  faChevronRight,
+  faChevronUp,
+  faClock,
+  faPollH,
+  faTimes,
+  faVial
+);
 
 // Entry-point for test-mon-client
 ReactDOM.render(
