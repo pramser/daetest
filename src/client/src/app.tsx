@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
 // Components
-import Header from "./header";
-import Dashboard from "./dashboard";
-import Results from "./results";
-import Coverages from "./coverages";
+import Header from "./components/header";
+import Dashboard from "./components/dashboard";
+import Results from "./components/results";
+import Coverages from "./components/coverages";
 
 class App extends Component {
   render() {

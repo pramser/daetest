@@ -8,7 +8,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Components
-import App from "./components/app";
+import App from "./app";
 
 // Font-Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
