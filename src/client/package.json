@@ -7,6 +7,9 @@
   "homepage": "https://github.com/pramser/test-mon#readme",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "@types/jest": "^23.3.9",
     "@types/node": "^7.10.2",
     "@types/react": "^16.7.6",
