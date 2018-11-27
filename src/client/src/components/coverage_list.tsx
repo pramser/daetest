@@ -25,7 +25,7 @@ class Coverages extends Component {
     return (
       <div className="Coverages">
         <Table>
-          <thead>
+          <thead className="thead-dark">
             <tr>
               <th>Date</th>
               <th>Product</th>

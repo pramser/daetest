@@ -50,7 +50,7 @@ class CoverageDetail extends Component<
           </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="tests">
+          <TabPane tabId="covs">
             <Table>
               <thead>
                 <tr>

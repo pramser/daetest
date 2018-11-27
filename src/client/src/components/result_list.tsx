@@ -33,13 +33,13 @@ class ResultList extends Component<{}, { results: Result[] }> {
     return (
       <div className="Results">
         <Table>
-          <thead>
+          <thead className="thead-dark">
             <tr>
               <th>Date</th>
+              <th>File</th>
               <th>Product</th>
               <th>Type</th>
-              <th>Passed</th>
-              <th>Failed</th>
+              <th>Status</th>
               <th />
             </tr>
           </thead>
@@ -51,10 +51,10 @@ class ResultList extends Component<{}, { results: Result[] }> {
                   <td title={date.toDateString()}>
                     {distanceInWordsToNow(date)} ago
                   </td>
+                  <td>file_name.xml</td>
                   <td>{product}</td>
                   <td>{type}</td>
-                  <td>{passed}</td>
-                  <td>{failed}</td>
+                  <td>{getStatus(passed, failed)}</td>
                   <td>
                     <Link to={`/results/${id}`}>View</Link>
                   </td>
@@ -66,6 +66,13 @@ class ResultList extends Component<{}, { results: Result[] }> {
       </div>
     );
   }
+}
+
+function getStatus(passed: number, failed: number): string {
+  var failure_rate = failed / (passed + failed);
+  return failure_rate > 0
+    ? `${(failure_rate * 100).toString()}% Failing`
+    : "Passing";
 }
 
 export default ResultList;
