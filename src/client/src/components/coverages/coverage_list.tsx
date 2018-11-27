@@ -1,19 +1,14 @@
 // Dependencies
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
+
+// Types
+import { Coverage } from "../../types/Types";
 
 // Data
 import { coverages } from "../../repositories/coverage_repository";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-type Coverage = {
-  id: number;
-  date: Date;
-  product: string;
-  coverage: number;
-};
 
 class Coverages extends Component<any, any> {
   state = { coverages: [] as Coverage[] };

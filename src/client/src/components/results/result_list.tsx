@@ -3,18 +3,12 @@ import React, { Component } from "react";
 import { Table, Button } from "reactstrap";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 
+// Types
+import { Result } from "../../types/Types";
+
 // Data
 import { results } from "../../repositories/result_repository";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-type Result = {
-  id: number;
-  date: Date;
-  product: string;
-  type: string;
-  passed: number;
-  failed: number;
-};
 
 class ResultList extends Component<any, { results: Result[] }> {
   state = { results: [] as Result[] };

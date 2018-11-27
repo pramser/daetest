@@ -2,13 +2,11 @@
 import React, { Component } from "react";
 import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from "reactstrap";
 
+// Types
+import { TestCase } from "../../types/Types";
+
 // Data
 import { coverage_data } from "../../repositories/coverage_repository";
-
-type TestCase = {
-  test_name: string;
-  result: boolean;
-};
 
 class CoverageDetail extends Component<
   {},

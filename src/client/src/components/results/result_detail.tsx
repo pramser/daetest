@@ -2,14 +2,12 @@
 import React, { Component } from "react";
 import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from "reactstrap";
 
+// Types
+import { TestCase } from "../../types/Types";
+
 // Data
 import { result_data } from "../../repositories/result_repository";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-type TestCase = {
-  test_name: string;
-  result: boolean;
-};
 
 class ResultDetail extends Component<
   {},
