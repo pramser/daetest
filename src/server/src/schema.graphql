@@ -1,0 +1,28 @@
+scalar Date
+scalar DateTime
+scalar Time
+
+type Query {
+  allResults: [Result!]!
+  resultById(id: ID!): Result
+}
+
+type Result {
+  id: ID!
+
+  name: String!
+  description: String!
+
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Coverage {
+  id: ID!
+
+  name: String!
+  description: String!
+
+  created_at: DateTime!
+  updated_at: DateTime!
+}
