@@ -1,10 +1,14 @@
 import { Model } from 'objection';
+import { CoverageType, FileType } from './enum';
 
 export class Coverage extends Model {
   readonly id!: string;
 
   name!: string;
   description!: string;
+
+  file_type!: FileType;
+  coverage_type!: CoverageType;
 
   created_at!: Date;
   updated_at!: Date;

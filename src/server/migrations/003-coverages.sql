@@ -5,6 +5,9 @@ create table testmon.coverage (
   name text not null,
   description text not null default '',
 
+  file_type int not null default 0,
+  coverage_type int not null default 0,
+
   created_at timestamp with time zone not null default now(),
   updated_at timestamp with time zone not null default now()
 );
