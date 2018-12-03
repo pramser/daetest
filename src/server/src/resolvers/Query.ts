@@ -19,6 +19,6 @@ export const Query = {
     return (result as Omit<
       TestmonApi.IResult,
       '__typename' | 'customers'
-    >) as Omit<TestmonApi.IQuery['companyById'], '__typename'>;
+    >) as Omit<TestmonApi.IQuery['resultById'], '__typename'>;
   }
 };
