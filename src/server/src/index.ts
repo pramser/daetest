@@ -22,5 +22,9 @@ init().then(async () => {
     resolvers,
     context: (req: Context) => ({ ...req, pool })
   } as any);
-  server.start(() => console.log('Server is running on http://localhost:4000'));
+  server.start(() =>
+    console.log(
+      `Server is running on http://localhost:${process.env.PORT || 4000}`
+    )
+  );
 });
