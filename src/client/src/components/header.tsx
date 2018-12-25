@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -8,9 +8,9 @@ import {
   Nav,
   NavItem,
   NavLink
-} from "reactstrap";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from 'reactstrap';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface HeaderProps extends RouteComponentProps<any> {}
 
@@ -32,25 +32,34 @@ class Header extends Component<HeaderProps> {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink active={this.props.location.pathname == '/'} href="/">
+                  <FontAwesomeIcon
+                    icon="home"
+                    style={{ marginRight: '0.40em' }}
+                  />
+                  Dashboard
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink
-                  active={this.props.location.pathname == "/results"}
+                  active={this.props.location.pathname == '/results'}
                   href="/results"
                 >
                   <FontAwesomeIcon
                     icon="vial"
-                    style={{ marginRight: "0.25em" }}
+                    style={{ marginRight: '0.40em' }}
                   />
                   Results
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  active={this.props.location.pathname == "/coverages"}
+                  active={this.props.location.pathname == '/coverages'}
                   href="/coverages"
                 >
                   <FontAwesomeIcon
                     icon="poll-h"
-                    style={{ marginRight: "0.25em" }}
+                    style={{ marginRight: '0.40em' }}
                   />
                   Coverages
                 </NavLink>
