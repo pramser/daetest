@@ -9,7 +9,7 @@ body {
 }
 
 .Header-brand {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .Header-location {
@@ -25,4 +25,8 @@ body {
   flex-direction: column;
   align-content: center;
   justify-content: center;
+}
+
+.raw-data {
+  font-family: 'Courier New', Courier, monospace;
 }

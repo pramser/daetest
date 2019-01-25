@@ -87,7 +87,11 @@ const TestsTab = (props: { result: TestCase[] }) => {
 };
 
 const RawTab = (props: { result: TestCase[] }) => {
-  return <TabPane tabId="raw">{JSON.stringify(props.result)}</TabPane>;
+  return (
+    <TabPane tabId="raw">
+      <div className="raw-data">{JSON.stringify(props.result)}</div>
+    </TabPane>
+  );
 };
 
 export default ResultDetail;
