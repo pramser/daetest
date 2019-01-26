@@ -1,14 +1,15 @@
 // Dependencies
-import React, { Component } from "react";
-import { Table, Button } from "reactstrap";
-import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
+import React, { Component } from 'react';
+import { Table, Button } from 'reactstrap';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 // Types
-import { Result } from "../../types/Types";
+import { Result } from '../../types/Types';
 
 // Data
-import { results } from "../../repositories/result_repository";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { results } from '../../repositories/result_repository';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Badge from 'reactstrap/lib/Badge';
 
 class ResultList extends Component<any, { results: Result[] }> {
   state = { results: [] as Result[] };
@@ -22,8 +23,8 @@ class ResultList extends Component<any, { results: Result[] }> {
   }
 
   createResult = () => {
-    fetch("http://localhost:3001/results").then(() => {
-      alert("fetched!");
+    fetch('http://localhost:3001/results').then(() => {
+      alert('fetched!');
     });
   };
 
@@ -34,15 +35,15 @@ class ResultList extends Component<any, { results: Result[] }> {
   render() {
     return (
       <div className="Results">
-        <Table hover>
-          <thead className="thead-dark">
+        <Table style={{ border: '2px solid #ddd' }}>
+          <thead>
             <tr>
-              <th>
-                <FontAwesomeIcon icon="chevron-up" color="white" />
-              </th>
-              <th>Tests</th>
               <th>Status</th>
+              <th>
+                <FontAwesomeIcon icon="chevron-up" />
+              </th>
               <th>Assignee</th>
+              <th>Tests</th>
               <th />
             </tr>
           </thead>
@@ -51,19 +52,6 @@ class ResultList extends Component<any, { results: Result[] }> {
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map(({ id, date, product, type, passed, failed }, r) => (
                 <tr className="result" onClick={() => this.handleRowClick(id)}>
-                  <td style={{ flexDirection: "column" }}>
-                    <div>file_name.xml</div>
-                    <div>Description</div>
-                    <div style={{ flexDirection: "row" }}>
-                      <span>{product}</span>
-                      <span>
-                        <FontAwesomeIcon icon="calendar" />
-                        {distanceInWordsToNow(date)}
-                      </span>
-                      <span>{type}</span>
-                    </div>
-                  </td>
-                  <td>1,000</td>
                   <td>
                     {getStatus(passed, failed) > 0 ? (
                       <FontAwesomeIcon icon="times" color="red" />
@@ -71,7 +59,28 @@ class ResultList extends Component<any, { results: Result[] }> {
                       <FontAwesomeIcon icon="check" color="green" />
                     )}
                   </td>
+                  <td style={{ flexDirection: 'column' }}>
+                    <div className="file-name">file_name.xml</div>
+                    <div className="description-ellipsis">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </div>
+                    <div style={{ flexDirection: 'row' }}>
+                      <span className="result-date meta-pill">
+                        <FontAwesomeIcon icon="clock" className="right-pad" />
+                        {distanceInWordsToNow(date)}
+                      </span>
+                      <Badge className="meta-pill" color="primary">
+                        {product}
+                      </Badge>
+                      <Badge className="meta-pill" color="secondary">
+                        {type}
+                      </Badge>
+                    </div>
+                  </td>
                   <td>pramser</td>
+                  <td>1,000</td>
                   <td>
                     <FontAwesomeIcon icon="chevron-right" color="grey" />
                   </td>
