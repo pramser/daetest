@@ -35,6 +35,21 @@ body {
   background-color: #eee;
 }
 
+.Coverages {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.Coverages thead {
+  color: #777;
+  font-size: 0.7em;
+  text-transform: uppercase;
+
+  background-color: #eee;
+}
+
 .file-name {
   max-width: 250px;
   white-space: nowrap;

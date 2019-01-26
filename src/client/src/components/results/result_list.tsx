@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Table, Button } from 'reactstrap';
+import { Table, Button, Badge } from 'reactstrap';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 // Types
@@ -9,7 +9,6 @@ import { Result } from '../../types/Types';
 // Data
 import { results } from '../../repositories/result_repository';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Badge from 'reactstrap/lib/Badge';
 
 class ResultList extends Component<any, { results: Result[] }> {
   state = { results: [] as Result[] };
@@ -40,7 +39,7 @@ class ResultList extends Component<any, { results: Result[] }> {
             <tr>
               <th>Status</th>
               <th>
-                <FontAwesomeIcon icon="chevron-up" />
+                <FontAwesomeIcon className="right-pad" icon="chevron-up" /> File
               </th>
               <th>Assignee</th>
               <th>Tests</th>
