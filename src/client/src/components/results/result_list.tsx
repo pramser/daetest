@@ -27,9 +27,9 @@ class ResultList extends Component<any, { results: Result[] }> {
     });
   };
 
-  handleRowClick(id: number) {
+  handleRowClick = (id: number) => {
     this.props.history.push(`/results/${id}`);
-  }
+  };
 
   render() {
     return (
@@ -49,41 +49,11 @@ class ResultList extends Component<any, { results: Result[] }> {
           <tbody>
             {this.state.results
               .sort((a, b) => b.date.getTime() - a.date.getTime())
-              .map(({ id, date, product, type, passed, failed }, r) => (
-                <tr className="result" onClick={() => this.handleRowClick(id)}>
-                  <td>
-                    {getStatus(passed, failed) > 0 ? (
-                      <FontAwesomeIcon icon="times" color="red" />
-                    ) : (
-                      <FontAwesomeIcon icon="check" color="green" />
-                    )}
-                  </td>
-                  <td style={{ flexDirection: 'column' }}>
-                    <div className="file-name">file_name.xml</div>
-                    <div className="description-ellipsis">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </div>
-                    <div style={{ flexDirection: 'row' }}>
-                      <span className="result-date meta-pill">
-                        <FontAwesomeIcon icon="clock" className="right-pad" />
-                        {distanceInWordsToNow(date)}
-                      </span>
-                      <Badge className="meta-pill" color="primary">
-                        {product}
-                      </Badge>
-                      <Badge className="meta-pill" color="secondary">
-                        {type}
-                      </Badge>
-                    </div>
-                  </td>
-                  <td>pramser</td>
-                  <td>1,000</td>
-                  <td>
-                    <FontAwesomeIcon icon="chevron-right" color="grey" />
-                  </td>
-                </tr>
+              .map(result => (
+                <ResultRow
+                  result={result}
+                  onClick={() => this.handleRowClick(result.id)}
+                />
               ))}
           </tbody>
         </Table>
@@ -92,6 +62,46 @@ class ResultList extends Component<any, { results: Result[] }> {
     );
   }
 }
+
+const ResultRow = (props: { result: Result; onClick: any }) => {
+  const { name, date, assignee, product, type, passed, failed } = props.result;
+
+  return (
+    <tr className="result" onClick={props.onClick}>
+      <td>
+        {getStatus(passed, failed) > 0 ? (
+          <FontAwesomeIcon icon="times" color="red" />
+        ) : (
+          <FontAwesomeIcon icon="check" color="green" />
+        )}
+      </td>
+      <td style={{ flexDirection: 'column' }}>
+        <div className="file-name">{name}</div>
+        <div className="description-ellipsis">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+        <div style={{ flexDirection: 'row' }}>
+          <span className="result-date meta-pill">
+            <FontAwesomeIcon icon="clock" className="right-pad" />
+            {distanceInWordsToNow(date)}
+          </span>
+          <Badge className="meta-pill" color="primary">
+            {product}
+          </Badge>
+          <Badge className="meta-pill" color="secondary">
+            {type}
+          </Badge>
+        </div>
+      </td>
+      <td>{assignee}</td>
+      <td>1,000</td>
+      <td>
+        <FontAwesomeIcon icon="chevron-right" color="grey" />
+      </td>
+    </tr>
+  );
+};
 
 function getStatus(passed: number, failed: number): number {
   var failure_rate = failed / (passed + failed);

@@ -1,6 +1,8 @@
 export type Result = {
   id: number;
+  name: string;
   date: Date;
+  assignee: string;
   product: string;
   type: string;
   passed: number;
@@ -14,6 +16,7 @@ export type TestCase = {
 
 export type Coverage = {
   id: number;
+  name: string;
   date: Date;
   product: string;
   coverage: number;
