@@ -1,10 +1,13 @@
 // Dependencies
-import React, { Component } from 'react';
+import React, { Component, MouseEventHandler } from 'react';
 import { Table, Button, Badge } from 'reactstrap';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 // Types
 import { Result } from '../../types/Types';
+
+// Components
+import FileUpload from '../file_upload';
 
 // Data
 import { results } from '../../repositories/result_repository';
@@ -34,6 +37,9 @@ class ResultList extends Component<any, { results: Result[] }> {
   render() {
     return (
       <div className="Results">
+        <div>
+          <FileUpload />
+        </div>
         <Table style={{ border: '2px solid #ddd' }}>
           <thead>
             <tr>
@@ -63,7 +69,10 @@ class ResultList extends Component<any, { results: Result[] }> {
   }
 }
 
-const ResultRow = (props: { result: Result; onClick: any }) => {
+const ResultRow = (props: {
+  result: Result;
+  onClick?: MouseEventHandler<any>;
+}) => {
   const { name, date, assignee, product, type, passed, failed } = props.result;
 
   return (
