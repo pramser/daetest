@@ -67,8 +67,8 @@ const CoverageTab = (props: { coverage: TestCase[] }) => {
           </tr>
         </thead>
         <tbody>
-          {props.coverage.map(({ test_name, result }) => (
-            <tr>
+          {props.coverage.map(({ test_name, result }, index) => (
+            <tr key={index}>
               <td>{test_name}</td>
               <td>{result ? 'Pass' : 'Fail'}</td>
             </tr>

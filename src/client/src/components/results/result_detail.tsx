@@ -68,8 +68,8 @@ const TestsTab = (props: { result: TestCase[] }) => {
           </tr>
         </thead>
         <tbody>
-          {props.result.map(({ test_name, result }) => (
-            <tr>
+          {props.result.map(({ test_name, result }, index) => (
+            <tr key={index}>
               <td>{test_name}</td>
               <td>
                 {result ? (

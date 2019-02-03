@@ -57,6 +57,7 @@ class ResultList extends Component<any, { results: Result[] }> {
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map(result => (
                 <ResultRow
+                  key={result.id}
                   result={result}
                   onClick={() => this.handleRowClick(result.id)}
                 />

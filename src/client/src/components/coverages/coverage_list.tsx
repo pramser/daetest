@@ -40,6 +40,7 @@ class Coverages extends Component<any, any> {
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map(({ id, date, product, coverage }, r) => (
                 <tr
+                  key={id}
                   className="coverage"
                   onClick={() => this.handleRowClick(id)}
                 >
