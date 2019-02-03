@@ -86,3 +86,22 @@ body {
 .raw-data {
   font-family: 'Courier New', Courier, monospace;
 }
+
+.dropzone {
+  width: 200px;
+  height: 200px;
+  border-width: 2;
+  border-color: #666;
+  border-style: dashed;
+  border-radius: 5;
+}
+
+.dropzone .active {
+  border: 1px solid #6c6;
+  background-color: #eee;
+}
+
+.dropzone .reject {
+  border: 1px solid #c66;
+  background-color: #eee;
+}

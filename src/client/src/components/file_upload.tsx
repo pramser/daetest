@@ -1,5 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone';
 import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
 
 class FileUpload extends Component<{}, { isOpen: boolean }> {
@@ -11,10 +12,6 @@ class FileUpload extends Component<{}, { isOpen: boolean }> {
     };
   }
 
-  toggle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
-
   render() {
     return (
       <div>
@@ -25,11 +22,36 @@ class FileUpload extends Component<{}, { isOpen: boolean }> {
           toggle={this.toggle}
         >
           <ModalHeader>File Upload</ModalHeader>
-          <ModalBody>Drop file here...</ModalBody>
+          <ModalBody>
+            <Dropzone accept="image/*" onDrop={this.onDrop}>
+              {({
+                getRootProps,
+                getInputProps,
+                isDragAccept,
+                isDragReject
+              }) => {
+                return (
+                  <div {...getRootProps()} className="dropzone">
+                    <input {...getInputProps()} />
+                    <div>{isDragAccept ? 'Drop' : 'Drag'} files here...</div>
+                    {isDragReject && <div>Unsupported file type...</div>}
+                  </div>
+                );
+              }}
+            </Dropzone>
+          </ModalBody>
         </Modal>
       </div>
     );
   }
+
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+
+  onDrop = (acceptedFiles: any, rejectedFiles: any) => {
+    console.log('Dropped file...');
+  };
 }
 
 export default FileUpload;
