@@ -1,7 +1,18 @@
 // Dependencies
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
+
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      filename
+    }
+  }
+`;
 
 class FileUpload extends Component<{}, { isOpen: boolean }> {
   constructor(props: any) {
@@ -40,6 +51,15 @@ class FileUpload extends Component<{}, { isOpen: boolean }> {
               }}
             </Dropzone>
           </ModalBody>
+          <ModalFooter>
+            <Mutation mutation={UPLOAD_FILE}>
+              {uploadFile => (
+                <Button onClick={() => uploadFile({ variables: {} })}>
+                  Upload File
+                </Button>
+              )}
+            </Mutation>
+          </ModalFooter>
         </Modal>
       </div>
     );

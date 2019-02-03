@@ -3,6 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
 // CSS
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,10 +39,14 @@ library.add(
   faVial
 );
 
+const client = new ApolloClient({ uri: 'https://localhost:4000' });
+
 // Entry-point for test-mon-client
 ReactDOM.render(
   <Router>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </Router>,
   document.getElementById('root')
 );
