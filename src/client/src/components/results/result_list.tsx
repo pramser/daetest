@@ -24,12 +24,6 @@ class ResultList extends Component<any, { results: Result[] }> {
     this.setState({ results });
   }
 
-  createResult = () => {
-    fetch('http://localhost:3001/results').then(() => {
-      alert('fetched!');
-    });
-  };
-
   handleRowClick = (id: number) => {
     this.props.history.push(`/results/${id}`);
   };
@@ -64,7 +58,6 @@ class ResultList extends Component<any, { results: Result[] }> {
               ))}
           </tbody>
         </Table>
-        <Button onClick={this.createResult}>POST result</Button>
       </div>
     );
   }
