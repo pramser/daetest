@@ -48,9 +48,11 @@ declare namespace TestmonApi {
 
   interface IFile {
     __typename: 'File';
+    id: string | Promise<string>;
     filename: string | Promise<string>;
     mimetype: string | Promise<string>;
     encoding: string | Promise<string>;
+    path: string | Promise<string>;
   }
 
   interface IMutation {
