@@ -1,10 +1,16 @@
 scalar Date
 scalar DateTime
 scalar Time
+scalar Upload
 
 type Query {
   allResults: [Result!]!
   resultById(id: ID!): Result
+  allFiles: [File]
+}
+
+type Mutation {
+  uploadFile(file: Upload!): File!
 }
 
 type Result {
@@ -25,4 +31,10 @@ type Coverage {
 
   created_at: DateTime!
   updated_at: DateTime!
+}
+
+type File {
+  filename: String!
+  mimetype: String!
+  encoding: String!
 }

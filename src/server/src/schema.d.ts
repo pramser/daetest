@@ -4,7 +4,7 @@
 
 declare namespace TestmonApi {
   interface IGraphQLResponseRoot {
-    data?: IQuery;
+    data?: IQuery | IMutation;
     errors?: Array<IGraphQLResponseError>;
   }
 
@@ -27,6 +27,10 @@ declare namespace TestmonApi {
       | Array<IResult | Promise<IResult>>
       | Promise<Array<IResult | Promise<IResult>>>;
     resultById: IResult | null | Promise<IResult | null>;
+    allFiles:
+      | Array<IFile | null | Promise<IFile | null>>
+      | null
+      | Promise<Array<IFile | null | Promise<IFile | null>> | null>;
   }
 
   interface IResultByIdOnQueryArguments {
@@ -40,6 +44,22 @@ declare namespace TestmonApi {
     description: string | Promise<string>;
     created_at: Date | Promise<Date>;
     updated_at: Date | Promise<Date>;
+  }
+
+  interface IFile {
+    __typename: 'File';
+    filename: string | Promise<string>;
+    mimetype: string | Promise<string>;
+    encoding: string | Promise<string>;
+  }
+
+  interface IMutation {
+    __typename: 'Mutation';
+    uploadFile: IFile | Promise<IFile>;
+  }
+
+  interface IUploadFileOnMutationArguments {
+    file: any | Promise<any>;
   }
 
   interface ICoverage {

@@ -3,12 +3,14 @@ import { IResolvers } from 'graphql-tools';
 import { TypeMap } from 'graphql/type/schema';
 
 import { Query } from './Query';
+import { Mutation } from './Mutation';
 // import { Result } from './Result';
 
 export const resolvers: IResolvers<TypeMap> = {
   Date: GraphQLDate,
   DateTime: GraphQLDateTime,
   Time: GraphQLTime,
-  Query: Query as any
+  Query: Query as any,
+  Mutation: Mutation as any
   //   Result: Result as any
 };

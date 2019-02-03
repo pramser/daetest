@@ -13,5 +13,8 @@ export const Query = {
       return null;
     }
     return result;
+  },
+  async allFiles() {
+    // Return all files when queried.
   }
 };
