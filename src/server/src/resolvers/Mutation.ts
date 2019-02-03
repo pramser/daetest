@@ -1,19 +1,44 @@
 /// <reference path="../schema.d.ts" />
 
+import fs from 'fs';
+import mkdirp from 'mkdirp';
+import shortid from 'shortid';
+
 import { File } from '../models/file';
 
+const UPLOAD_DIR = './uploads';
+
+// Ensure upload directory exists.
+mkdirp.sync(UPLOAD_DIR);
+
+const storeFS = ({ stream, filename }: any) => {
+  const id = shortid.generate();
+  const path = `${UPLOAD_DIR}/${id}-${filename}`;
+  return new Promise((resolve, reject) =>
+    stream
+      .on('error', (error: any) => {
+        if (stream.truncated)
+          // Delete the truncated file.
+          fs.unlinkSync(path);
+        reject(error);
+      })
+      .pipe(fs.createWriteStream(path))
+      .on('error', (error: any) => reject(error))
+      .on('finish', () => resolve({ id, path }))
+  );
+};
+
+const storeDB = (file: any) => {
+  return File.query().insertAndFetch(file);
+};
+
+const processUpload = async (upload: any) => {
+  const { createReadStream, filename, mimetype } = await upload;
+  const stream = createReadStream();
+  const { id, path } = (await storeFS({ stream, filename })) as any;
+  return storeDB({ id, filename, mimetype, path });
+};
+
 export const Mutation = {
-  async uploadFile(parent: any, { file }: any) {
-    const { stream, filename, mimetype, encoding } = await file;
-
-    // 1. Validate file metadata.
-
-    // 2. Stream file contents into cloud storage:
-    // https://nodejs.org/api/stream.html
-
-    // 3. Record the file upload in your DB.
-    // const id = await recordFile( … )
-
-    return { filename, mimetype, encoding };
-  }
+  uploadFile: (obj: any, { file }: any) => processUpload(file)
 };

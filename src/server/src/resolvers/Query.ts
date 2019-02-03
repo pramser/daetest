@@ -1,6 +1,7 @@
 /// <reference path="../schema.d.ts" />
 
 import { Result } from '../models/result';
+import { File } from '../models/file';
 
 export const Query = {
   async allResults() {
@@ -15,6 +16,7 @@ export const Query = {
     return result;
   },
   async allFiles() {
-    // Return all files when queried.
+    const files = await File.query();
+    return files;
   }
 };

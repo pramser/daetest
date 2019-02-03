@@ -7,6 +7,8 @@ export class File extends Model {
   mimetype!: string;
   encoding!: string;
 
+  path!: string;
+
   static tableName = 'testmon.file';
   static idColumn = 'id';
 
