@@ -23,18 +23,31 @@ declare namespace TestmonApi {
 
   interface IQuery {
     __typename: 'Query';
-    allResults:
-      | Array<IResult | Promise<IResult>>
-      | Promise<Array<IResult | Promise<IResult>>>;
-    resultById: IResult | null | Promise<IResult | null>;
     allFiles:
       | Array<IFile | null | Promise<IFile | null>>
       | null
       | Promise<Array<IFile | null | Promise<IFile | null>> | null>;
+    allResults:
+      | Array<IResult | Promise<IResult>>
+      | Promise<Array<IResult | Promise<IResult>>>;
+    resultById: IResult | null | Promise<IResult | null>;
   }
 
   interface IResultByIdOnQueryArguments {
     id: string | Promise<string>;
+  }
+
+  interface IFile {
+    __typename: 'File';
+    id: string | Promise<string>;
+    file_name: string | Promise<string>;
+    mime_type: string | Promise<string>;
+    encoding: string | Promise<string>;
+    product: string | Promise<string>;
+    meta: string | Promise<string>;
+    file_status: number | Promise<number>;
+    result_type: number | Promise<number>;
+    created_at: Date | Promise<Date>;
   }
 
   interface IResult {
@@ -42,17 +55,8 @@ declare namespace TestmonApi {
     id: string | Promise<string>;
     name: string | Promise<string>;
     description: string | Promise<string>;
-    created_at: Date | Promise<Date>;
-    updated_at: Date | Promise<Date>;
-  }
-
-  interface IFile {
-    __typename: 'File';
-    id: string | Promise<string>;
-    filename: string | Promise<string>;
-    mimetype: string | Promise<string>;
-    encoding: string | Promise<string>;
-    path: string | Promise<string>;
+    assignee: string | Promise<string>;
+    result_status: number | Promise<number>;
   }
 
   interface IMutation {
@@ -62,15 +66,6 @@ declare namespace TestmonApi {
 
   interface IUploadFileOnMutationArguments {
     file: any | Promise<any>;
-  }
-
-  interface ICoverage {
-    __typename: 'Coverage';
-    id: string | Promise<string>;
-    name: string | Promise<string>;
-    description: string | Promise<string>;
-    created_at: Date | Promise<Date>;
-    updated_at: Date | Promise<Date>;
   }
 }
 

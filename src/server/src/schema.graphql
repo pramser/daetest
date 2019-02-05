@@ -1,16 +1,33 @@
 scalar Date
 scalar DateTime
+scalar Int
 scalar Time
 scalar Upload
 
 type Query {
+  allFiles: [File]
   allResults: [Result!]!
   resultById(id: ID!): Result
-  allFiles: [File]
 }
 
 type Mutation {
   uploadFile(file: Upload!): File!
+}
+
+type File {
+  id: ID!
+
+  file_name: String!
+  mime_type: String!
+  encoding: String!
+
+  product: String!
+  meta: String!
+
+  file_status: Int!
+  result_type: Int!
+
+  created_at: DateTime!
 }
 
 type Result {
@@ -18,26 +35,7 @@ type Result {
 
   name: String!
   description: String!
+  assignee: String!
 
-  created_at: DateTime!
-  updated_at: DateTime!
-}
-
-type Coverage {
-  id: ID!
-
-  name: String!
-  description: String!
-
-  created_at: DateTime!
-  updated_at: DateTime!
-}
-
-type File {
-  id: ID!
-
-  filename: String!
-  mimetype: String!
-  encoding: String!
-  path: String!
+  result_status: Int!
 }
