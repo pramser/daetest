@@ -6,7 +6,7 @@ create table testmon.result (
   description text not null default '',
   assignee text not null default '',
 
-  result_status int not null default 0,
+  result_status int not null default 0
 );
 
 -- Down

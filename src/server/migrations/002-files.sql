@@ -14,7 +14,7 @@ create table testmon.file (
   file_status int not null default 0,
   result_type int not null default 0,
 
-  created_at timestamp with time zone not null default now(),
+  created_at timestamp with time zone not null default now()
 );
 
 -- Down
