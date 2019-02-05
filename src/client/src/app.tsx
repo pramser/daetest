@@ -1,12 +1,12 @@
 // Dependencies
-import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 // Components
-import Header from "./components/header";
-import Dashboard from "./components/dashboard";
-import Results from "./components/results/results";
-import Coverages from "./components/coverages/coverages";
+import Header from './components/header';
+import Dashboard from './components/dashboard';
+import Tests from './components/tests/tests';
+import Coverages from './components/coverages/coverages';
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
 const Routes = () => (
   <div className="App-content">
     <Route exact path="/" component={Dashboard} />
-    <Route path="/results" component={Results} />
+    <Route path="/tests" component={Tests} />
     <Route path="/coverages" component={Coverages} />
   </div>
 );

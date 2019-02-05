@@ -13,7 +13,7 @@ import FileUpload from '../file_upload';
 import { results } from '../../repositories/result_repository';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class ResultList extends Component<any, { results: Result[] }> {
+class TestList extends Component<any, { results: Result[] }> {
   state = { results: [] as Result[] };
 
   constructor(props: any) {
@@ -25,7 +25,7 @@ class ResultList extends Component<any, { results: Result[] }> {
   }
 
   handleRowClick = (id: number) => {
-    this.props.history.push(`/results/${id}`);
+    this.props.history.push(`/tests/${id}`);
   };
 
   render() {
@@ -111,4 +111,4 @@ function getStatus(passed: number, failed: number): number {
   return failure_rate * 100;
 }
 
-export default ResultList;
+export default TestList;

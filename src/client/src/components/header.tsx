@@ -42,14 +42,14 @@ class Header extends Component<HeaderProps> {
               </NavItem>
               <NavItem>
                 <NavLink
-                  active={this.props.location.pathname == '/results'}
-                  href="/results"
+                  active={this.props.location.pathname == '/tests'}
+                  href="/tests"
                 >
                   <FontAwesomeIcon
                     icon="vial"
                     style={{ marginRight: '0.40em' }}
                   />
-                  Results
+                  Tests
                 </NavLink>
               </NavItem>
               <NavItem>

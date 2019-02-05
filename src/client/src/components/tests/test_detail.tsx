@@ -9,7 +9,7 @@ import { TestCase } from '../../types/Types';
 import { result_data } from '../../repositories/result_repository';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class ResultDetail extends Component<
+class TestDetail extends Component<
   {},
   { result: TestCase[]; activeTab: string }
 > {
@@ -94,4 +94,4 @@ const RawTab = (props: { result: TestCase[] }) => {
   );
 };
 
-export default ResultDetail;
+export default TestDetail;
