@@ -1,28 +1,33 @@
+import { File } from '../models/file';
 import { Result } from '../models/result';
-import { Coverage } from '../models/coverage';
-import { ResultType, CoverageType, FileType } from '../models/enum';
+import { ResultType, FileStatus, ResultStatus } from '../models/enum';
 
 export async function init() {
-  let results = await Result.query().where('name', 'unit_2018_12_01_1.json');
-  if (results.length < 1) {
-    results = [
-      await Result.query().insert({
-        name: 'unit_2018_12_01_1.json',
-        description: 'Results for a single file.',
-        file_type: FileType.Json,
-        result_type: ResultType.TestMon
+  let files = await File.query().where('name', 'unit_2018_12_01_1.xml');
+  if (files.length < 1) {
+    files = [
+      await File.query().insert({
+        file_name: 'unit_2018_12_01_1.xml',
+        mime_type: 'text/xml',
+        encoding: 'utc-8',
+
+        product: 'schedule',
+        meta: 'unit',
+
+        file_status: FileStatus.Pending,
+        result_type: ResultType.JUnit
       })
     ];
   }
 
-  let coverages = await Coverage.query().where('name', 'cov_2018_12_01_1.json');
-  if (coverages.length < 1) {
-    coverages = [
-      await Coverage.query().insert({
-        name: 'cov_2018_12_01_1.json',
-        description: 'Coverage for a single file.',
-        file_type: FileType.Json,
-        coverage_type: CoverageType.TestMon
+  let results = await Result.query().where('name', 'test_success');
+  if (results.length < 1) {
+    results = [
+      await Result.query().insert({
+        name: 'test_success',
+        description: 'Verifies the test can be imported successfully',
+        assignee: 'pramser',
+        result_status: ResultStatus.None
       })
     ];
   }
