@@ -24,10 +24,22 @@ type File {
   product: String!
   meta: String!
 
-  file_status: Int!
-  result_type: Int!
+  file_status: FileStatus!
+  result_type: ResultType!
 
   created_at: DateTime!
+}
+
+enum FileStatus {
+  PENDING
+  PASS
+  FAIL
+}
+
+enum ResultType {
+  NONE
+  TESTMON
+  JUNIT
 }
 
 type Result {
@@ -37,5 +49,11 @@ type Result {
   description: String!
   assignee: String!
 
-  result_status: Int!
+  result_status: ResultStatus!
+}
+
+enum ResultStatus {
+  NONE
+  PASS
+  FAIL
 }

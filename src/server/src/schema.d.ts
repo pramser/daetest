@@ -67,6 +67,24 @@ declare namespace TestmonApi {
   interface IUploadFileOnMutationArguments {
     file: any | Promise<any>;
   }
+
+  const enum FileStatus {
+    PENDING = 'PENDING',
+    PASS = 'PASS',
+    FAIL = 'FAIL'
+  }
+
+  const enum ResultType {
+    NONE = 'NONE',
+    TESTMON = 'TESTMON',
+    JUNIT = 'JUNIT'
+  }
+
+  const enum ResultStatus {
+    NONE = 'NONE',
+    PASS = 'PASS',
+    FAIL = 'FAIL'
+  }
 }
 
 // tslint:enable
