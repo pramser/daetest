@@ -45,27 +45,9 @@ declare namespace TestmonApi {
     encoding: string | Promise<string>;
     product: string | Promise<string>;
     meta: string | Promise<string>;
-    file_status: number | Promise<number>;
-    result_type: number | Promise<number>;
+    file_status: FileStatus | Promise<FileStatus>;
+    result_type: ResultType | Promise<ResultType>;
     created_at: Date | Promise<Date>;
-  }
-
-  interface IResult {
-    __typename: 'Result';
-    id: string | Promise<string>;
-    name: string | Promise<string>;
-    description: string | Promise<string>;
-    assignee: string | Promise<string>;
-    result_status: number | Promise<number>;
-  }
-
-  interface IMutation {
-    __typename: 'Mutation';
-    uploadFile: IFile | Promise<IFile>;
-  }
-
-  interface IUploadFileOnMutationArguments {
-    file: any | Promise<any>;
   }
 
   const enum FileStatus {
@@ -80,10 +62,28 @@ declare namespace TestmonApi {
     JUNIT = 'JUNIT'
   }
 
+  interface IResult {
+    __typename: 'Result';
+    id: string | Promise<string>;
+    name: string | Promise<string>;
+    description: string | Promise<string>;
+    assignee: string | Promise<string>;
+    result_status: ResultStatus | Promise<ResultStatus>;
+  }
+
   const enum ResultStatus {
     NONE = 'NONE',
     PASS = 'PASS',
     FAIL = 'FAIL'
+  }
+
+  interface IMutation {
+    __typename: 'Mutation';
+    uploadFile: IFile | Promise<IFile>;
+  }
+
+  interface IUploadFileOnMutationArguments {
+    file: any | Promise<any>;
   }
 }
 
