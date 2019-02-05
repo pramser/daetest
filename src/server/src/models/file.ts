@@ -1,13 +1,20 @@
 import { Model } from 'objection';
+import { FileStatus, ResultType } from './enum';
 
 export class File extends Model {
   readonly id!: string;
 
-  filename!: string;
-  mimetype!: string;
+  file_name!: string;
+  mime_type!: string;
   encoding!: string;
 
-  path!: string;
+  product!: string;
+  meta!: string;
+
+  file_status!: FileStatus;
+  result_type!: ResultType;
+
+  created_at!: Date;
 
   static tableName = 'testmon.file';
   static idColumn = 'id';

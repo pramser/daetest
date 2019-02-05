@@ -1,7 +1,7 @@
-export enum FileType {
-  None = 0,
-  Json,
-  Xml
+export enum FileStatus {
+  Pending = 0,
+  Pass,
+  Fail
 }
 
 export enum ResultType {
@@ -10,7 +10,8 @@ export enum ResultType {
   JUnit
 }
 
-export enum CoverageType {
+export enum ResultStatus {
   None = 0,
-  TestMon
+  Pass,
+  Fail
 }

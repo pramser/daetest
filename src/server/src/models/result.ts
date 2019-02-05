@@ -1,18 +1,14 @@
 import { Model } from 'objection';
-
-import { FileType, ResultType } from './enum';
+import { ResultStatus } from './enum';
 
 export class Result extends Model {
   readonly id!: string;
 
   name!: string;
   description!: string;
+  assignee!: string;
 
-  file_type!: FileType;
-  result_type!: ResultType;
-
-  created_at!: Date;
-  updated_at!: Date;
+  result_status!: ResultStatus;
 
   static tableName = 'testmon.result';
   static idColumn = 'id';
