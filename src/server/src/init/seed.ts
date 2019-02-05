@@ -3,7 +3,7 @@ import { Result } from '../models/result';
 import { ResultType, FileStatus, ResultStatus } from '../models/enum';
 
 export async function init() {
-  let files = await File.query().where('name', 'unit_2018_12_01_1.xml');
+  let files = await File.query().where('file_name', 'unit_2018_12_01_1.xml');
   if (files.length < 1) {
     files = [
       await File.query().insert({

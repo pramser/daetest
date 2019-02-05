@@ -21,10 +21,10 @@ export class File extends Model {
 
   static jsonSchema = {
     type: 'object',
-    required: ['name'],
+    required: ['file_name'],
 
     properties: {
-      name: { type: 'string', minLength: 1 }
+      file_name: { type: 'string', minLength: 1 }
     }
   };
 }
