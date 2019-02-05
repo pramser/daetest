@@ -67,7 +67,6 @@ class Header extends Component<HeaderProps> {
             </Nav>
           </Collapse>
         </Navbar>
-        <h1 className="Header-location">{this.props.location.pathname}</h1>
       </header>
     );
   }
