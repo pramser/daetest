@@ -1,5 +1,5 @@
 import { GraphQLServer } from 'graphql-yoga';
-import { Context } from 'graphql-yoga/dist/types';
+import { Context, Options } from 'graphql-yoga/dist/types';
 import path from 'path';
 import pg from 'pg';
 import { parse as parseDatabaseUrl } from 'pg-connection-string';
@@ -16,15 +16,19 @@ const pool = new pg.Pool({
   database: parsed.database!
 });
 
+const options = {
+  cors: 'http://localhost:3000'
+} as Options;
+
 init().then(async () => {
   const server = new GraphQLServer({
+    options: options,
     typeDefs: path.resolve(__dirname, './schema.graphql'),
     resolvers,
     context: (req: Context) => ({ ...req, pool })
   } as any);
-  server.start(() =>
-    console.log(
-      `Server is running on http://localhost:${process.env.PORT || 4000}`
-    )
+
+  server.start(options, ({ port }) =>
+    console.log(`Server is running on http://localhost:${port}`)
   );
 });
