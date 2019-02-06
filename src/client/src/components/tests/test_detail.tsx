@@ -2,24 +2,28 @@
 import React, { Component } from 'react';
 import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from 'reactstrap';
 
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
 // Types
-import { TestCase } from '../../types/Types';
+import { Result } from '../../types/Types';
 
 // Data
-import { result_data } from '../../repositories/result_repository';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class TestDetail extends Component<
-  {},
-  { result: TestCase[]; activeTab: string }
-> {
-  state = { result: [] as TestCase[], activeTab: 'tests' as string };
-
-  componentDidMount() {
-    this.setState({
-      result: result_data
-    });
+const GET_RESULTS = gql`
+  {
+    allResults {
+      id
+      name
+      description
+      assignee
+    }
   }
+`;
+
+class TestDetail extends Component<{}, { activeTab: string }> {
+  state = { activeTab: 'tests' as string };
 
   toggle(tab: string) {
     if (this.state.activeTab !== tab) {
@@ -29,35 +33,48 @@ class TestDetail extends Component<
 
   render() {
     return (
-      <div className="ResultDetail">
-        <Nav tabs>
-          <NavItem>
-            <NavLink
-              active={this.state.activeTab === 'tests'}
-              onClick={() => this.toggle('tests')}
-            >
-              Tests
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              active={this.state.activeTab === 'raw'}
-              onClick={() => this.toggle('raw')}
-            >
-              Raw
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <TabContent activeTab={this.state.activeTab}>
-          <TestsTab result={this.state.result} />
-          <RawTab result={this.state.result} />
-        </TabContent>
-      </div>
+      <Query query={GET_RESULTS}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return 'Is loading...';
+          }
+
+          if (error) {
+            return 'Error occurred!';
+          }
+
+          return (
+            <div className="ResultDetail">
+              <Nav tabs>
+                <NavItem>
+                  <NavLink
+                    active={this.state.activeTab === 'tests'}
+                    onClick={() => this.toggle('tests')}
+                  >
+                    Tests
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    active={this.state.activeTab === 'raw'}
+                    onClick={() => this.toggle('raw')}
+                  >
+                    Raw
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              <TabContent activeTab={this.state.activeTab}>
+                <TestsTab result={data.allResults} />
+              </TabContent>
+            </div>
+          );
+        }}
+      </Query>
     );
   }
 }
 
-const TestsTab = (props: { result: TestCase[] }) => {
+const TestsTab = (props: { result: Result[] }) => {
   return (
     <TabPane tabId="tests">
       <Table>
@@ -68,28 +85,16 @@ const TestsTab = (props: { result: TestCase[] }) => {
           </tr>
         </thead>
         <tbody>
-          {props.result.map(({ test_name, result }, index) => (
-            <tr key={index}>
-              <td>{test_name}</td>
+          {props.result.map(({ id, name, description, assignee }, index) => (
+            <tr key={id}>
+              <td>{name}</td>
               <td>
-                {result ? (
-                  <FontAwesomeIcon icon="check" color="green" />
-                ) : (
-                  <FontAwesomeIcon icon="times" color="red" />
-                )}
+                <FontAwesomeIcon icon="times" color="red" />
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-    </TabPane>
-  );
-};
-
-const RawTab = (props: { result: TestCase[] }) => {
-  return (
-    <TabPane tabId="raw">
-      <div className="raw-data">{JSON.stringify(props.result)}</div>
     </TabPane>
   );
 };

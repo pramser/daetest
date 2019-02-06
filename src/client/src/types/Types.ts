@@ -13,12 +13,8 @@ export type File = {
 export type Result = {
   id: number;
   name: string;
-  date: Date;
+  description: string;
   assignee: string;
-  product: string;
-  type: string;
-  passed: number;
-  failed: number;
 };
 
 export type TestCase = {
