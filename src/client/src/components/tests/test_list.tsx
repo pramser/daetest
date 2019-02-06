@@ -7,10 +7,9 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 // Types
-import { Result } from '../../types/Types';
+import { File } from '../../types/Types';
 
 // Data
-import { results } from '../../repositories/result_repository';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const GET_FILES = gql`
@@ -25,18 +24,12 @@ const GET_FILES = gql`
   }
 `;
 
-class TestList extends Component<any, { results: Result[] }> {
-  state = { results: [] as Result[] };
-
+class TestList extends Component<any, any> {
   constructor(props: any) {
     super(props);
   }
 
-  componentDidMount() {
-    this.setState({ results });
-  }
-
-  handleRowClick = (id: number) => {
+  handleRowClick = (id: string) => {
     this.props.history.push(`/tests/${id}`);
   };
 
@@ -62,7 +55,7 @@ class TestList extends Component<any, { results: Result[] }> {
                       <FontAwesomeIcon
                         className="right-pad"
                         icon="chevron-up"
-                      />{' '}
+                      />
                       File
                     </th>
                     <th>Assignee</th>
@@ -71,15 +64,13 @@ class TestList extends Component<any, { results: Result[] }> {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.results
-                    .sort((a, b) => b.date.getTime() - a.date.getTime())
-                    .map(result => (
-                      <ResultRow
-                        key={result.id}
-                        result={result}
-                        onClick={() => this.handleRowClick(result.id)}
-                      />
-                    ))}
+                  {data.allFiles.map((file: File) => (
+                    <ResultRow
+                      key={file.id}
+                      result={file}
+                      onClick={() => this.handleRowClick(file.id)}
+                    />
+                  ))}
                 </tbody>
               </Table>
             );
@@ -91,22 +82,18 @@ class TestList extends Component<any, { results: Result[] }> {
 }
 
 const ResultRow = (props: {
-  result: Result;
+  result: File;
   onClick?: MouseEventHandler<any>;
 }) => {
-  const { name, date, assignee, product, type, passed, failed } = props.result;
+  const { file_name, product, meta, created_at } = props.result;
 
   return (
     <tr className="result" onClick={props.onClick}>
       <td>
-        {getStatus(passed, failed) > 0 ? (
-          <FontAwesomeIcon icon="times" color="red" />
-        ) : (
-          <FontAwesomeIcon icon="check" color="green" />
-        )}
+        <FontAwesomeIcon icon="times" color="red" />
       </td>
       <td style={{ flexDirection: 'column' }}>
-        <div className="file-name">{name}</div>
+        <div className="file-name">{file_name}</div>
         <div className="description-ellipsis">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -114,17 +101,17 @@ const ResultRow = (props: {
         <div style={{ flexDirection: 'row' }}>
           <span className="result-date meta-pill">
             <FontAwesomeIcon icon="clock" className="right-pad" />
-            {distanceInWordsToNow(date)}
+            {distanceInWordsToNow(created_at)}
           </span>
           <Badge className="meta-pill" color="primary">
             {product}
           </Badge>
           <Badge className="meta-pill" color="secondary">
-            {type}
+            {meta}
           </Badge>
         </div>
       </td>
-      <td>{assignee}</td>
+      <td>{'pramser'}</td>
       <td>1,000</td>
       <td>
         <FontAwesomeIcon icon="chevron-right" color="grey" />
