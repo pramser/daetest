@@ -1,17 +1,29 @@
 // Dependencies
 import React, { Component, MouseEventHandler } from 'react';
-import { Table, Button, Badge } from 'reactstrap';
+import { Table, Badge } from 'reactstrap';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
 // Types
 import { Result } from '../../types/Types';
 
-// Components
-import FileUpload from '../file_upload';
-
 // Data
 import { results } from '../../repositories/result_repository';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const GET_FILES = gql`
+  {
+    allFiles {
+      id
+      file_name
+      product
+      meta
+      created_at
+    }
+  }
+`;
 
 class TestList extends Component<any, { results: Result[] }> {
   state = { results: [] as Result[] };
@@ -31,33 +43,48 @@ class TestList extends Component<any, { results: Result[] }> {
   render() {
     return (
       <div className="Results">
-        <div>
-          <FileUpload />
-        </div>
-        <Table style={{ border: '2px solid #ddd' }}>
-          <thead>
-            <tr>
-              <th>Status</th>
-              <th>
-                <FontAwesomeIcon className="right-pad" icon="chevron-up" /> File
-              </th>
-              <th>Assignee</th>
-              <th>Tests</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.results
-              .sort((a, b) => b.date.getTime() - a.date.getTime())
-              .map(result => (
-                <ResultRow
-                  key={result.id}
-                  result={result}
-                  onClick={() => this.handleRowClick(result.id)}
-                />
-              ))}
-          </tbody>
-        </Table>
+        <Query query={GET_FILES}>
+          {({ loading, error, data }) => {
+            if (loading) {
+              return 'Is loading...';
+            }
+
+            if (error) {
+              return 'Error occurred!';
+            }
+
+            return (
+              <Table style={{ border: '2px solid #ddd' }}>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>
+                      <FontAwesomeIcon
+                        className="right-pad"
+                        icon="chevron-up"
+                      />{' '}
+                      File
+                    </th>
+                    <th>Assignee</th>
+                    <th>Tests</th>
+                    <th />
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.results
+                    .sort((a, b) => b.date.getTime() - a.date.getTime())
+                    .map(result => (
+                      <ResultRow
+                        key={result.id}
+                        result={result}
+                        onClick={() => this.handleRowClick(result.id)}
+                      />
+                    ))}
+                </tbody>
+              </Table>
+            );
+          }}
+        </Query>
       </div>
     );
   }

@@ -39,7 +39,7 @@ library.add(
   faVial
 );
 
-const client = new ApolloClient({ uri: 'https://localhost:4000' });
+const client = new ApolloClient({ uri: 'http://localhost:4000' });
 
 // Entry-point for test-mon-client
 ReactDOM.render(
