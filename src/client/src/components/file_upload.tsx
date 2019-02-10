@@ -6,6 +6,9 @@ import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 
+// CSS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
     uploadFile(file: $file) {
@@ -26,7 +29,10 @@ class FileUpload extends Component<{}, { isOpen: boolean }> {
   render() {
     return (
       <div>
-        <Button onClick={this.toggle}>Upload File</Button>
+        <Button outline onClick={this.toggle}>
+          <FontAwesomeIcon style={{ marginRight: '0.40em' }} icon="file" />
+          Upload File
+        </Button>
         <Modal
           className="FileUpload"
           isOpen={this.state.isOpen}

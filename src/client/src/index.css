@@ -50,6 +50,11 @@ body {
   background-color: #eee;
 }
 
+.sub-menu {
+  margin-bottom: 1em;
+  text-align: right;
+}
+
 .file-name {
   max-width: 250px;
   white-space: nowrap;
@@ -88,12 +93,19 @@ body {
 }
 
 .dropzone {
-  width: 200px;
-  height: 200px;
+  width: inherit;
+  height: 10em;
+
   border-width: 2;
   border-color: #666;
   border-style: dashed;
   border-radius: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .dropzone .active {
