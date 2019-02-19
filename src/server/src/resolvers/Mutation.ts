@@ -28,6 +28,7 @@ const storeDB = (file: any) => {
 };
 
 const processUpload = async (upload: any) => {
+  console.log(upload);
   const { stream, filename, mimetype, encoding } = await upload;
   const { id, path } = (await storeFS({ stream, filename })) as any;
   return storeDB({ id, filename, mimetype, encoding, path });
