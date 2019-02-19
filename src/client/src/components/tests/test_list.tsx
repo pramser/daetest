@@ -17,10 +17,10 @@ const GET_FILES = gql`
   {
     allFiles {
       id
-      file_name
+      filename
       product
       meta
-      created_at
+      createdat
     }
   }
 `;
@@ -89,7 +89,7 @@ const ResultRow = (props: {
   result: File;
   onClick?: MouseEventHandler<any>;
 }) => {
-  const { file_name, product, meta, created_at } = props.result;
+  const { filename, product, meta, createdat } = props.result;
 
   return (
     <tr className="result" onClick={props.onClick}>
@@ -97,7 +97,7 @@ const ResultRow = (props: {
         <FontAwesomeIcon icon="times" color="red" />
       </td>
       <td style={{ flexDirection: 'column' }}>
-        <div className="file-name">{file_name}</div>
+        <div className="file-name">{filename}</div>
         <div className="description-ellipsis">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -105,7 +105,7 @@ const ResultRow = (props: {
         <div style={{ flexDirection: 'row' }}>
           <span className="result-date meta-pill">
             <FontAwesomeIcon icon="clock" className="right-pad" />
-            {distanceInWordsToNow(created_at)}
+            {distanceInWordsToNow(createdat)}
           </span>
           <Badge className="meta-pill" color="primary">
             {product}
@@ -123,10 +123,5 @@ const ResultRow = (props: {
     </tr>
   );
 };
-
-function getStatus(passed: number, failed: number): number {
-  var failure_rate = failed / (passed + failed);
-  return failure_rate * 100;
-}
 
 export default TestList;

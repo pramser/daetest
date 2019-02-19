@@ -1,13 +1,13 @@
 export type File = {
   id: string;
-  file_name: string;
+  path: string;
+  filename: string;
   mime_type: string;
   encoding: string;
 
   product: string;
   meta: string;
-
-  created_at: Date;
+  createdat: Date;
 };
 
 export type Result = {
@@ -15,17 +15,4 @@ export type Result = {
   name: string;
   description: string;
   assignee: string;
-};
-
-export type TestCase = {
-  test_name: string;
-  result: boolean;
-};
-
-export type Coverage = {
-  id: number;
-  name: string;
-  date: Date;
-  product: string;
-  coverage: number;
 };
