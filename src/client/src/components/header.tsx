@@ -52,18 +52,6 @@ class Header extends Component<HeaderProps> {
                   Tests
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  active={this.props.location.pathname == '/coverages'}
-                  href="/coverages"
-                >
-                  <FontAwesomeIcon
-                    icon="poll-h"
-                    style={{ marginRight: '0.40em' }}
-                  />
-                  Coverages
-                </NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

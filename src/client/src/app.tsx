@@ -6,7 +6,6 @@ import { Route } from 'react-router-dom';
 import Header from './components/header';
 import Dashboard from './components/dashboard';
 import Tests from './components/tests/tests';
-import Coverages from './components/coverages/coverages';
 
 class App extends Component {
   render() {
@@ -23,7 +22,6 @@ const Routes = () => (
   <div className="App-content">
     <Route exact path="/" component={Dashboard} />
     <Route path="/tests" component={Tests} />
-    <Route path="/coverages" component={Coverages} />
   </div>
 );
 
