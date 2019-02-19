@@ -3,12 +3,10 @@ import { ResultStatus } from './enum';
 
 export class Result extends Model {
   readonly id!: string;
-
   name!: string;
   description!: string;
   assignee!: string;
-
-  result_status!: ResultStatus;
+  resultstatus!: ResultStatus;
 
   static tableName = 'testmon.result';
   static idColumn = 'id';

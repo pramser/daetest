@@ -40,14 +40,15 @@ declare namespace TestmonApi {
   interface IFile {
     __typename: 'File';
     id: string | Promise<string>;
-    file_name: string | Promise<string>;
-    mime_type: string | Promise<string>;
+    path: string | Promise<string>;
+    filename: string | Promise<string>;
+    mimetype: string | Promise<string>;
     encoding: string | Promise<string>;
     product: string | Promise<string>;
     meta: string | Promise<string>;
-    file_status: FileStatus | Promise<FileStatus>;
-    result_type: ResultType | Promise<ResultType>;
-    created_at: Date | Promise<Date>;
+    filestatus: FileStatus | Promise<FileStatus>;
+    resulttype: ResultType | Promise<ResultType>;
+    createdat: Date | Promise<Date>;
   }
 
   const enum FileStatus {
@@ -68,7 +69,7 @@ declare namespace TestmonApi {
     name: string | Promise<string>;
     description: string | Promise<string>;
     assignee: string | Promise<string>;
-    result_status: ResultStatus | Promise<ResultStatus>;
+    resultstatus: ResultStatus | Promise<ResultStatus>;
   }
 
   const enum ResultStatus {
@@ -80,10 +81,18 @@ declare namespace TestmonApi {
   interface IMutation {
     __typename: 'Mutation';
     uploadFile: IFile | Promise<IFile>;
+    multipleUpload:
+      | Array<IFile | Promise<IFile>>
+      | null
+      | Promise<Array<IFile | Promise<IFile>> | null>;
   }
 
   interface IUploadFileOnMutationArguments {
     file: any | Promise<any>;
+  }
+
+  interface IMultipleUploadOnMutationArguments {
+    files: Array<any | Promise<any>> | Promise<Array<any | Promise<any>>>;
   }
 }
 

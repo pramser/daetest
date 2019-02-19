@@ -3,41 +3,41 @@ import { Result } from '../models/result';
 import { ResultType, FileStatus, ResultStatus } from '../models/enum';
 
 export async function init() {
-  let files = await File.query().where('file_name', 'unit_2018_12_01_1.xml');
+  let files = await File.query().where('filename', 'unit_2018_12_01_1.xml');
   if (files.length < 1) {
     files = await File.query().insert([
       {
-        file_name: 'unit_2018_12_01_1.xml',
-        mime_type: 'text/xml',
+        filename: 'unit_2018_12_01_1.xml',
+        path: './',
+        mimetype: 'text/xml',
         encoding: 'utc-8',
 
         product: 'schedule',
         meta: 'unit',
-
-        file_status: FileStatus.Pending,
-        result_type: ResultType.JUnit
+        filestatus: FileStatus.Pending,
+        resulttype: ResultType.JUnit
       },
       {
-        file_name: 'int_2018_12_01_1.xml',
-        mime_type: 'text/xml',
+        filename: 'int_2018_12_01_1.xml',
+        path: './',
+        mimetype: 'text/xml',
         encoding: 'utc-8',
 
         product: 'schedule',
         meta: 'int',
-
-        file_status: FileStatus.Pending,
-        result_type: ResultType.JUnit
+        filestatus: FileStatus.Pending,
+        resulttype: ResultType.JUnit
       },
       {
-        file_name: 'perf_2018_12_01_1.xml',
-        mime_type: 'text/xml',
+        filename: 'perf_2018_12_01_1.xml',
+        path: './',
+        mimetype: 'text/xml',
         encoding: 'utc-8',
 
         product: 'engage',
         meta: 'perf',
-
-        file_status: FileStatus.Pending,
-        result_type: ResultType.JUnit
+        filestatus: FileStatus.Pending,
+        resulttype: ResultType.JUnit
       }
     ]);
   }
@@ -49,19 +49,19 @@ export async function init() {
         name: 'test_success',
         description: 'Verifies the test can be imported successfully',
         assignee: 'pramser',
-        result_status: ResultStatus.Pass
+        resultstatus: ResultStatus.Pass
       },
       {
         name: 'test_failure',
         description: 'Verifies the test can be imported failingly',
         assignee: 'pramser',
-        result_status: ResultStatus.Fail
+        resultstatus: ResultStatus.Fail
       },
       {
         name: 'test_none',
         description: 'Verifies the test can be imported noningly',
         assignee: 'pramser',
-        result_status: ResultStatus.None
+        resultstatus: ResultStatus.None
       }
     ]);
   }

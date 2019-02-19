@@ -12,22 +12,23 @@ type Query {
 
 type Mutation {
   uploadFile(file: Upload!): File!
+  multipleUpload(files: [Upload!]!): [File!]
 }
 
 type File {
+  # File Metadata
   id: ID!
-
-  file_name: String!
-  mime_type: String!
+  path: String!
+  filename: String!
+  mimetype: String!
   encoding: String!
 
+  # Test Metadata
   product: String!
   meta: String!
-
-  file_status: FileStatus!
-  result_type: ResultType!
-
-  created_at: DateTime!
+  filestatus: FileStatus!
+  resulttype: ResultType!
+  createdat: DateTime!
 }
 
 enum FileStatus {
@@ -44,12 +45,10 @@ enum ResultType {
 
 type Result {
   id: ID!
-
   name: String!
   description: String!
   assignee: String!
-
-  result_status: ResultStatus!
+  resultstatus: ResultStatus!
 }
 
 enum ResultStatus {

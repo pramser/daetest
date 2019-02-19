@@ -4,6 +4,7 @@ import { TypeMap } from 'graphql/type/schema';
 
 import { Query } from './Query';
 import { Mutation } from './Mutation';
+
 import { File } from './File';
 import { Result } from './Result';
 
