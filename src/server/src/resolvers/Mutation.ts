@@ -1,6 +1,6 @@
 /// <reference path="../schema.d.ts" />
 
-import fs from 'fs';
+import { createWriteStream } from 'fs';
 import mkdirp from 'mkdirp';
 import shortid from 'shortid';
 
@@ -11,14 +11,15 @@ const UPLOAD_DIR = './uploads';
 // Ensure upload directory exists.
 mkdirp.sync(UPLOAD_DIR);
 
-const storeFS = ({ stream, filename }: any) => {
+const storeFS = ({ stream, filename }: any): Promise<any> => {
   const id = shortid.generate();
   const path = `${UPLOAD_DIR}/${id}-${filename}`;
+
   return new Promise((resolve, reject) =>
     stream
-      .pipe(fs.createWriteStream(path))
+      .pipe(createWriteStream(path))
       .on('finish', () => resolve({ id, path }))
-      .on('error', (error: any) => reject(error))
+      .on('error', reject)
   );
 };
 
