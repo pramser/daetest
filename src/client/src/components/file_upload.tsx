@@ -17,12 +17,13 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
-class FileUpload extends Component<{}, { isOpen: boolean }> {
+class FileUpload extends Component<{}, { isOpen: boolean; file: any }> {
   constructor(props: any) {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      file: null
     };
   }
 
@@ -60,7 +61,11 @@ class FileUpload extends Component<{}, { isOpen: boolean }> {
           <ModalFooter>
             <Mutation mutation={UPLOAD_FILE}>
               {uploadFile => (
-                <Button onClick={() => uploadFile({ variables: {} })}>
+                <Button
+                  onClick={() =>
+                    uploadFile({ variables: { file: this.state.file } })
+                  }
+                >
                   Upload File
                 </Button>
               )}
@@ -76,7 +81,7 @@ class FileUpload extends Component<{}, { isOpen: boolean }> {
   };
 
   onDrop = (acceptedFiles: any, rejectedFiles: any) => {
-    console.log('Dropped file...');
+    this.setState({ file: acceptedFiles[0] });
   };
 }
 
