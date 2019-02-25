@@ -34,7 +34,18 @@ const processUpload = async (upload: any) => {
   return storeDB({ id, filename, mimetype, encoding, path });
 };
 
+const processCreate = (file: any) => {
+  console.log(file);
+  const { filename, product, meta } = file;
+  return storeDB({
+    filename,
+    product,
+    meta
+  });
+};
+
 export const Mutation = {
+  createFile: (obj: any, { file }: any) => processCreate(file),
   uploadFile: (obj: any, { file }: any) => processUpload(file),
   multipleUpload: (obj: any, { files }: any) =>
     Promise.all(files.map(processUpload))

@@ -80,11 +80,16 @@ declare namespace TestmonApi {
 
   interface IMutation {
     __typename: 'Mutation';
+    createFile: IFile | Promise<IFile>;
     uploadFile: IFile | Promise<IFile>;
     multipleUpload:
       | Array<IFile | Promise<IFile>>
       | null
       | Promise<Array<IFile | Promise<IFile>> | null>;
+  }
+
+  interface ICreateFileOnMutationArguments {
+    file?: IFileInput | null | Promise<IFileInput | null>;
   }
 
   interface IUploadFileOnMutationArguments {
@@ -93,6 +98,12 @@ declare namespace TestmonApi {
 
   interface IMultipleUploadOnMutationArguments {
     files: Array<any | Promise<any>> | Promise<Array<any | Promise<any>>>;
+  }
+
+  interface IFileInput {
+    filename: string | Promise<string>;
+    product?: string | null | Promise<string | null>;
+    meta?: string | null | Promise<string | null>;
   }
 }
 

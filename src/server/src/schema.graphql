@@ -11,6 +11,7 @@ type Query {
 }
 
 type Mutation {
+  createFile(file: FileInput): File!
   uploadFile(file: Upload!): File!
   multipleUpload(files: [Upload!]!): [File!]
 }
@@ -29,6 +30,12 @@ type File {
   filestatus: FileStatus!
   resulttype: ResultType!
   createdat: DateTime!
+}
+
+input FileInput {
+  filename: String!
+  product: String
+  meta: String
 }
 
 enum FileStatus {
