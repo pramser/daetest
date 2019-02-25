@@ -11,6 +11,9 @@ import { File } from '../../types/Types';
 
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// Components
+import CreateFile from '../create_file';
 import FileUpload from '../file_upload';
 
 const GET_FILES = gql`
@@ -38,6 +41,7 @@ class TestList extends Component<any, any> {
     return (
       <div className="Results">
         <div className="sub-menu">
+          <CreateFile />
           <FileUpload />
         </div>
         <Query query={GET_FILES}>

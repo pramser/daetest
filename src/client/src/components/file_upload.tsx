@@ -31,7 +31,10 @@ class FileUpload extends Component<{}, { isOpen: boolean; file: any }> {
     return (
       <div>
         <Button outline onClick={this.toggle}>
-          <FontAwesomeIcon style={{ marginRight: '0.40em' }} icon="file" />
+          <FontAwesomeIcon
+            style={{ marginRight: '0.40em' }}
+            icon="file-upload"
+          />
           Upload File
         </Button>
         <Modal
