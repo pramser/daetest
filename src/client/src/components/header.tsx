@@ -52,6 +52,18 @@ class Header extends Component<HeaderProps> {
                   Tests
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  active={this.props.location.pathname == '/config'}
+                  href="/config"
+                >
+                  <FontAwesomeIcon
+                    icon="cog"
+                    style={{ marginRight: '0.40em' }}
+                  />
+                  Config
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
