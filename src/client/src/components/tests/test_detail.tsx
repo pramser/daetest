@@ -45,27 +45,24 @@ class TestDetail extends Component<{}, { activeTab: string }> {
 
           return (
             <div className="ResultDetail">
-              <Nav tabs>
-                <NavItem>
-                  <NavLink
-                    active={this.state.activeTab === 'tests'}
-                    onClick={() => this.toggle('tests')}
-                  >
-                    Tests
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    active={this.state.activeTab === 'raw'}
-                    onClick={() => this.toggle('raw')}
-                  >
-                    Raw
-                  </NavLink>
-                </NavItem>
-              </Nav>
-              <TabContent activeTab={this.state.activeTab}>
-                <TestsTab result={data.allResults} />
-              </TabContent>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Test Name</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.allResults.map(({ id, name }: any) => (
+                    <tr key={id}>
+                      <td>{name}</td>
+                      <td>
+                        <FontAwesomeIcon icon="times" color="red" />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
             </div>
           );
         }}
@@ -73,30 +70,5 @@ class TestDetail extends Component<{}, { activeTab: string }> {
     );
   }
 }
-
-const TestsTab = (props: { result: Result[] }) => {
-  return (
-    <TabPane tabId="tests">
-      <Table>
-        <thead>
-          <tr>
-            <th>Test Name</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.result.map(({ id, name, description, assignee }, index) => (
-            <tr key={id}>
-              <td>{name}</td>
-              <td>
-                <FontAwesomeIcon icon="times" color="red" />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </TabPane>
-  );
-};
 
 export default TestDetail;

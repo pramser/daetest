@@ -67,7 +67,7 @@ class TestList extends Component<any, any> {
                       File
                     </th>
                     <th>Assignee</th>
-                    <th>Tests</th>
+                    <th>Issue</th>
                     <th />
                   </tr>
                 </thead>
@@ -120,7 +120,7 @@ const ResultRow = (props: {
         </div>
       </td>
       <td>{'pramser'}</td>
-      <td>1,000</td>
+      <td>PAN-000</td>
       <td>
         <FontAwesomeIcon icon="chevron-right" color="grey" />
       </td>
