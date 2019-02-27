@@ -53,9 +53,7 @@ body {
 .sub-menu {
   display: flex;
   flex-direction: row;
-
   margin-bottom: 1em;
-  text-align: right;
 }
 
 .file-name {

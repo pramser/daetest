@@ -1,6 +1,7 @@
 // Dependencies
 import React, { Component, MouseEventHandler } from 'react';
 import { Table, Badge } from 'reactstrap';
+import compareDesc from 'date-fns/compare_desc';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 import gql from 'graphql-tag';
@@ -54,6 +55,8 @@ class TestList extends Component<any, any> {
               return 'Error occurred!';
             }
 
+            var files = data.allFiles as [File];
+
             return (
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
@@ -72,13 +75,15 @@ class TestList extends Component<any, any> {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.allFiles.map((file: File) => (
-                    <ResultRow
-                      key={file.id}
-                      result={file}
-                      onClick={() => this.handleRowClick(file.id)}
-                    />
-                  ))}
+                  {files
+                    .sort((a, b) => compareDesc(a.createdat, b.createdat))
+                    .map((file: File) => (
+                      <ResultRow
+                        key={file.id}
+                        result={file}
+                        onClick={() => this.handleRowClick(file.id)}
+                      />
+                    ))}
                 </tbody>
               </Table>
             );
