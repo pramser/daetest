@@ -26,7 +26,7 @@ export const CREATE_FILE = gql`
   }
 `;
 
-class CreateFile extends Component<{}, { isOpen: boolean; file: any }> {
+class CreateFile extends Component<any, { isOpen: boolean; file: any }> {
   constructor(props: any) {
     super(props);
 
@@ -34,6 +34,8 @@ class CreateFile extends Component<{}, { isOpen: boolean; file: any }> {
       isOpen: false,
       file: {}
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -46,12 +48,18 @@ class CreateFile extends Component<{}, { isOpen: boolean; file: any }> {
     });
   }
 
+  handleChange = (e: any) => {
+    var file = { ...this.state.file };
+    file[e.target.id] = e.target.value;
+    this.setState({ file });
+  };
+
   render() {
     var { filename, product, meta } = this.state.file;
 
     return (
       <div>
-        <Button outline onClick={this.toggle}>
+        <Button outline onClick={this.toggle} style={{ marginRight: '0.40em' }}>
           <FontAwesomeIcon style={{ marginRight: '0.40em' }} icon="file" />
           Create File
         </Button>
@@ -66,18 +74,29 @@ class CreateFile extends Component<{}, { isOpen: boolean; file: any }> {
               <FormGroup>
                 <Label>File Name</Label>
                 <Input
-                  name="filename"
+                  id="filename"
                   placeholder="File Name"
                   value={filename}
+                  onChange={this.handleChange}
                 />
               </FormGroup>
               <FormGroup>
                 <Label>Product</Label>
-                <Input name="product" placeholder="Product" value={product} />
+                <Input
+                  id="product"
+                  placeholder="Product"
+                  value={product}
+                  onChange={this.handleChange}
+                />
               </FormGroup>
               <FormGroup>
                 <Label>Meta</Label>
-                <Input name="meta" placeholder="Meta" value={meta} />
+                <Input
+                  id="meta"
+                  placeholder="Meta"
+                  value={meta}
+                  onChange={this.handleChange}
+                />
               </FormGroup>
             </Form>
           </ModalBody>
@@ -85,9 +104,9 @@ class CreateFile extends Component<{}, { isOpen: boolean; file: any }> {
             <Mutation mutation={CREATE_FILE}>
               {createFile => (
                 <Button
-                  onClick={() =>
-                    createFile({ variables: { file: this.state.file } })
-                  }
+                  onClick={() => {
+                    createFile({ variables: { file: this.state.file } });
+                  }}
                 >
                   Create File
                 </Button>
