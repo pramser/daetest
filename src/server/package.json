@@ -16,7 +16,7 @@
     "yarn": "^1.12.3"
   },
   "scripts": {
-    "start": "nodemon --config nodemon.json src/index.ts"
+    "start": "docker-compose down && docker-compose up -d && nodemon --config nodemon.json src/index.ts"
   },
   "dependencies": {
     "@gql2ts/from-schema": "^1.10.1",
