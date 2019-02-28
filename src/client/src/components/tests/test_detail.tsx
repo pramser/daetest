@@ -1,19 +1,16 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Nav, NavItem, NavLink, TabContent, TabPane, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-// Types
-import { Result } from '../../types/Types';
-
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const GET_RESULTS = gql`
-  {
-    allResults {
+const RESULTS_BY_RUN_ID = gql`
+  query resultsByRunId($runid: String!) {
+    resultsByRunId(runid: $runid) {
       id
       name
       description
@@ -22,7 +19,7 @@ const GET_RESULTS = gql`
   }
 `;
 
-class TestDetail extends Component<{}, { activeTab: string }> {
+class TestDetail extends Component<any, { activeTab: string }> {
   state = { activeTab: 'tests' as string };
 
   toggle(tab: string) {
@@ -32,8 +29,11 @@ class TestDetail extends Component<{}, { activeTab: string }> {
   }
 
   render() {
+    const paths = this.props.location.pathname.split('/');
+    const runid = paths[paths.length - 1];
+
     return (
-      <Query query={GET_RESULTS}>
+      <Query query={RESULTS_BY_RUN_ID} variables={{ runid }}>
         {({ loading, error, data }) => {
           if (loading) {
             return 'Is loading...';
@@ -53,7 +53,7 @@ class TestDetail extends Component<{}, { activeTab: string }> {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.allResults.map(({ id, name }: any) => (
+                  {data.resultsByRunId.map(({ id, name }: any) => (
                     <tr key={id}>
                       <td>{name}</td>
                       <td>
