@@ -95,6 +95,7 @@ declare namespace TestmonApi {
       | Array<IFile | Promise<IFile>>
       | null
       | Promise<Array<IFile | Promise<IFile>> | null>;
+    createTestCase: IResult | Promise<IResult>;
   }
 
   interface ICreateFileOnMutationArguments {
@@ -109,10 +110,21 @@ declare namespace TestmonApi {
     files: Array<any | Promise<any>> | Promise<Array<any | Promise<any>>>;
   }
 
+  interface ICreateTestCaseOnMutationArguments {
+    runid: string | Promise<string>;
+    testCase: ITestCaseInput | Promise<ITestCaseInput>;
+  }
+
   interface IFileInput {
     filename: string | Promise<string>;
     product?: string | null | Promise<string | null>;
     meta?: string | null | Promise<string | null>;
+  }
+
+  interface ITestCaseInput {
+    name: string | Promise<string>;
+    info: string | Promise<string>;
+    description: string | Promise<string>;
   }
 }
 

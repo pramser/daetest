@@ -15,6 +15,7 @@ type Mutation {
   createFile(file: FileInput): File!
   uploadFile(file: Upload!): File!
   multipleUpload(files: [Upload!]!): [File!]
+  createTestCase(runid: String!, testCase: TestCaseInput!): Result!
 }
 
 type File {
@@ -58,6 +59,12 @@ type Result {
   description: String!
   assignee: String!
   resultstatus: ResultStatus!
+}
+
+input TestCaseInput {
+  name: String!
+  info: String!
+  description: String!
 }
 
 enum ResultStatus {

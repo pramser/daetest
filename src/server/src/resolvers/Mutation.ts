@@ -5,6 +5,7 @@ import mkdirp from 'mkdirp';
 import shortid from 'shortid';
 
 import { File } from '../models/file';
+import { Result } from '../models/result';
 
 const UPLOAD_DIR = './uploads';
 
@@ -35,7 +36,6 @@ const processUpload = async (upload: any) => {
 };
 
 const processCreate = (file: any) => {
-  console.log(file);
   const { filename, product, meta } = file;
   return storeDB({
     filename,
@@ -44,9 +44,16 @@ const processCreate = (file: any) => {
   });
 };
 
+const createTestCase = (runid: string, testCase: any) => {
+  const { name, description } = testCase;
+  return Result.query().insertAndFetch({ runid, name, description });
+};
+
 export const Mutation = {
   createFile: (obj: any, { file }: any) => processCreate(file),
   uploadFile: (obj: any, { file }: any) => processUpload(file),
   multipleUpload: (obj: any, { files }: any) =>
-    Promise.all(files.map(processUpload))
+    Promise.all(files.map(processUpload)),
+  createTestCase: (obj: any, { runid, testCase }: any) =>
+    createTestCase(runid, testCase)
 };
