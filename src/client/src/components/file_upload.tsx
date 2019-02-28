@@ -17,7 +17,10 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
-class FileUpload extends Component<{}, { isOpen: boolean; file: any }> {
+class FileUpload extends Component<
+  { onUpload: any },
+  { isOpen: boolean; file: any }
+> {
   constructor(props: any) {
     super(props);
 
@@ -67,6 +70,8 @@ class FileUpload extends Component<{}, { isOpen: boolean; file: any }> {
                 <Button
                   onClick={() =>
                     uploadFile({ variables: { file: this.state.file } })
+                      .then(() => this.props.onUpload())
+                      .then(() => this.setState({ isOpen: false }))
                   }
                 >
                   Upload File

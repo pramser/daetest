@@ -56,7 +56,7 @@ class TestList extends Component<any, any> {
             <div className="Results">
               <div className="sub-menu">
                 <CreateFile onCreate={() => refetch()} />
-                <FileUpload />
+                <FileUpload onUpload={() => refetch()} />
               </div>
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
