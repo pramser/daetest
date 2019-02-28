@@ -7,6 +7,7 @@ import { Query } from 'react-apollo';
 
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CreateTestCase from '../create_test_case';
 
 const RESULTS_BY_RUN_ID = gql`
   query resultsByRunId($runid: String!) {
@@ -34,7 +35,7 @@ class TestDetail extends Component<any, { activeTab: string }> {
 
     return (
       <Query query={RESULTS_BY_RUN_ID} variables={{ runid }}>
-        {({ loading, error, data }) => {
+        {({ loading, error, data, refetch }) => {
           if (loading) {
             return 'Is loading...';
           }
@@ -45,6 +46,9 @@ class TestDetail extends Component<any, { activeTab: string }> {
 
           return (
             <div className="ResultDetail">
+              <div className="sub-menu">
+                <CreateTestCase runid={runid} onCreate={() => refetch()} />
+              </div>
               <Table>
                 <thead>
                   <tr>
