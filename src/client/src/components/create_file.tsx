@@ -26,7 +26,10 @@ export const CREATE_FILE = gql`
   }
 `;
 
-class CreateFile extends Component<any, { isOpen: boolean; file: any }> {
+class CreateFile extends Component<
+  { onCreate: any },
+  { isOpen: boolean; file: any }
+> {
   constructor(props: any) {
     super(props);
 
@@ -105,7 +108,9 @@ class CreateFile extends Component<any, { isOpen: boolean; file: any }> {
               {createFile => (
                 <Button
                   onClick={() => {
-                    createFile({ variables: { file: this.state.file } });
+                    createFile({ variables: { file: this.state.file } })
+                      .then(() => this.props.onCreate())
+                      .then(() => this.setState({ isOpen: false }));
                   }}
                 >
                   Create File

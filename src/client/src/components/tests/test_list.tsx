@@ -40,24 +40,24 @@ class TestList extends Component<any, any> {
 
   render() {
     return (
-      <div className="Results">
-        <div className="sub-menu">
-          <CreateFile />
-          <FileUpload />
-        </div>
-        <Query query={GET_FILES}>
-          {({ loading, error, data }) => {
-            if (loading) {
-              return 'Is loading...';
-            }
+      <Query query={GET_FILES}>
+        {({ loading, error, data, refetch }) => {
+          if (loading) {
+            return 'Is loading...';
+          }
 
-            if (error) {
-              return 'Error occurred!';
-            }
+          if (error) {
+            return 'Error occurred!';
+          }
 
-            var files = data.allFiles as [File];
+          var files = data.allFiles as [File];
 
-            return (
+          return (
+            <div className="Results">
+              <div className="sub-menu">
+                <CreateFile onCreate={() => refetch()} />
+                <FileUpload />
+              </div>
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
                   <tr>
@@ -86,10 +86,10 @@ class TestList extends Component<any, any> {
                     ))}
                 </tbody>
               </Table>
-            );
-          }}
-        </Query>
-      </div>
+            </div>
+          );
+        }}
+      </Query>
     );
   }
 }
