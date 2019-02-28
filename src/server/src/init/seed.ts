@@ -47,18 +47,21 @@ export async function init() {
     results = await Result.query().insert([
       {
         name: 'test_success',
+        runid: files[0].id,
         description: 'Verifies the test can be imported successfully',
         assignee: 'pramser',
         resultstatus: ResultStatus.Pass
       },
       {
         name: 'test_failure',
+        runid: files[0].id,
         description: 'Verifies the test can be imported failingly',
         assignee: 'pramser',
         resultstatus: ResultStatus.Fail
       },
       {
         name: 'test_none',
+        runid: files[1].id,
         description: 'Verifies the test can be imported noningly',
         assignee: 'pramser',
         resultstatus: ResultStatus.None

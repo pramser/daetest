@@ -18,5 +18,15 @@ export const Query = {
       return null;
     }
     return result;
+  },
+  async resultsByRunId(
+    _: any,
+    args: TestmonApi.IResultsByRunIdOnQueryArguments
+  ) {
+    const results = await Result.query().where('runid', args.runid as string);
+    if (!results) {
+      return null;
+    }
+    return results;
   }
 };

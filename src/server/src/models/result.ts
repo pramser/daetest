@@ -3,6 +3,7 @@ import { ResultStatus } from './enum';
 
 export class Result extends Model {
   readonly id!: string;
+  runid!: string;
   name!: string;
   description!: string;
   assignee!: string;

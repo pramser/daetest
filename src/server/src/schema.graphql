@@ -8,6 +8,7 @@ type Query {
   allFiles: [File]
   allResults: [Result!]!
   resultById(id: ID!): Result
+  resultsByRunId(runid: String!): [Result]
 }
 
 type Mutation {
@@ -52,6 +53,7 @@ enum ResultType {
 
 type Result {
   id: ID!
+  runid: String!
   name: String!
   description: String!
   assignee: String!

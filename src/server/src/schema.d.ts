@@ -31,10 +31,18 @@ declare namespace TestmonApi {
       | Array<IResult | Promise<IResult>>
       | Promise<Array<IResult | Promise<IResult>>>;
     resultById: IResult | null | Promise<IResult | null>;
+    resultsByRunId:
+      | Array<IResult | null | Promise<IResult | null>>
+      | null
+      | Promise<Array<IResult | null | Promise<IResult | null>> | null>;
   }
 
   interface IResultByIdOnQueryArguments {
     id: string | Promise<string>;
+  }
+
+  interface IResultsByRunIdOnQueryArguments {
+    runid: string | Promise<string>;
   }
 
   interface IFile {
@@ -66,6 +74,7 @@ declare namespace TestmonApi {
   interface IResult {
     __typename: 'Result';
     id: string | Promise<string>;
+    runid: string | Promise<string>;
     name: string | Promise<string>;
     description: string | Promise<string>;
     assignee: string | Promise<string>;
