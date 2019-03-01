@@ -20,14 +20,14 @@ body {
   padding: 1em;
 }
 
-.Results {
+.TestList {
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
 }
 
-.Results thead {
+.TestList thead {
   color: #777;
   font-size: 0.7em;
   text-transform: uppercase;
@@ -35,14 +35,7 @@ body {
   background-color: #eee;
 }
 
-.Coverages {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-
-.Coverages thead {
+.TestDetail thead {
   color: #777;
   font-size: 0.7em;
   text-transform: uppercase;

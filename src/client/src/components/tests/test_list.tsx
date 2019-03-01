@@ -53,7 +53,7 @@ class TestList extends Component<any, any> {
           var testRuns = data.allTestRuns as [File];
 
           return (
-            <div className="Results">
+            <div className="TestList">
               <div className="sub-menu">
                 <CreateTestRun onCreate={() => refetch()} />
                 <FileUpload onUpload={() => refetch()} />
@@ -62,13 +62,7 @@ class TestList extends Component<any, any> {
                 <thead>
                   <tr>
                     <th>Status</th>
-                    <th>
-                      <FontAwesomeIcon
-                        className="right-pad"
-                        icon="chevron-up"
-                      />
-                      File
-                    </th>
+                    <th>File</th>
                     <th>Assignee</th>
                     <th>Issue</th>
                     <th />

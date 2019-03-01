@@ -44,11 +44,11 @@ class TestDetail extends Component<any, { activeTab: string }> {
           }
 
           return (
-            <div className="ResultDetail">
+            <div className="TestDetail">
               <div className="sub-menu">
                 <CreateTestCase runid={runid} onCreate={() => refetch()} />
               </div>
-              <Table>
+              <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
                   <tr>
                     <th>Test Name</th>
