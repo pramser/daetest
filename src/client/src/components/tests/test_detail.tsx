@@ -14,6 +14,7 @@ const TESTCASES_BY_RUN_ID = gql`
     testCasesByRunId(runid: $runid) {
       id
       name
+      info
       description
     }
   }
@@ -56,9 +57,12 @@ class TestDetail extends Component<any, { activeTab: string }> {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.testCasesByRunId.map(({ id, name }: any) => (
+                  {data.testCasesByRunId.map(({ id, name, info }: any) => (
                     <tr key={id}>
-                      <td>{name}</td>
+                      <td style={{ flexDirection: 'column' }}>
+                        <div>{name}</div>
+                        <div>{info}</div>
+                      </td>
                       <td>
                         <FontAwesomeIcon icon="times" color="red" />
                       </td>
