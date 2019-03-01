@@ -9,13 +9,12 @@ import { Query } from 'react-apollo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CreateTestCase from '../create_test_case';
 
-const RESULTS_BY_RUN_ID = gql`
-  query resultsByRunId($runid: String!) {
-    resultsByRunId(runid: $runid) {
+const TESTCASES_BY_RUN_ID = gql`
+  query testCasesByRunId($runid: String!) {
+    testCasesByRunId(runid: $runid) {
       id
       name
       description
-      assignee
     }
   }
 `;
@@ -34,7 +33,7 @@ class TestDetail extends Component<any, { activeTab: string }> {
     const runid = paths[paths.length - 1];
 
     return (
-      <Query query={RESULTS_BY_RUN_ID} variables={{ runid }}>
+      <Query query={TESTCASES_BY_RUN_ID} variables={{ runid }}>
         {({ loading, error, data, refetch }) => {
           if (loading) {
             return 'Is loading...';
@@ -57,7 +56,7 @@ class TestDetail extends Component<any, { activeTab: string }> {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.resultsByRunId.map(({ id, name }: any) => (
+                  {data.testCasesByRunId.map(({ id, name }: any) => (
                     <tr key={id}>
                       <td>{name}</td>
                       <td>
