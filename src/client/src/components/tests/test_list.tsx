@@ -14,12 +14,12 @@ import { File } from '../../types/Types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Components
-import CreateFile from '../create_file';
+import CreateTestRun from '../create_test_run';
 import FileUpload from '../file_upload';
 
-const GET_FILES = gql`
+const GET_TEST_RUNS = gql`
   {
-    allFiles {
+    allTestRuns {
       id
       filename
       product
@@ -40,7 +40,7 @@ class TestList extends Component<any, any> {
 
   render() {
     return (
-      <Query query={GET_FILES}>
+      <Query query={GET_TEST_RUNS}>
         {({ loading, error, data, refetch }) => {
           if (loading) {
             return 'Is loading...';
@@ -50,12 +50,12 @@ class TestList extends Component<any, any> {
             return 'Error occurred!';
           }
 
-          var files = data.allFiles as [File];
+          var testRuns = data.allTestRuns as [File];
 
           return (
             <div className="Results">
               <div className="sub-menu">
-                <CreateFile onCreate={() => refetch()} />
+                <CreateTestRun onCreate={() => refetch()} />
                 <FileUpload onUpload={() => refetch()} />
               </div>
               <Table style={{ border: '2px solid #ddd' }}>
@@ -75,7 +75,7 @@ class TestList extends Component<any, any> {
                   </tr>
                 </thead>
                 <tbody>
-                  {files
+                  {testRuns
                     .sort((a, b) => compareDesc(a.createdat, b.createdat))
                     .map((file: File) => (
                       <ResultRow

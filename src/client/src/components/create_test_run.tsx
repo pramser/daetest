@@ -18,24 +18,24 @@ import { Mutation } from 'react-apollo';
 // CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const CREATE_FILE = gql`
-  mutation createFile($file: FileInput) {
-    createFile(file: $file) {
+export const CREATE_TEST_RUN = gql`
+  mutation createTestRun($testrun: TestRunInput) {
+    createTestRun(testrun: $testrun) {
       filename
     }
   }
 `;
 
-class CreateFile extends Component<
+class CreateTestRun extends Component<
   { onCreate: any },
-  { isOpen: boolean; file: any }
+  { isOpen: boolean; testRun: any }
 > {
   constructor(props: any) {
     super(props);
 
     this.state = {
       isOpen: false,
-      file: {}
+      testRun: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,7 +43,7 @@ class CreateFile extends Component<
 
   componentDidMount() {
     this.setState({
-      file: {
+      testRun: {
         filename: 'New_File',
         product: 'bullseye',
         meta: 'new'
@@ -52,22 +52,22 @@ class CreateFile extends Component<
   }
 
   handleChange = (e: any) => {
-    var file = { ...this.state.file };
-    file[e.target.id] = e.target.value;
-    this.setState({ file });
+    var testRun = { ...this.state.testRun };
+    testRun[e.target.id] = e.target.value;
+    this.setState({ testRun });
   };
 
   render() {
-    var { filename, product, meta } = this.state.file;
+    var { filename, product, meta } = this.state.testRun;
 
     return (
       <div>
         <Button outline onClick={this.toggle} style={{ marginRight: '0.40em' }}>
           <FontAwesomeIcon style={{ marginRight: '0.40em' }} icon="file" />
-          Create File
+          Create Test Run
         </Button>
         <Modal
-          className="CreateFile"
+          className="CreateTestRun"
           isOpen={this.state.isOpen}
           toggle={this.toggle}
         >
@@ -104,11 +104,13 @@ class CreateFile extends Component<
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Mutation mutation={CREATE_FILE}>
-              {createFile => (
+            <Mutation mutation={CREATE_TEST_RUN}>
+              {createTestRun => (
                 <Button
                   onClick={() => {
-                    createFile({ variables: { file: this.state.file } })
+                    createTestRun({
+                      variables: { testrun: this.state.testRun }
+                    })
                       .then(() => this.props.onCreate())
                       .then(() => this.setState({ isOpen: false }));
                   }}
@@ -128,4 +130,4 @@ class CreateFile extends Component<
   };
 }
 
-export default CreateFile;
+export default CreateTestRun;

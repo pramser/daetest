@@ -13,6 +13,6 @@ export type File = {
 export type Result = {
   id: number;
   name: string;
+  info: string;
   description: string;
-  assignee: string;
 };
