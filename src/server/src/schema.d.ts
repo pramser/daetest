@@ -27,21 +27,21 @@ declare namespace TestmonApi {
       | Array<IFile | null | Promise<IFile | null>>
       | null
       | Promise<Array<IFile | null | Promise<IFile | null>> | null>;
-    allResults:
-      | Array<IResult | Promise<IResult>>
-      | Promise<Array<IResult | Promise<IResult>>>;
-    resultById: IResult | null | Promise<IResult | null>;
-    resultsByRunId:
-      | Array<IResult | null | Promise<IResult | null>>
+    allTestCases:
+      | Array<ITestCase | Promise<ITestCase>>
+      | Promise<Array<ITestCase | Promise<ITestCase>>>;
+    testCaseById: ITestCase | null | Promise<ITestCase | null>;
+    testCasesByRunId:
+      | Array<ITestCase | null | Promise<ITestCase | null>>
       | null
-      | Promise<Array<IResult | null | Promise<IResult | null>> | null>;
+      | Promise<Array<ITestCase | null | Promise<ITestCase | null>> | null>;
   }
 
-  interface IResultByIdOnQueryArguments {
+  interface ITestCaseByIdOnQueryArguments {
     id: string | Promise<string>;
   }
 
-  interface IResultsByRunIdOnQueryArguments {
+  interface ITestCasesByRunIdOnQueryArguments {
     runid: string | Promise<string>;
   }
 
@@ -71,17 +71,17 @@ declare namespace TestmonApi {
     JUNIT = 'JUNIT'
   }
 
-  interface IResult {
-    __typename: 'Result';
+  interface ITestCase {
+    __typename: 'TestCase';
     id: string | Promise<string>;
     runid: string | Promise<string>;
     name: string | Promise<string>;
+    info: string | Promise<string>;
     description: string | Promise<string>;
-    assignee: string | Promise<string>;
-    resultstatus: ResultStatus | Promise<ResultStatus>;
+    result: TestCaseResult | Promise<TestCaseResult>;
   }
 
-  const enum ResultStatus {
+  const enum TestCaseResult {
     NONE = 'NONE',
     PASS = 'PASS',
     FAIL = 'FAIL'
@@ -95,7 +95,7 @@ declare namespace TestmonApi {
       | Array<IFile | Promise<IFile>>
       | null
       | Promise<Array<IFile | Promise<IFile>> | null>;
-    createTestCase: IResult | Promise<IResult>;
+    createTestCase: ITestCase | Promise<ITestCase>;
   }
 
   interface ICreateFileOnMutationArguments {

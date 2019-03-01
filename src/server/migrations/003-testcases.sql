@@ -1,12 +1,12 @@
 -- Up
-create table testmon.result (
+create table testmon.testcase (
   id uuid primary key not null default gen_random_uuid(),
   runid text not null default '',
   name text not null,
+  info text not null default '',
   description text not null default '',
-  assignee text not null default '',
-  resultstatus int not null default 0
+  result int not null default 0
 );
 
 -- Down
-drop table testmon.result;
+drop table testmon.testcase;

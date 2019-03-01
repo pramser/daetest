@@ -5,7 +5,7 @@ import mkdirp from 'mkdirp';
 import shortid from 'shortid';
 
 import { File } from '../models/file';
-import { Result } from '../models/result';
+import { TestCase } from '../models/testcase';
 
 const UPLOAD_DIR = './uploads';
 
@@ -35,25 +35,31 @@ const processUpload = async (upload: any) => {
   return storeDB({ id, filename, mimetype, encoding, path });
 };
 
-const processCreate = (file: any) => {
-  const { filename, product, meta } = file;
-  return storeDB({
-    filename,
-    product,
-    meta
-  });
-};
-
-const createTestCase = (runid: string, testCase: any) => {
-  const { name, description } = testCase;
-  return Result.query().insertAndFetch({ runid, name, description });
-};
-
 export const Mutation = {
-  createFile: (obj: any, { file }: any) => processCreate(file),
-  uploadFile: (obj: any, { file }: any) => processUpload(file),
-  multipleUpload: (obj: any, { files }: any) =>
-    Promise.all(files.map(processUpload)),
-  createTestCase: (obj: any, { runid, testCase }: any) =>
-    createTestCase(runid, testCase)
+  async createFile(_: any, args: TestmonApi.ICreateFileOnMutationArguments) {
+    const { filename, product, meta } = (await args.file) as File;
+    return storeDB({
+      filename,
+      product,
+      meta
+    });
+  },
+
+  async uploadFile(_: any, args: TestmonApi.IUploadFileOnMutationArguments) {
+    return processUpload(args.file);
+  },
+
+  async multipleUpload(
+    _: any,
+    args: TestmonApi.IMultipleUploadOnMutationArguments
+  ) {
+    const files = await args.files;
+    return Promise.all(files.map(processUpload));
+  },
+
+  async createTestCase(_: any, args: any) {
+    const { name, info, description } = args.testCase;
+    const runid = args.runid;
+    return TestCase.query().insertAndFetch({ name, info, description, runid });
+  }
 };

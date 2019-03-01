@@ -1,32 +1,35 @@
 /// <reference path="../schema.d.ts" />
 
 import { File } from '../models/file';
-import { Result } from '../models/result';
+import { TestCase } from '../models/testcase';
 
 export const Query = {
   async allFiles() {
     const files = await File.query();
     return files;
   },
-  async allResults() {
-    const results = await Result.query();
-    return results;
+  async allTestCases() {
+    const testCases = await TestCase.query();
+    return testCases;
   },
-  async resultById(_: any, args: TestmonApi.IResultByIdOnQueryArguments) {
-    const result = await Result.query().findById(args.id as string);
-    if (!result) {
+  async testCaseById(_: any, args: TestmonApi.IResultByIdOnQueryArguments) {
+    const testCase = await TestCase.query().findById(args.id as string);
+    if (!testCase) {
       return null;
     }
-    return result;
+    return testCase;
   },
-  async resultsByRunId(
+  async testCasesByRunId(
     _: any,
     args: TestmonApi.IResultsByRunIdOnQueryArguments
   ) {
-    const results = await Result.query().where('runid', args.runid as string);
-    if (!results) {
+    const testCases = await TestCase.query().where(
+      'runid',
+      args.runid as string
+    );
+    if (!testCases) {
       return null;
     }
-    return results;
+    return testCases;
   }
 };

@@ -6,16 +6,16 @@ scalar Upload
 
 type Query {
   allFiles: [File]
-  allResults: [Result!]!
-  resultById(id: ID!): Result
-  resultsByRunId(runid: String!): [Result]
+  allTestCases: [TestCase!]!
+  testCaseById(id: ID!): TestCase
+  testCasesByRunId(runid: String!): [TestCase]
 }
 
 type Mutation {
   createFile(file: FileInput): File!
   uploadFile(file: Upload!): File!
   multipleUpload(files: [Upload!]!): [File!]
-  createTestCase(runid: String!, testCase: TestCaseInput!): Result!
+  createTestCase(runid: String!, testCase: TestCaseInput!): TestCase!
 }
 
 type File {
@@ -52,13 +52,13 @@ enum ResultType {
   JUNIT
 }
 
-type Result {
+type TestCase {
   id: ID!
   runid: String!
   name: String!
+  info: String!
   description: String!
-  assignee: String!
-  resultstatus: ResultStatus!
+  result: TestCaseResult!
 }
 
 input TestCaseInput {
@@ -67,7 +67,7 @@ input TestCaseInput {
   description: String!
 }
 
-enum ResultStatus {
+enum TestCaseResult {
   NONE
   PASS
   FAIL

@@ -1,15 +1,15 @@
 import { Model } from 'objection';
-import { ResultStatus } from './enum';
+import { TestCaseResult } from './enum';
 
-export class Result extends Model {
+export class TestCase extends Model {
   readonly id!: string;
   runid!: string;
   name!: string;
+  info!: string;
   description!: string;
-  assignee!: string;
-  resultstatus!: ResultStatus;
+  result!: TestCaseResult;
 
-  static tableName = 'testmon.result';
+  static tableName = 'testmon.testcase';
   static idColumn = 'id';
 
   static jsonSchema = {

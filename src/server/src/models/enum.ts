@@ -10,7 +10,7 @@ export enum ResultType {
   JUnit
 }
 
-export enum ResultStatus {
+export enum TestCaseResult {
   None = 0,
   Pass,
   Fail

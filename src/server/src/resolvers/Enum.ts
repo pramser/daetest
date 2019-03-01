@@ -10,7 +10,7 @@ export const ResultType = {
   JUNIT: 2
 };
 
-export const ResultStatus = {
+export const TestCaseResult = {
   NONE: 0,
   PASS: 1,
   FAIL: 2

@@ -1,6 +1,6 @@
 import { File } from '../models/file';
-import { Result } from '../models/result';
-import { ResultType, FileStatus, ResultStatus } from '../models/enum';
+import { TestCase } from '../models/testcase';
+import { ResultType, FileStatus, TestCaseResult } from '../models/enum';
 
 export async function init() {
   let files = await File.query().where('filename', 'unit_2018_12_01_1.xml');
@@ -42,29 +42,29 @@ export async function init() {
     ]);
   }
 
-  let results = await Result.query().where('name', 'test_success');
+  let results = await TestCase.query().where('name', 'test_success');
   if (results.length < 1) {
-    results = await Result.query().insert([
+    results = await TestCase.query().insert([
       {
         name: 'test_success',
         runid: files[0].id,
+        info: '',
         description: 'Verifies the test can be imported successfully',
-        assignee: 'pramser',
-        resultstatus: ResultStatus.Pass
+        result: TestCaseResult.Pass
       },
       {
         name: 'test_failure',
         runid: files[0].id,
+        info: 'ERR: Connection aborted during test run.',
         description: 'Verifies the test can be imported failingly',
-        assignee: 'pramser',
-        resultstatus: ResultStatus.Fail
+        result: TestCaseResult.Fail
       },
       {
         name: 'test_none',
         runid: files[1].id,
+        info: '',
         description: 'Verifies the test can be imported noningly',
-        assignee: 'pramser',
-        resultstatus: ResultStatus.None
+        result: TestCaseResult.None
       }
     ]);
   }
