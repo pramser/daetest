@@ -5,20 +5,20 @@ scalar Time
 scalar Upload
 
 type Query {
-  allFiles: [File]
+  allTestRuns: [TestRun]
   allTestCases: [TestCase!]!
   testCaseById(id: ID!): TestCase
   testCasesByRunId(runid: String!): [TestCase]
 }
 
 type Mutation {
-  createFile(file: FileInput): File!
-  uploadFile(file: Upload!): File!
-  multipleUpload(files: [Upload!]!): [File!]
+  createTestRun(testrun: TestRunInput): TestRun!
+  uploadFile(file: Upload!): TestRun!
+  multipleUpload(files: [Upload!]!): [TestRun!]
   createTestCase(runid: String!, testCase: TestCaseInput!): TestCase!
 }
 
-type File {
+type TestRun {
   # File Metadata
   id: ID!
   path: String!
@@ -29,24 +29,24 @@ type File {
   # Test Metadata
   product: String!
   meta: String!
-  filestatus: FileStatus!
-  resulttype: ResultType!
+  status: TestRunStatus!
+  type: TestRunType!
   createdat: DateTime!
 }
 
-input FileInput {
+input TestRunInput {
   filename: String!
   product: String
   meta: String
 }
 
-enum FileStatus {
+enum TestRunStatus {
   PENDING
   PASS
   FAIL
 }
 
-enum ResultType {
+enum TestRunType {
   NONE
   TESTMON
   JUNIT

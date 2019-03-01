@@ -1,10 +1,10 @@
-export enum FileStatus {
+export enum TestRunStatus {
   Pending = 0,
   Pass,
   Fail
 }
 
-export enum ResultType {
+export enum TestRunType {
   None = 0,
   TestMon,
   JUnit

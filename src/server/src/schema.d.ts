@@ -23,10 +23,10 @@ declare namespace TestmonApi {
 
   interface IQuery {
     __typename: 'Query';
-    allFiles:
-      | Array<IFile | null | Promise<IFile | null>>
+    allTestRuns:
+      | Array<ITestRun | null | Promise<ITestRun | null>>
       | null
-      | Promise<Array<IFile | null | Promise<IFile | null>> | null>;
+      | Promise<Array<ITestRun | null | Promise<ITestRun | null>> | null>;
     allTestCases:
       | Array<ITestCase | Promise<ITestCase>>
       | Promise<Array<ITestCase | Promise<ITestCase>>>;
@@ -45,8 +45,8 @@ declare namespace TestmonApi {
     runid: string | Promise<string>;
   }
 
-  interface IFile {
-    __typename: 'File';
+  interface ITestRun {
+    __typename: 'TestRun';
     id: string | Promise<string>;
     path: string | Promise<string>;
     filename: string | Promise<string>;
@@ -54,18 +54,18 @@ declare namespace TestmonApi {
     encoding: string | Promise<string>;
     product: string | Promise<string>;
     meta: string | Promise<string>;
-    filestatus: FileStatus | Promise<FileStatus>;
-    resulttype: ResultType | Promise<ResultType>;
+    status: TestRunStatus | Promise<TestRunStatus>;
+    type: TestRunType | Promise<TestRunType>;
     createdat: Date | Promise<Date>;
   }
 
-  const enum FileStatus {
+  const enum TestRunStatus {
     PENDING = 'PENDING',
     PASS = 'PASS',
     FAIL = 'FAIL'
   }
 
-  const enum ResultType {
+  const enum TestRunType {
     NONE = 'NONE',
     TESTMON = 'TESTMON',
     JUNIT = 'JUNIT'
@@ -89,17 +89,17 @@ declare namespace TestmonApi {
 
   interface IMutation {
     __typename: 'Mutation';
-    createFile: IFile | Promise<IFile>;
-    uploadFile: IFile | Promise<IFile>;
+    createTestRun: ITestRun | Promise<ITestRun>;
+    uploadFile: ITestRun | Promise<ITestRun>;
     multipleUpload:
-      | Array<IFile | Promise<IFile>>
+      | Array<ITestRun | Promise<ITestRun>>
       | null
-      | Promise<Array<IFile | Promise<IFile>> | null>;
+      | Promise<Array<ITestRun | Promise<ITestRun>> | null>;
     createTestCase: ITestCase | Promise<ITestCase>;
   }
 
-  interface ICreateFileOnMutationArguments {
-    file?: IFileInput | null | Promise<IFileInput | null>;
+  interface ICreateTestRunOnMutationArguments {
+    testrun?: ITestRunInput | null | Promise<ITestRunInput | null>;
   }
 
   interface IUploadFileOnMutationArguments {
@@ -115,7 +115,7 @@ declare namespace TestmonApi {
     testCase: ITestCaseInput | Promise<ITestCaseInput>;
   }
 
-  interface IFileInput {
+  interface ITestRunInput {
     filename: string | Promise<string>;
     product?: string | null | Promise<string | null>;
     meta?: string | null | Promise<string | null>;

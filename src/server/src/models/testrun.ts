@@ -1,7 +1,7 @@
 import { Model } from 'objection';
-import { FileStatus, ResultType } from './enum';
+import { TestRunStatus, TestRunType } from './enum';
 
-export class File extends Model {
+export class TestRun extends Model {
   // File Metadata
   readonly id!: string;
   path!: string;
@@ -12,11 +12,11 @@ export class File extends Model {
   // Test Metadata
   product!: string;
   meta!: string;
-  filestatus!: FileStatus;
-  resulttype!: ResultType;
+  status!: TestRunStatus;
+  type!: TestRunType;
   createdat!: Date;
 
-  static tableName = 'testmon.file';
+  static tableName = 'testmon.testrun';
   static idColumn = 'id';
 
   static jsonSchema = {

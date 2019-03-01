@@ -5,7 +5,7 @@ import { TypeMap } from 'graphql/type/schema';
 import { Query } from './Query';
 import { Mutation } from './Mutation';
 
-import { FileStatus, ResultType, TestCaseResult } from './Enum';
+import { TestRunStatus, TestRunType, TestCaseResult } from './Enum';
 
 export const resolvers: IResolvers<TypeMap> = {
   Date: GraphQLDate,
@@ -15,7 +15,7 @@ export const resolvers: IResolvers<TypeMap> = {
   Query: Query as any,
   Mutation: Mutation as any,
 
-  FileStatus: FileStatus as any,
-  ResultType: ResultType as any,
+  TestRunStatus: TestRunStatus as any,
+  TestRunType: TestRunType as any,
   TestCaseResult: TestCaseResult as any
 };

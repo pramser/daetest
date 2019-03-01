@@ -1,7 +1,7 @@
 -- Up
 create schema testmon;
 
-create table testmon.file (
+create table testmon.testrun (
   id uuid primary key not null default gen_random_uuid(),
   path text not null default '',
   filename text not null,
@@ -10,11 +10,11 @@ create table testmon.file (
 
   product text not null default '',
   meta text not null default '',
-  filestatus int not null default 0,
-  resulttype int not null default 0,
+  status int not null default 0,
+  type int not null default 0,
   createdat timestamp with time zone not null default now()
 );
 
 -- Down
-drop table testmon.file;
+drop table testmon.testrun;
 drop schema testmon;

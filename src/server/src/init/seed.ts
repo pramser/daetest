@@ -1,11 +1,14 @@
-import { File } from '../models/file';
+import { TestRun } from '../models/testrun';
 import { TestCase } from '../models/testcase';
-import { ResultType, FileStatus, TestCaseResult } from '../models/enum';
+import { TestRunType, TestRunStatus, TestCaseResult } from '../models/enum';
 
 export async function init() {
-  let files = await File.query().where('filename', 'unit_2018_12_01_1.xml');
-  if (files.length < 1) {
-    files = await File.query().insert([
+  let testRuns = await TestRun.query().where(
+    'filename',
+    'unit_2018_12_01_1.xml'
+  );
+  if (testRuns.length < 1) {
+    testRuns = await TestRun.query().insert([
       {
         filename: 'unit_2018_12_01_1.xml',
         path: './',
@@ -14,8 +17,8 @@ export async function init() {
 
         product: 'schedule',
         meta: 'unit',
-        filestatus: FileStatus.Pending,
-        resulttype: ResultType.JUnit
+        status: TestRunStatus.Pending,
+        type: TestRunType.JUnit
       },
       {
         filename: 'int_2018_12_01_1.xml',
@@ -25,8 +28,8 @@ export async function init() {
 
         product: 'schedule',
         meta: 'int',
-        filestatus: FileStatus.Pending,
-        resulttype: ResultType.JUnit
+        status: TestRunStatus.Pending,
+        type: TestRunType.JUnit
       },
       {
         filename: 'perf_2018_12_01_1.xml',
@@ -36,8 +39,8 @@ export async function init() {
 
         product: 'engage',
         meta: 'perf',
-        filestatus: FileStatus.Pending,
-        resulttype: ResultType.JUnit
+        status: TestRunStatus.Pending,
+        type: TestRunType.JUnit
       }
     ]);
   }
@@ -47,21 +50,21 @@ export async function init() {
     results = await TestCase.query().insert([
       {
         name: 'test_success',
-        runid: files[0].id,
+        runid: testRuns[0].id,
         info: '',
         description: 'Verifies the test can be imported successfully',
         result: TestCaseResult.Pass
       },
       {
         name: 'test_failure',
-        runid: files[0].id,
+        runid: testRuns[0].id,
         info: 'ERR: Connection aborted during test run.',
         description: 'Verifies the test can be imported failingly',
         result: TestCaseResult.Fail
       },
       {
         name: 'test_none',
-        runid: files[1].id,
+        runid: testRuns[1].id,
         info: '',
         description: 'Verifies the test can be imported noningly',
         result: TestCaseResult.None

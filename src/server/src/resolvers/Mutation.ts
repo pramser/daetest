@@ -4,7 +4,7 @@ import { createWriteStream } from 'fs';
 import mkdirp from 'mkdirp';
 import shortid from 'shortid';
 
-import { File } from '../models/file';
+import { TestRun } from '../models/testrun';
 import { TestCase } from '../models/testcase';
 
 const UPLOAD_DIR = './uploads';
@@ -25,7 +25,7 @@ const storeFS = ({ stream, filename }: any): Promise<any> => {
 };
 
 const storeDB = (file: any) => {
-  return File.query().insertAndFetch(file);
+  return TestRun.query().insertAndFetch(file);
 };
 
 const processUpload = async (upload: any) => {
@@ -36,8 +36,11 @@ const processUpload = async (upload: any) => {
 };
 
 export const Mutation = {
-  async createFile(_: any, args: TestmonApi.ICreateFileOnMutationArguments) {
-    const { filename, product, meta } = (await args.file) as File;
+  async createTestRun(
+    _: any,
+    args: TestmonApi.ICreateTestRunOnMutationArguments
+  ) {
+    const { filename, product, meta } = (await args.testrun) as TestRun;
     return storeDB({
       filename,
       product,

@@ -1,10 +1,10 @@
-export const FileStatus = {
+export const TestRunStatus = {
   PENDING: 0,
   PASS: 1,
   FAIL: 2
 };
 
-export const ResultType = {
+export const TestRunType = {
   NONE: 0,
   TESTMON: 1,
   JUNIT: 2
