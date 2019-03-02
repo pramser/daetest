@@ -1,12 +1,12 @@
 // Dependencies
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-// Data
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Components
 import CreateTestCase from '../create_test_case';
 
 const TESTCASES_BY_RUN_ID = gql`
@@ -44,29 +44,23 @@ class TestDetail extends Component<any, { activeTab: string }> {
             return 'Error occurred!';
           }
 
+          const testcases = data.testCasesByRunId;
+
           return (
             <div className="TestDetail">
               <div className="sub-menu">
                 <CreateTestCase runid={runid} onCreate={() => refetch()} />
               </div>
-              <Table style={{ border: '2px solid #ddd' }}>
+              <Table style={{ border: '2px solid #ddd' }} size="sm">
                 <thead>
                   <tr>
-                    <th>Test Name</th>
                     <th>Result</th>
+                    <th>Test Name</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data.testCasesByRunId.map(({ id, name, info }: any) => (
-                    <tr key={id}>
-                      <td style={{ flexDirection: 'column' }}>
-                        <div>{name}</div>
-                        <div>{info}</div>
-                      </td>
-                      <td>
-                        <FontAwesomeIcon icon="times" color="red" />
-                      </td>
-                    </tr>
+                  {testcases.map((testcase: any) => (
+                    <TestCaseRow testcase={testcase} />
                   ))}
                 </tbody>
               </Table>
@@ -77,5 +71,21 @@ class TestDetail extends Component<any, { activeTab: string }> {
     );
   }
 }
+
+const TestCaseRow = (props: { testcase: any }) => {
+  const { id, name, info } = props.testcase;
+
+  return (
+    <tr key={id}>
+      <td style={{ width: '10%' }}>
+        <FontAwesomeIcon icon="times" color="red" />
+      </td>
+      <td style={{ width: '90%', flexDirection: 'column' }}>
+        <div>{name}</div>
+        <div>{info}</div>
+      </td>
+    </tr>
+  );
+};
 
 export default TestDetail;
