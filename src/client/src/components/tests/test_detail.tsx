@@ -8,6 +8,9 @@ import { Query } from 'react-apollo';
 
 // Components
 import CreateTestCase from '../create_test_case';
+import Button from 'reactstrap/lib/Button';
+import { faToggleOff } from '@fortawesome/free-solid-svg-icons';
+import Collapse from 'reactstrap/lib/Collapse';
 
 const TESTCASES_BY_RUN_ID = gql`
   query testCasesByRunId($runid: String!) {
@@ -20,15 +23,7 @@ const TESTCASES_BY_RUN_ID = gql`
   }
 `;
 
-class TestDetail extends Component<any, { activeTab: string }> {
-  state = { activeTab: 'tests' as string };
-
-  toggle(tab: string) {
-    if (this.state.activeTab !== tab) {
-      this.setState({ activeTab: tab });
-    }
-  }
-
+class TestDetail extends Component<any, any> {
   render() {
     const paths = this.props.location.pathname.split('/');
     const runid = paths[paths.length - 1];
@@ -72,20 +67,47 @@ class TestDetail extends Component<any, { activeTab: string }> {
   }
 }
 
-const TestCaseRow = (props: { testcase: any }) => {
-  const { id, name, info } = props.testcase;
+class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
+  state = { collapse: false };
 
-  return (
-    <tr key={id}>
-      <td style={{ width: '10%' }}>
-        <FontAwesomeIcon icon="times" color="red" />
-      </td>
-      <td style={{ width: '90%', flexDirection: 'column' }}>
-        <div>{name}</div>
-        <div>{info}</div>
-      </td>
-    </tr>
-  );
-};
+  toggle() {
+    this.setState({ collapse: !this.state.collapse });
+  }
+
+  render() {
+    const { id, name, info } = this.props.testcase;
+
+    return (
+      <tr key={id}>
+        <td style={{ width: '10%' }}>
+          <FontAwesomeIcon icon="times" color="red" />
+        </td>
+        <td style={{ width: '90%', flexDirection: 'column' }}>
+          <div>
+            <span>{name}</span>
+            {info && (
+              <Button size="sm" onClick={() => this.toggle()}>
+                Toggle
+              </Button>
+            )}
+          </div>
+          {info && (
+            <Collapse isOpen={this.state.collapse}>
+              <div
+                style={{
+                  border: '1px solid black',
+                  padding: '0.2em',
+                  margin: '0.2em'
+                }}
+              >
+                {info}
+              </div>
+            </Collapse>
+          )}
+        </td>
+      </tr>
+    );
+  }
+}
 
 export default TestDetail;
