@@ -40,11 +40,12 @@ export const Mutation = {
     _: any,
     args: TestmonApi.ICreateTestRunOnMutationArguments
   ) {
-    const { filename, product, meta } = (await args.testrun) as TestRun;
+    const { filename, product, meta, type } = (await args.testrun) as TestRun;
     return storeDB({
       filename,
       product,
-      meta
+      meta,
+      type
     });
   },
 
@@ -61,8 +62,19 @@ export const Mutation = {
   },
 
   async createTestCase(_: any, args: any) {
-    const { name, info, description } = args.testCase;
+    const {
+      name,
+      info,
+      description,
+      result
+    } = (await args.testCase) as TestCase;
     const runid = args.runid;
-    return TestCase.query().insertAndFetch({ name, info, description, runid });
+    return TestCase.query().insertAndFetch({
+      name,
+      info,
+      description,
+      result,
+      runid
+    });
   }
 };

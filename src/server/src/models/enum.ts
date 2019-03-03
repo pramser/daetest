@@ -7,7 +7,8 @@ export enum TestRunStatus {
 export enum TestRunType {
   None = 0,
   TestMon,
-  JUnit
+  JUnit,
+  Cucumber
 }
 
 export enum TestCaseResult {

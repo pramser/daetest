@@ -7,7 +7,8 @@ export const TestRunStatus = {
 export const TestRunType = {
   NONE: 0,
   TESTMON: 1,
-  JUNIT: 2
+  JUNIT: 2,
+  CUCUMBER: 3
 };
 
 export const TestCaseResult = {

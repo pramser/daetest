@@ -68,7 +68,8 @@ declare namespace TestmonApi {
   const enum TestRunType {
     NONE = 'NONE',
     TESTMON = 'TESTMON',
-    JUNIT = 'JUNIT'
+    JUNIT = 'JUNIT',
+    CUCUMBER = 'CUCUMBER'
   }
 
   interface ITestCase {
@@ -119,12 +120,14 @@ declare namespace TestmonApi {
     filename: string | Promise<string>;
     product?: string | null | Promise<string | null>;
     meta?: string | null | Promise<string | null>;
+    type: TestRunType | Promise<TestRunType>;
   }
 
   interface ITestCaseInput {
     name: string | Promise<string>;
     info: string | Promise<string>;
     description: string | Promise<string>;
+    result: TestCaseResult | Promise<TestCaseResult>;
   }
 }
 
