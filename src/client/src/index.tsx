@@ -22,6 +22,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faCalendar,
   faCheck,
+  faChevronDown,
   faChevronRight,
   faChevronUp,
   faClock,
@@ -37,6 +38,7 @@ import {
 library.add(
   faCalendar,
   faCheck,
+  faChevronDown,
   faChevronRight,
   faChevronUp,
   faClock,

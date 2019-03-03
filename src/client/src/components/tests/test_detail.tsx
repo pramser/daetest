@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
+import { Table, Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import gql from 'graphql-tag';
@@ -8,9 +8,6 @@ import { Query } from 'react-apollo';
 
 // Components
 import CreateTestCase from '../create_test_case';
-import Button from 'reactstrap/lib/Button';
-import { faToggleOff } from '@fortawesome/free-solid-svg-icons';
-import Collapse from 'reactstrap/lib/Collapse';
 
 const TESTCASES_BY_RUN_ID = gql`
   query testCasesByRunId($runid: String!) {
@@ -19,6 +16,7 @@ const TESTCASES_BY_RUN_ID = gql`
       name
       info
       description
+      result
     }
   }
 `;
@@ -43,6 +41,9 @@ class TestDetail extends Component<any, any> {
 
           return (
             <div className="TestDetail">
+              <div>
+                <h2>{runid}</h2>
+              </div>
               <div className="sub-menu">
                 <CreateTestCase runid={runid} onCreate={() => refetch()} />
               </div>
@@ -55,7 +56,7 @@ class TestDetail extends Component<any, any> {
                 </thead>
                 <tbody>
                   {testcases.map((testcase: any) => (
-                    <TestCaseRow testcase={testcase} />
+                    <TestCaseRow key={testcase.id} testcase={testcase} />
                   ))}
                 </tbody>
               </Table>
@@ -75,20 +76,26 @@ class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
   }
 
   render() {
-    const { id, name, info } = this.props.testcase;
+    const { id, name, info, result } = this.props.testcase;
 
     return (
       <tr key={id}>
         <td style={{ width: '10%' }}>
-          <FontAwesomeIcon icon="times" color="red" />
+          <FontAwesomeIcon
+            icon={result === 'PASS' ? 'check' : 'times'}
+            color={result === 'PASS' ? 'green' : 'red'}
+          />
         </td>
         <td style={{ width: '90%', flexDirection: 'column' }}>
           <div>
             <span>{name}</span>
             {info && (
-              <Button size="sm" onClick={() => this.toggle()}>
-                Toggle
-              </Button>
+              <span
+                style={{ float: 'right', marginRight: '0.5em' }}
+                onClick={() => this.toggle()}
+              >
+                <FontAwesomeIcon icon="chevron-down" color="grey" />
+              </span>
             )}
           </div>
           {info && (
