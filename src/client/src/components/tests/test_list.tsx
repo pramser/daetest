@@ -24,6 +24,7 @@ const GET_TEST_RUNS = gql`
       filename
       product
       meta
+      type
       createdat
     }
   }
@@ -63,6 +64,7 @@ class TestList extends Component<any, any> {
                   <tr>
                     <th>Status</th>
                     <th>File</th>
+                    <th>Type</th>
                     <th>Assignee</th>
                     <th>Issue</th>
                     <th />
@@ -92,7 +94,7 @@ const ResultRow = (props: {
   result: File;
   onClick?: MouseEventHandler<any>;
 }) => {
-  const { filename, product, meta, createdat } = props.result;
+  const { filename, product, meta, type, createdat } = props.result;
 
   return (
     <tr className="result" onClick={props.onClick}>
@@ -118,6 +120,7 @@ const ResultRow = (props: {
           </Badge>
         </div>
       </td>
+      <td>{type}</td>
       <td>{'pramser'}</td>
       <td>PAN-000</td>
       <td>
