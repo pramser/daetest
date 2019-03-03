@@ -46,7 +46,8 @@ class CreateTestRun extends Component<
       testRun: {
         filename: 'New_File',
         product: 'bullseye',
-        meta: 'new'
+        meta: 'new',
+        type: 'TESTMON'
       }
     });
   }
