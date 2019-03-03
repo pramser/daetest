@@ -7,6 +7,8 @@ import {
   ModalHeader,
   ModalFooter,
   Form,
+  Row,
+  Col,
   FormGroup,
   Label,
   Input
@@ -59,7 +61,7 @@ class CreateTestRun extends Component<
   };
 
   render() {
-    var { filename, product, meta } = this.state.testRun;
+    var { filename, product, meta, type } = this.state.testRun;
 
     return (
       <div>
@@ -72,42 +74,71 @@ class CreateTestRun extends Component<
           isOpen={this.state.isOpen}
           toggle={this.toggle}
         >
-          <ModalHeader>File Upload</ModalHeader>
+          <ModalHeader>Create Test Run</ModalHeader>
           <ModalBody>
             <Form>
-              <FormGroup>
-                <Label>File Name</Label>
-                <Input
-                  id="filename"
-                  placeholder="File Name"
-                  value={filename}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>Product</Label>
-                <Input
-                  id="product"
-                  placeholder="Product"
-                  value={product}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>Meta</Label>
-                <Input
-                  id="meta"
-                  placeholder="Meta"
-                  value={meta}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
+              <Row>
+                <Col md={8}>
+                  <FormGroup>
+                    <Label>File Name</Label>
+                    <Input
+                      id="filename"
+                      placeholder="File Name"
+                      value={filename}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label>Type</Label>
+                    <Input
+                      id="type"
+                      placeholder="Type"
+                      type="select"
+                      value={type}
+                      onChange={this.handleChange}
+                    >
+                      <option>NONE</option>
+                      <option>TESTMON</option>
+                      <option>JUNIT</option>
+                      <option>CUCUMBER</option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label>Product</Label>
+                    <Input
+                      id="product"
+                      placeholder="Product"
+                      value={product}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label>Meta</Label>
+                    <Input
+                      id="meta"
+                      placeholder="Meta"
+                      value={meta}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
             </Form>
           </ModalBody>
           <ModalFooter>
             <Mutation mutation={CREATE_TEST_RUN}>
               {createTestRun => (
                 <Button
+                  size="sm"
+                  color="primary"
                   onClick={() => {
                     createTestRun({
                       variables: { testrun: this.state.testRun }

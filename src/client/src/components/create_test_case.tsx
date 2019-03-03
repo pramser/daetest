@@ -87,6 +87,7 @@ class CreateTestCase extends Component<
               <FormGroup>
                 <Label>Info</Label>
                 <Input
+                  type="textarea"
                   id="info"
                   placeholder="Info"
                   value={info}
@@ -96,6 +97,7 @@ class CreateTestCase extends Component<
               <FormGroup>
                 <Label>Description</Label>
                 <Input
+                  type="textarea"
                   id="description"
                   placeholder="Description"
                   value={description}

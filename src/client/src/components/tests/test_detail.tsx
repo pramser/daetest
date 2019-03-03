@@ -47,7 +47,7 @@ class TestDetail extends Component<any, any> {
               <div className="sub-menu">
                 <CreateTestCase runid={runid} onCreate={() => refetch()} />
               </div>
-              <Table style={{ border: '2px solid #ddd' }} size="sm">
+              <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
                   <tr>
                     <th>Result</th>
@@ -100,15 +100,16 @@ class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
           </div>
           {info && (
             <Collapse isOpen={this.state.collapse}>
-              <div
+              <textarea
                 style={{
+                  width: '100%',
                   border: '1px solid black',
                   padding: '0.2em',
                   margin: '0.2em'
                 }}
               >
                 {info}
-              </div>
+              </textarea>
             </Collapse>
           )}
         </td>
