@@ -36,10 +36,7 @@ const processUpload = async (upload: any) => {
 };
 
 export const Mutation = {
-  async createTestRun(
-    _: any,
-    args: TestmonApi.ICreateTestRunOnMutationArguments
-  ) {
+  async createTestRun(_: any, args: any) {
     const { filename, product, meta, type } = (await args.testrun) as TestRun;
     return storeDB({
       filename,
