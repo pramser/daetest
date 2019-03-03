@@ -46,7 +46,8 @@ class CreateTestCase extends Component<
       testCase: {
         name: 'test_new_test__do_things',
         info: 'ERROR: something happened',
-        description: 'New test for things'
+        description: 'New test for things',
+        result: 'PASS'
       }
     });
   }
