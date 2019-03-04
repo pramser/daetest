@@ -20,33 +20,30 @@ import App from './app';
 // Font-Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faCalendar,
   faCheck,
   faChevronDown,
   faChevronRight,
-  faChevronUp,
   faClock,
   faCog,
   faFile,
   faFileUpload,
   faHome,
-  faPollH,
   faTimes,
   faVial
 } from '@fortawesome/free-solid-svg-icons';
 
+// vial, file, chevron-down, times, clock, chevron-right
+// home, cog, check
+
 library.add(
-  faCalendar,
   faCheck,
   faChevronDown,
   faChevronRight,
-  faChevronUp,
   faClock,
   faCog,
   faFile,
   faFileUpload,
   faHome,
-  faPollH,
   faTimes,
   faVial
 );
