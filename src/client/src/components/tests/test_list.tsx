@@ -8,7 +8,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 // Types
-import { File } from '../../types/Types';
+import { File, TestRunType } from '../../types/Types';
 
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -120,7 +120,17 @@ const ResultRow = (props: {
           </Badge>
         </div>
       </td>
-      <td>{type}</td>
+      <td>
+        {type !== TestRunType.None ? (
+          <img
+            src={`${process.env.PUBLIC_URL}/images/${type}.png`}
+            height="50"
+            alt="None"
+          />
+        ) : (
+          'None'
+        )}
+      </td>
       <td>{'pramser'}</td>
       <td>PAN-000</td>
       <td>
