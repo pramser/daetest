@@ -2,12 +2,15 @@
 import React, { Component } from 'react';
 import { Table, Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Prism from 'prismjs';
 
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 // Components
 import CreateTestCase from '../create_test_case';
+
+import '../../prism.css';
 
 const TESTCASES_BY_RUN_ID = gql`
   query testCasesByRunId($runid: String!) {
@@ -71,6 +74,10 @@ class TestDetail extends Component<any, any> {
 class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
   state = { collapse: false };
 
+  componentDidMount() {
+    Prism.highlightAll();
+  }
+
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
@@ -100,16 +107,7 @@ class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
           </div>
           {info && (
             <Collapse isOpen={this.state.collapse}>
-              <textarea
-                style={{
-                  width: '100%',
-                  border: '1px solid black',
-                  padding: '0.2em',
-                  margin: '0.2em'
-                }}
-              >
-                {info}
-              </textarea>
+              <pre className="language-javascript">{info}</pre>
             </Collapse>
           )}
         </td>
