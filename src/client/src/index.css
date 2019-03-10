@@ -43,6 +43,13 @@ body {
   background-color: #eee;
 }
 
+.Config {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
 .sub-menu {
   display: flex;
   flex-direction: row;
