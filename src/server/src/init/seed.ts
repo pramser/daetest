@@ -15,7 +15,7 @@ export async function init() {
         mimetype: 'text/xml',
         encoding: 'utc-8',
 
-        product: 'schedule',
+        product: 'kangaroo',
         meta: 'unit',
         status: TestRunStatus.Pending,
         type: TestRunType.JUnit
@@ -41,6 +41,17 @@ export async function init() {
         meta: 'perf',
         status: TestRunStatus.Pending,
         type: TestRunType.JUnit
+      },
+      {
+        filename: 'PAN-000: Testing test cases',
+        path: '',
+        mimetype: 'text/xml',
+        encoding: 'utc-8',
+
+        product: 'schedule',
+        meta: 'uat',
+        status: TestRunStatus.Pass,
+        type: TestRunType.Cucumber
       }
     ]);
   }
