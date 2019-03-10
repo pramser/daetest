@@ -73,5 +73,10 @@ export const Mutation = {
       result,
       runid
     });
+  },
+
+  async removeTestCase(_: any, args: any) {
+    const id = args.id;
+    return (await TestCase.query().deleteById(id)) === 1;
   }
 };

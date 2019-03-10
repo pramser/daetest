@@ -97,6 +97,7 @@ declare namespace TestmonApi {
       | null
       | Promise<Array<ITestRun | Promise<ITestRun>> | null>;
     createTestCase: ITestCase | Promise<ITestCase>;
+    removeTestCase: boolean | null | Promise<boolean | null>;
   }
 
   interface ICreateTestRunOnMutationArguments {
@@ -114,6 +115,10 @@ declare namespace TestmonApi {
   interface ICreateTestCaseOnMutationArguments {
     runid: string | Promise<string>;
     testCase: ITestCaseInput | Promise<ITestCaseInput>;
+  }
+
+  interface IRemoveTestCaseOnMutationArguments {
+    id: string | Promise<string>;
   }
 
   interface ITestRunInput {

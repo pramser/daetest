@@ -16,6 +16,7 @@ type Mutation {
   uploadFile(file: Upload!): TestRun!
   multipleUpload(files: [Upload!]!): [TestRun!]
   createTestCase(runid: String!, testCase: TestCaseInput!): TestCase!
+  removeTestCase(id: String!): Boolean
 }
 
 type TestRun {

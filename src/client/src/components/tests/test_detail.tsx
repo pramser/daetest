@@ -9,9 +9,6 @@ import Textarea from 'react-textarea-autosize';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
-// Components
-import CreateTestCase from '../create_test_case';
-
 import '../../prism.css';
 
 const TESTCASES_BY_RUN_ID = gql`
@@ -36,9 +33,7 @@ const CREATE_TEST_CASE = gql`
 
 const REMOVE_TEST_CASE = gql`
   mutation removeTestCase($id: String!) {
-    removeTestCase(id: $id) {
-      id
-    }
+    removeTestCase(id: $id)
   }
 `;
 
@@ -65,9 +60,6 @@ class TestDetail extends Component<any, any> {
               <div>
                 <h2>{runid}</h2>
               </div>
-              <div className="sub-menu">
-                <CreateTestCase runid={runid} onCreate={() => refetch()} />
-              </div>
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
                   <tr>
@@ -78,7 +70,11 @@ class TestDetail extends Component<any, any> {
                 </thead>
                 <tbody>
                   {testcases.map((testcase: any) => (
-                    <TestCaseRow key={testcase.id} testcase={testcase} />
+                    <TestCaseRow
+                      key={testcase.id}
+                      testcase={testcase}
+                      onDelete={() => refetch()}
+                    />
                   ))}
                   <tr>
                     <td colSpan={3}>
@@ -118,7 +114,7 @@ class TestDetail extends Component<any, any> {
 }
 
 class TestCaseRow extends Component<
-  { testcase: any },
+  { testcase: any; onDelete: any },
   { collapse: boolean; isEditing: boolean; info: string }
 > {
   state = { collapse: false, isEditing: false, info: '' };
@@ -201,7 +197,11 @@ class TestCaseRow extends Component<
               <span
                 style={{ marginRight: '0.5em' }}
                 onClick={() =>
-                  removeTestCase({ variables: { id: this.props.testcase.id } })
+                  removeTestCase({
+                    variables: { id: this.props.testcase.id }
+                  })
+                    .then(data => console.log(data))
+                    .then(this.props.onDelete)
                 }
               >
                 <FontAwesomeIcon icon="times" color="grey" />
