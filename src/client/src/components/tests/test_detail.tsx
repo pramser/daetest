@@ -1,13 +1,13 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Table, Collapse } from 'reactstrap';
+import { Table, Collapse, Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Prism from 'prismjs';
 import Textarea from 'react-textarea-autosize';
 
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 
 // Components
 import CreateTestCase from '../create_test_case';
@@ -22,6 +22,22 @@ const TESTCASES_BY_RUN_ID = gql`
       info
       description
       result
+    }
+  }
+`;
+
+const CREATE_TEST_CASE = gql`
+  mutation createTestCase($runid: String!, $testCase: TestCaseInput!) {
+    createTestCase(runid: $runid, testCase: $testCase) {
+      id
+    }
+  }
+`;
+
+const REMOVE_TEST_CASE = gql`
+  mutation removeTestCase($id: String!) {
+    removeTestCase(id: $id) {
+      id
     }
   }
 `;
@@ -57,12 +73,40 @@ class TestDetail extends Component<any, any> {
                   <tr>
                     <th>Result</th>
                     <th>Test Name</th>
+                    <th />
                   </tr>
                 </thead>
                 <tbody>
                   {testcases.map((testcase: any) => (
                     <TestCaseRow key={testcase.id} testcase={testcase} />
                   ))}
+                  <tr>
+                    <td colSpan={3}>
+                      <Mutation mutation={CREATE_TEST_CASE}>
+                        {createTestCase => (
+                          <Input
+                            placeholder="New Test Name..."
+                            onKeyDown={(e: any) => {
+                              if (e.keyCode !== 13) {
+                                return;
+                              }
+                              createTestCase({
+                                variables: {
+                                  runid,
+                                  testCase: {
+                                    name: e.target.value,
+                                    info: '',
+                                    description: '',
+                                    result: 'PASS'
+                                  }
+                                }
+                              }).then(() => refetch());
+                            }}
+                          />
+                        )}
+                      </Mutation>
+                    </td>
+                  </tr>
                 </tbody>
               </Table>
             </div>
@@ -104,7 +148,7 @@ class TestCaseRow extends Component<
   }
 
   render() {
-    const { id, name, info, result } = this.props.testcase;
+    const { id, name, result } = this.props.testcase;
 
     return (
       <tr key={id}>
@@ -117,43 +161,53 @@ class TestCaseRow extends Component<
         <td style={{ width: '90%', flexDirection: 'column' }}>
           <div>
             <span>{name}</span>
-            {info && (
+            <span
+              style={{ float: 'right', marginRight: '0.5em' }}
+              onClick={() => this.toggleInfo()}
+            >
+              <FontAwesomeIcon icon="chevron-down" color="grey" />
+            </span>
+          </div>
+          <Collapse isOpen={this.state.collapse}>
+            <div className="test-info">
+              <div className="edit-info">
+                <span
+                  style={{ float: 'right', cursor: 'pointer' }}
+                  onClick={() => this.toggleEdit()}
+                >
+                  <FontAwesomeIcon
+                    icon="edit"
+                    color="white"
+                    style={{ marginRight: '0.2em' }}
+                  />
+                  Edit
+                </span>
+              </div>
+              {this.state.isEditing === true ? (
+                <Textarea
+                  className="edit-box"
+                  onChange={this.onChange}
+                  value={this.state.info}
+                />
+              ) : (
+                <pre className="language-javascript">{this.state.info}</pre>
+              )}
+            </div>
+          </Collapse>
+        </td>
+        <td>
+          <Mutation mutation={REMOVE_TEST_CASE}>
+            {removeTestCase => (
               <span
-                style={{ float: 'right', marginRight: '0.5em' }}
-                onClick={() => this.toggleInfo()}
+                style={{ marginRight: '0.5em' }}
+                onClick={() =>
+                  removeTestCase({ variables: { id: this.props.testcase.id } })
+                }
               >
-                <FontAwesomeIcon icon="chevron-down" color="grey" />
+                <FontAwesomeIcon icon="times" color="grey" />
               </span>
             )}
-          </div>
-          {info && (
-            <Collapse isOpen={this.state.collapse}>
-              <div className="test-info">
-                <div className="edit-info">
-                  <span
-                    style={{ float: 'right', cursor: 'pointer' }}
-                    onClick={() => this.toggleEdit()}
-                  >
-                    <FontAwesomeIcon
-                      icon="edit"
-                      color="white"
-                      style={{ marginRight: '0.2em' }}
-                    />
-                    Edit
-                  </span>
-                </div>
-                {this.state.isEditing === true ? (
-                  <Textarea
-                    className="edit-box"
-                    onChange={this.onChange}
-                    value={this.state.info}
-                  />
-                ) : (
-                  <pre className="language-javascript">{this.state.info}</pre>
-                )}
-              </div>
-            </Collapse>
-          )}
+          </Mutation>
         </td>
       </tr>
     );
