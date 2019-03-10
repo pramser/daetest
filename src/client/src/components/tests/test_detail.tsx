@@ -71,15 +71,34 @@ class TestDetail extends Component<any, any> {
   }
 }
 
-class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
-  state = { collapse: false };
+class TestCaseRow extends Component<
+  { testcase: any },
+  { collapse: boolean; isEditing: boolean; info: string }
+> {
+  state = { collapse: false, isEditing: false, info: '' };
+
+  constructor(props: any) {
+    super(props);
+
+    this.onChange = this.onChange.bind(this);
+  }
 
   componentDidMount() {
+    this.setState({ info: this.props.testcase.info });
+
     Prism.highlightAll();
   }
 
-  toggle() {
+  toggleInfo() {
     this.setState({ collapse: !this.state.collapse });
+  }
+
+  toggleEdit() {
+    this.setState({ isEditing: !this.state.isEditing });
+  }
+
+  onChange(e: any) {
+    this.setState({ info: e.target.value });
   }
 
   render() {
@@ -99,7 +118,7 @@ class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
             {info && (
               <span
                 style={{ float: 'right', marginRight: '0.5em' }}
-                onClick={() => this.toggle()}
+                onClick={() => this.toggleInfo()}
               >
                 <FontAwesomeIcon icon="chevron-down" color="grey" />
               </span>
@@ -107,7 +126,31 @@ class TestCaseRow extends Component<{ testcase: any }, { collapse: boolean }> {
           </div>
           {info && (
             <Collapse isOpen={this.state.collapse}>
-              <pre className="language-javascript">{info}</pre>
+              <div className="test-info">
+                <div className="edit-info">
+                  <span
+                    style={{ float: 'right', cursor: 'pointer' }}
+                    onClick={() => this.toggleEdit()}
+                  >
+                    <FontAwesomeIcon
+                      icon="edit"
+                      color="white"
+                      style={{ marginRight: '0.2em' }}
+                    />
+                    Edit
+                  </span>
+                </div>
+                {this.state.isEditing === true ? (
+                  <input
+                    type="text"
+                    className="edit-box"
+                    onChange={this.onChange}
+                    value={this.state.info}
+                  />
+                ) : (
+                  <pre className="language-javascript">{this.state.info}</pre>
+                )}
+              </div>
             </Collapse>
           )}
         </td>
