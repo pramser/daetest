@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import { Table, Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import Prism from 'prismjs';
+import Textarea from 'react-textarea-autosize';
 
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
@@ -141,8 +143,7 @@ class TestCaseRow extends Component<
                   </span>
                 </div>
                 {this.state.isEditing === true ? (
-                  <input
-                    type="text"
+                  <Textarea
                     className="edit-box"
                     onChange={this.onChange}
                     value={this.state.info}
