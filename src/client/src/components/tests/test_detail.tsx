@@ -153,7 +153,11 @@ class TestCaseRow extends Component<
                   value={this.state.info}
                 />
               ) : (
-                <pre className="language-javascript">{this.state.info}</pre>
+                <pre className="language-javascript">
+                  {this.state.info
+                    ? this.state.info
+                    : 'Click edit to add test data...'}
+                </pre>
               )}
             </div>
           </Collapse>
