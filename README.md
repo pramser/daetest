@@ -18,7 +18,7 @@ Coming soon...
 
 ## Contributing
 
-After installing [_Docker_](https://docker.com/), just pull the packages for the part of _Daetest_ you want to work in and run `yarn start`.
+After installing [_Docker_](https://docker.com/) and [_Yarn_](https://yarnpkg.com/), just pull the packages for the part of _Daetest_ you want to work in and run `yarn start`.
 
 ```bash
 # I want to develop for the client.
