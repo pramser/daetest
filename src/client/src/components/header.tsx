@@ -26,7 +26,7 @@ class Header extends Component<HeaderProps> {
       <header>
         <Navbar className="Header" light expand="md">
           <NavbarBrand className="Header-brand" href="/">
-            test-mon
+            daetest
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
