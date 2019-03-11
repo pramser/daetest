@@ -94,6 +94,8 @@ body {
 }
 
 .test-info {
+  margin-top: 0.5em;
+
   display: flex;
   flex-direction: column;
 }
@@ -101,9 +103,11 @@ body {
 .edit-info {
   color: #f8f8f2;
   background-color: #272822;
+
   font-size: 0.75em;
+
   border-radius: 0.3em;
-  padding: 1em;
+  padding: 0.5em 1em;
 }
 
 .edit-box {

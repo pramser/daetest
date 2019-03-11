@@ -23,21 +23,7 @@ const TESTCASES_BY_RUN_ID = gql`
   }
 `;
 
-const CREATE_TEST_CASE = gql`
-  mutation createTestCase($runid: String!, $testCase: TestCaseInput!) {
-    createTestCase(runid: $runid, testCase: $testCase) {
-      id
-    }
-  }
-`;
-
-const REMOVE_TEST_CASE = gql`
-  mutation removeTestCase($id: String!) {
-    removeTestCase(id: $id)
-  }
-`;
-
-class TestDetail extends Component<any, any> {
+class TestDetail extends Component<{ location: { pathname: string } }, any> {
   render() {
     const paths = this.props.location.pathname.split('/');
     const runid = paths[paths.length - 1];
@@ -76,33 +62,7 @@ class TestDetail extends Component<any, any> {
                       onDelete={() => refetch()}
                     />
                   ))}
-                  <tr>
-                    <td colSpan={3}>
-                      <Mutation mutation={CREATE_TEST_CASE}>
-                        {createTestCase => (
-                          <Input
-                            placeholder="New Test Name..."
-                            onKeyDown={(e: any) => {
-                              if (e.keyCode !== 13) {
-                                return;
-                              }
-                              createTestCase({
-                                variables: {
-                                  runid,
-                                  testCase: {
-                                    name: e.target.value,
-                                    info: '',
-                                    description: '',
-                                    result: 'PASS'
-                                  }
-                                }
-                              }).then(() => refetch());
-                            }}
-                          />
-                        )}
-                      </Mutation>
-                    </td>
-                  </tr>
+                  <NewTestCaseRow runid={runid} onCreate={() => refetch()} />
                 </tbody>
               </Table>
             </div>
@@ -112,6 +72,12 @@ class TestDetail extends Component<any, any> {
     );
   }
 }
+
+const REMOVE_TEST_CASE = gql`
+  mutation removeTestCase($id: String!) {
+    removeTestCase(id: $id)
+  }
+`;
 
 class TestCaseRow extends Component<
   { testcase: any; onDelete: any },
@@ -192,26 +158,69 @@ class TestCaseRow extends Component<
           </Collapse>
         </td>
         <td>
-          <Mutation mutation={REMOVE_TEST_CASE}>
-            {removeTestCase => (
-              <span
-                style={{ marginRight: '0.5em' }}
-                onClick={() =>
-                  removeTestCase({
-                    variables: { id: this.props.testcase.id }
-                  })
-                    .then(data => console.log(data))
-                    .then(this.props.onDelete)
-                }
-              >
-                <FontAwesomeIcon icon="times" color="grey" />
-              </span>
-            )}
-          </Mutation>
+          <RemoveButton
+            id={this.props.testcase.id}
+            onClick={this.props.onDelete}
+          />
         </td>
       </tr>
     );
   }
 }
+
+const RemoveButton = (props: { id: string; onClick: any }) => (
+  <Mutation mutation={REMOVE_TEST_CASE}>
+    {removeTestCase => (
+      <span
+        style={{ marginRight: '0.5em' }}
+        onClick={() =>
+          removeTestCase({
+            variables: { id: props.id }
+          }).then(props.onClick)
+        }
+      >
+        <FontAwesomeIcon icon="times" color="grey" />
+      </span>
+    )}
+  </Mutation>
+);
+
+const CREATE_TEST_CASE = gql`
+  mutation createTestCase($runid: String!, $testCase: TestCaseInput!) {
+    createTestCase(runid: $runid, testCase: $testCase) {
+      id
+    }
+  }
+`;
+
+const NewTestCaseRow = (props: { runid: string; onCreate: any }) => (
+  <tr>
+    <td colSpan={3}>
+      <Mutation mutation={CREATE_TEST_CASE}>
+        {createTestCase => (
+          <Input
+            placeholder="New Test Name..."
+            onKeyDown={(e: any) => {
+              if (e.keyCode !== 13) {
+                return;
+              }
+              createTestCase({
+                variables: {
+                  runid: props.runid,
+                  testCase: {
+                    name: e.target.value,
+                    info: '',
+                    description: '',
+                    result: 'PASS'
+                  }
+                }
+              }).then(props.onCreate);
+            }}
+          />
+        )}
+      </Mutation>
+    </td>
+  </tr>
+);
 
 export default TestDetail;
