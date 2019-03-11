@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import { Table, Collapse, Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Textarea from 'react-textarea-autosize';
 
 import Prism from 'prismjs';
-import Textarea from 'react-textarea-autosize';
+import '../../prism.css';
 
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
-import '../../prism.css';
+import { TestCase } from '../../types/Types';
 
 const TESTCASES_BY_RUN_ID = gql`
   query testCasesByRunId($runid: String!) {
@@ -80,7 +81,7 @@ const REMOVE_TEST_CASE = gql`
 `;
 
 class TestCaseRow extends Component<
-  { testcase: any; onDelete: any },
+  { testcase: TestCase; onDelete: any },
   { collapse: boolean; isEditing: boolean; info: string }
 > {
   state = { collapse: false, isEditing: false, info: '' };
@@ -160,7 +161,7 @@ class TestCaseRow extends Component<
         <td>
           <RemoveButton
             id={this.props.testcase.id}
-            onClick={this.props.onDelete}
+            onDelete={this.props.onDelete}
           />
         </td>
       </tr>
@@ -168,7 +169,7 @@ class TestCaseRow extends Component<
   }
 }
 
-const RemoveButton = (props: { id: string; onClick: any }) => (
+const RemoveButton = (props: { id: string; onDelete: any }) => (
   <Mutation mutation={REMOVE_TEST_CASE}>
     {removeTestCase => (
       <span
@@ -176,7 +177,7 @@ const RemoveButton = (props: { id: string; onClick: any }) => (
         onClick={() =>
           removeTestCase({
             variables: { id: props.id }
-          }).then(props.onClick)
+          }).then(props.onDelete)
         }
       >
         <FontAwesomeIcon icon="times" color="grey" />

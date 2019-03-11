@@ -1,4 +1,4 @@
-export type File = {
+export type TestRun = {
   id: string;
   path: string;
   filename: string;
@@ -25,11 +25,12 @@ export enum TestRunType {
   Cucumber
 }
 
-export type Result = {
-  id: number;
+export type TestCase = {
+  id: string;
   name: string;
   info: string;
   description: string;
+  result: string;
 };
 
 export enum TestCaseResult {

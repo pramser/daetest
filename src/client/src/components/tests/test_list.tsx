@@ -8,7 +8,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 // Types
-import { File, TestRunType } from '../../types/Types';
+import { TestRun, TestRunType } from '../../types/Types';
 
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -47,7 +47,7 @@ class TestList extends Component<{ history: any }, any> {
             return 'Error occurred!';
           }
 
-          var testRuns = data.allTestRuns as [File];
+          var testruns = data.allTestRuns as [TestRun];
 
           return (
             <div className="TestList">
@@ -67,13 +67,13 @@ class TestList extends Component<{ history: any }, any> {
                   </tr>
                 </thead>
                 <tbody>
-                  {testRuns
+                  {testruns
                     .sort((a, b) => compareDesc(a.createdat, b.createdat))
-                    .map((file: File) => (
+                    .map((testrun: TestRun) => (
                       <ResultRow
-                        key={file.id}
-                        result={file}
-                        onClick={() => this.handleRowClick(file.id)}
+                        key={testrun.id}
+                        testrun={testrun}
+                        onClick={() => this.handleRowClick(testrun.id)}
                       />
                     ))}
                 </tbody>
@@ -87,10 +87,10 @@ class TestList extends Component<{ history: any }, any> {
 }
 
 const ResultRow = (props: {
-  result: File;
+  testrun: TestRun;
   onClick?: MouseEventHandler<any>;
 }) => {
-  const { filename, product, meta, type, createdat } = props.result;
+  const { filename, product, meta, type, createdat } = props.testrun;
 
   return (
     <tr className="result" onClick={props.onClick}>
