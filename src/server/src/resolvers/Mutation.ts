@@ -78,5 +78,15 @@ export const Mutation = {
   async removeTestCase(_: any, args: any) {
     const id = args.id;
     return (await TestCase.query().deleteById(id)) === 1;
+  },
+
+  async modifyTestCase(_: any, args: any) {
+    const id = args.id;
+    var model = args.testCase;
+
+    // Sanitize my model of empty fields.
+    Object.keys(model).forEach(key => model[key] == null && delete model[key]);
+
+    return TestCase.query().updateAndFetchById(id, model);
   }
 };
