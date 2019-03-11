@@ -30,11 +30,7 @@ const GET_TEST_RUNS = gql`
   }
 `;
 
-class TestList extends Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
+class TestList extends Component<{ history: any }, any> {
   handleRowClick = (id: string) => {
     this.props.history.push(`/tests/${id}`);
   };
@@ -98,15 +94,9 @@ const ResultRow = (props: {
 
   return (
     <tr className="result" onClick={props.onClick}>
-      <td>
-        <FontAwesomeIcon icon="times" color="red" />
-      </td>
+      <ResultStatus />
       <td style={{ flexDirection: 'column' }}>
         <div className="file-name">{filename}</div>
-        <div className="description-ellipsis">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
         <div style={{ flexDirection: 'row' }}>
           <span className="result-date meta-pill">
             <FontAwesomeIcon icon="clock" className="right-pad" />
@@ -120,24 +110,42 @@ const ResultRow = (props: {
           </Badge>
         </div>
       </td>
-      <td>
-        {type !== TestRunType.None ? (
-          <img
-            src={`${process.env.PUBLIC_URL}/images/${type}.png`}
-            height="50"
-            alt="None"
-          />
-        ) : (
-          'None'
-        )}
-      </td>
-      <td>{'pramser'}</td>
-      <td>PAN-000</td>
-      <td>
-        <FontAwesomeIcon icon="chevron-right" color="grey" />
-      </td>
+      <TestIcon type={type} />
+      <Assignee />
+      <Issue />
+      <Chevron />
     </tr>
   );
 };
+
+const ResultStatus = () => (
+  <td>
+    <FontAwesomeIcon icon="times" color="red" />
+  </td>
+);
+
+const TestIcon = (props: { type: TestRunType }) => (
+  <td>
+    {props.type !== TestRunType.None ? (
+      <img
+        src={`${process.env.PUBLIC_URL}/images/${props.type}.png`}
+        height="50"
+        alt="None"
+      />
+    ) : (
+      'None'
+    )}
+  </td>
+);
+
+const Assignee = () => <td>{'n/a'}</td>;
+
+const Issue = () => <td>{'n/a'}</td>;
+
+const Chevron = () => (
+  <td>
+    <FontAwesomeIcon icon="chevron-right" color="grey" />
+  </td>
+);
 
 export default TestList;
