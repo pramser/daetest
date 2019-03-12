@@ -80,6 +80,14 @@ const REMOVE_TEST_CASE = gql`
   }
 `;
 
+const MODIFY_TEST_CASE = gql`
+  mutation modifyTestCase($id: String!, $testCase: TestCaseInput!) {
+    modifyTestCase(id: $id, testCase: $testCase) {
+      id
+    }
+  }
+`;
+
 class TestCaseRow extends Component<
   { testcase: TestCase; onDelete: any },
   { collapse: boolean; isEditing: boolean; info: string }
@@ -134,17 +142,31 @@ class TestCaseRow extends Component<
           <Collapse isOpen={this.state.collapse}>
             <div className="test-info">
               <div className="edit-info">
-                <span
-                  style={{ float: 'right', cursor: 'pointer' }}
-                  onClick={() => this.toggleEdit()}
-                >
-                  <FontAwesomeIcon
-                    icon="edit"
-                    color="white"
-                    style={{ marginRight: '0.2em' }}
-                  />
-                  Edit
-                </span>
+                <Mutation mutation={MODIFY_TEST_CASE}>
+                  {modifyTestCase => (
+                    <span
+                      style={{ float: 'right', cursor: 'pointer' }}
+                      onClick={() => {
+                        if (this.state.isEditing) {
+                          modifyTestCase({
+                            variables: {
+                              id: this.props.testcase.id,
+                              testCase: { info: this.state.info }
+                            }
+                          });
+                        }
+                        this.toggleEdit();
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon="edit"
+                        color="white"
+                        style={{ marginRight: '0.2em' }}
+                      />
+                      Edit
+                    </span>
+                  )}
+                </Mutation>
               </div>
               {this.state.isEditing === true ? (
                 <Textarea
