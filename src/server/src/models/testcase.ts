@@ -14,7 +14,6 @@ export class TestCase extends Model {
 
   static jsonSchema = {
     type: 'object',
-    required: ['name'],
 
     properties: {
       name: { type: 'string', minLength: 1 }

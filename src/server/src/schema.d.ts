@@ -135,10 +135,10 @@ declare namespace TestmonApi {
   }
 
   interface ITestCaseInput {
-    name: string | Promise<string>;
-    info: string | Promise<string>;
-    description: string | Promise<string>;
-    result: TestCaseResult | Promise<TestCaseResult>;
+    name?: string | null | Promise<string | null>;
+    info?: string | null | Promise<string | null>;
+    description?: string | null | Promise<string | null>;
+    result?: TestCaseResult | null | Promise<TestCaseResult | null>;
   }
 }
 

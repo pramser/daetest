@@ -66,10 +66,10 @@ type TestCase {
 }
 
 input TestCaseInput {
-  name: String!
-  info: String!
-  description: String!
-  result: TestCaseResult!
+  name: String
+  info: String
+  description: String
+  result: TestCaseResult
 }
 
 enum TestCaseResult {
