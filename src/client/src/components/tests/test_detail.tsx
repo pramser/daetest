@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Table, Collapse, Input } from 'reactstrap';
+import { Table, Collapse, Input, ButtonGroup, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Textarea from 'react-textarea-autosize';
 
@@ -10,7 +10,7 @@ import '../../prism.css';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
-import { TestCase } from '../../types/Types';
+import { TestCase, TestCaseResult } from '../../types/Types';
 
 const TESTCASES_BY_RUN_ID = gql`
   query testCasesByRunId($runid: String!) {
@@ -90,9 +90,9 @@ const MODIFY_TEST_CASE = gql`
 
 class TestCaseRow extends Component<
   { testcase: TestCase; onDelete: any },
-  { collapse: boolean; isEditing: boolean; info: string }
+  { collapse: boolean; isEditing: boolean; info: string; result: string }
 > {
-  state = { collapse: false, isEditing: false, info: '' };
+  state = { collapse: false, isEditing: false, info: '', result: 'PASS' };
 
   constructor(props: any) {
     super(props);
@@ -101,7 +101,10 @@ class TestCaseRow extends Component<
   }
 
   componentDidMount() {
-    this.setState({ info: this.props.testcase.info });
+    this.setState({
+      info: this.props.testcase.info,
+      result: this.props.testcase.result
+    });
 
     Prism.highlightAll();
   }
@@ -119,16 +122,15 @@ class TestCaseRow extends Component<
   }
 
   render() {
-    const { id, name, result } = this.props.testcase;
+    const { id, name } = this.props.testcase;
 
     return (
       <tr key={id}>
-        <td style={{ width: '10%' }}>
-          <FontAwesomeIcon
-            icon={result === 'PASS' ? 'check' : 'times'}
-            color={result === 'PASS' ? 'green' : 'red'}
-          />
-        </td>
+        <TestResult
+          id={id}
+          result={this.state.result}
+          onUpdate={(result: string) => this.setState({ result })}
+        />
         <td style={{ width: '90%', flexDirection: 'column' }}>
           <div>
             <span>{name}</span>
@@ -194,6 +196,51 @@ class TestCaseRow extends Component<
     );
   }
 }
+
+const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
+  const isPass = props.result === 'PASS';
+
+  return (
+    <Mutation mutation={MODIFY_TEST_CASE}>
+      {modifyTestCase => (
+        <td style={{ width: '10%' }}>
+          <ButtonGroup>
+            <Button
+              outline
+              color={isPass ? 'success' : 'secondary'}
+              disabled={isPass}
+              onClick={() =>
+                modifyTestCase({
+                  variables: {
+                    id: props.id,
+                    testCase: { result: 'PASS' }
+                  }
+                }).then(props.onUpdate('PASS'))
+              }
+            >
+              <FontAwesomeIcon icon="check" color={isPass ? 'green' : 'grey'} />
+            </Button>
+            <Button
+              outline
+              color={!isPass ? 'danger' : 'secondary'}
+              disabled={!isPass}
+              onClick={() =>
+                modifyTestCase({
+                  variables: {
+                    id: props.id,
+                    testCase: { result: 'FAIL' }
+                  }
+                }).then(props.onUpdate('FAIL'))
+              }
+            >
+              <FontAwesomeIcon icon="times" color={!isPass ? 'red' : 'grey'} />
+            </Button>
+          </ButtonGroup>
+        </td>
+      )}
+    </Mutation>
+  );
+};
 
 const RemoveButton = (props: { id: string; onDelete: any }) => (
   <Mutation mutation={REMOVE_TEST_CASE}>
