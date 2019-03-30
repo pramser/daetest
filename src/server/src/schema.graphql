@@ -7,6 +7,7 @@ scalar Upload
 type Query {
   allTestRuns: [TestRun]
   allTestCases: [TestCase!]!
+  testRunById(id: ID!): TestRun
   testCaseById(id: ID!): TestCase
   testCasesByRunId(runid: String!): [TestCase]
   getDashboardReport: DashboardReport!

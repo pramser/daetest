@@ -12,6 +12,13 @@ export const Query = {
     const testCases = await TestCase.query();
     return testCases;
   },
+  async testRunById(_: any, args: TestmonApi.ITestRunByIdOnQueryArguments) {
+    const testRun = await TestRun.query().findById(args.id as string);
+    if (!testRun) {
+      return null;
+    }
+    return testRun;
+  },
   async testCaseById(_: any, args: TestmonApi.ITestCaseByIdOnQueryArguments) {
     const testCase = await TestCase.query().findById(args.id as string);
     if (!testCase) {

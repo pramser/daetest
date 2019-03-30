@@ -30,12 +30,17 @@ declare namespace TestmonApi {
     allTestCases:
       | Array<ITestCase | Promise<ITestCase>>
       | Promise<Array<ITestCase | Promise<ITestCase>>>;
+    testRunById: ITestRun | null | Promise<ITestRun | null>;
     testCaseById: ITestCase | null | Promise<ITestCase | null>;
     testCasesByRunId:
       | Array<ITestCase | null | Promise<ITestCase | null>>
       | null
       | Promise<Array<ITestCase | null | Promise<ITestCase | null>> | null>;
     getDashboardReport: IDashboardReport | Promise<IDashboardReport>;
+  }
+
+  interface ITestRunByIdOnQueryArguments {
+    id: string | Promise<string>;
   }
 
   interface ITestCaseByIdOnQueryArguments {
