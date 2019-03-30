@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import {
   Card,
-  CardHeader,
   CardBody,
   Table,
   Collapse,
@@ -19,7 +18,20 @@ import '../../prism.css';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
-import { TestCase, TestCaseResult } from '../../types/Types';
+import { TestRun, TestCase } from '../../types/Types';
+
+const TEST_RUN_BY_ID = gql`
+  query testRunById($id: String!) {
+    testRunById(id: $id) {
+      id
+      filename
+      product
+      meta
+      type
+      createdat
+    }
+  }
+`;
 
 const TESTCASES_BY_RUN_ID = gql`
   query testCasesByRunId($runid: String!) {
@@ -53,13 +65,33 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
 
           return (
             <div className="TestDetail">
-              <div>
-                <h2>{runid}</h2>
-              </div>
-              <br />
-              <Card>
-                <CardBody>Name, timing, product, etc...</CardBody>
-              </Card>
+              <Query query={TEST_RUN_BY_ID} variables={{ id: runid }}>
+                {({ loading, error, data, refetch }) => {
+                  if (loading) {
+                    return 'Is loading...';
+                  }
+
+                  if (error) {
+                    return 'Error occurred!';
+                  }
+
+                  const {
+                    id,
+                    filename,
+                    product,
+                    meta
+                  } = data.testRunById as TestRun;
+
+                  return (
+                    <div>
+                      <h3>{filename}</h3>
+                      <Card>
+                        <CardBody>{`product: ${product} - meta: ${meta}`}</CardBody>
+                      </Card>
+                    </div>
+                  );
+                }}
+              </Query>
               <br />
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
@@ -302,7 +334,9 @@ const NewTestCaseRow = (props: { runid: string; onCreate: any }) => (
                     result: 'PASS'
                   }
                 }
-              }).then(props.onCreate);
+              }) // Callback, then reset my test box for new tests.
+                .then(props.onCreate)
+                .then((e.target.value = null));
             }}
           />
         )}
