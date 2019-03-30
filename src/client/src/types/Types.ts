@@ -38,3 +38,17 @@ export enum TestCaseResult {
   Pass,
   Fail
 }
+
+export type DashboardReport = {
+  testsTotalCount: number;
+  testsFailingCount: number;
+  testsFailing: [TestCase];
+  testsUnassignedCount: number;
+  testsUnassigned: [TestCase];
+  assignmentMetadatas: [AssignmentMetadata];
+  productMetadatas: [ProductMetadata];
+};
+
+export type AssignmentMetadata = {};
+
+export type ProductMetadata = {};
