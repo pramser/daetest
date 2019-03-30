@@ -1,6 +1,15 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Table, Collapse, Input, ButtonGroup, Button } from 'reactstrap';
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Table,
+  Collapse,
+  Input,
+  ButtonGroup,
+  Button
+} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Textarea from 'react-textarea-autosize';
 
@@ -47,6 +56,11 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
               <div>
                 <h2>{runid}</h2>
               </div>
+              <br />
+              <Card>
+                <CardBody>Name, timing, product, etc...</CardBody>
+              </Card>
+              <br />
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
                   <tr>
