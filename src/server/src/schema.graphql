@@ -9,6 +9,7 @@ type Query {
   allTestCases: [TestCase!]!
   testCaseById(id: ID!): TestCase
   testCasesByRunId(runid: String!): [TestCase]
+  getDashboardReport: DashboardReport!
 }
 
 type Mutation {
@@ -76,4 +77,24 @@ enum TestCaseResult {
   NONE
   PASS
   FAIL
+}
+
+type DashboardReport {
+  testsTotalCount: Int!
+  testsFailingCount: Int!
+  testsFailing: [TestCase]
+  testsUnassignedCount: Int!
+  testsUnassigned: [TestCase]
+  assignmentMetadatas: [AssignmentMetadata]
+  productMetadatas: [ProductMetadata]
+}
+
+type AssignmentMetadata {
+  assignedName: String!
+  testCount: Int!
+}
+
+type ProductMetadata {
+  product: String!
+  testCount: Int!
 }

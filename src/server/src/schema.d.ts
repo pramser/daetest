@@ -35,6 +35,7 @@ declare namespace TestmonApi {
       | Array<ITestCase | null | Promise<ITestCase | null>>
       | null
       | Promise<Array<ITestCase | null | Promise<ITestCase | null>> | null>;
+    getDashboardReport: IDashboardReport | Promise<IDashboardReport>;
   }
 
   interface ITestCaseByIdOnQueryArguments {
@@ -86,6 +87,45 @@ declare namespace TestmonApi {
     NONE = 'NONE',
     PASS = 'PASS',
     FAIL = 'FAIL'
+  }
+
+  interface IDashboardReport {
+    __typename: 'DashboardReport';
+    testsTotalCount: number | Promise<number>;
+    testsFailingCount: number | Promise<number>;
+    testsFailing:
+      | Array<ITestCase | null | Promise<ITestCase | null>>
+      | null
+      | Promise<Array<ITestCase | null | Promise<ITestCase | null>> | null>;
+    testsUnassignedCount: number | Promise<number>;
+    testsUnassigned:
+      | Array<ITestCase | null | Promise<ITestCase | null>>
+      | null
+      | Promise<Array<ITestCase | null | Promise<ITestCase | null>> | null>;
+    assignmentMetadatas:
+      | Array<IAssignmentMetadata | null | Promise<IAssignmentMetadata | null>>
+      | null
+      | Promise<Array<
+          IAssignmentMetadata | null | Promise<IAssignmentMetadata | null>
+        > | null>;
+    productMetadatas:
+      | Array<IProductMetadata | null | Promise<IProductMetadata | null>>
+      | null
+      | Promise<Array<
+          IProductMetadata | null | Promise<IProductMetadata | null>
+        > | null>;
+  }
+
+  interface IAssignmentMetadata {
+    __typename: 'AssignmentMetadata';
+    assignedName: string | Promise<string>;
+    testCount: number | Promise<number>;
+  }
+
+  interface IProductMetadata {
+    __typename: 'ProductMetadata';
+    product: string | Promise<string>;
+    testCount: number | Promise<number>;
   }
 
   interface IMutation {

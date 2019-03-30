@@ -31,5 +31,24 @@ export const Query = {
       return null;
     }
     return testCases;
+  },
+  async getDashboardReport(_: any) {
+    const testsTotalCount = 0;
+    const testsFailingCount = 1;
+    const testsFailing = [{}];
+    const testsUnassignedCount = 2;
+    const testsUnassigned = [{}];
+    const assignmentMetadatas = [{ assignedName: 'pramser', testCount: 3 }];
+    const productMetadatas = [{ product: 'schedule', testCount: 4 }];
+
+    return {
+      testsTotalCount,
+      testsFailingCount,
+      testsFailing,
+      testsUnassignedCount,
+      testsUnassigned,
+      assignmentMetadatas,
+      productMetadatas
+    };
   }
 };
