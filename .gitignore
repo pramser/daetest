@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules
-/src/client/node_modules
-/src/server/node_modules
+/src/daetest-ui/node_modules
+/src/daetest-server/node_modules
 
 # testing
 /coverage
