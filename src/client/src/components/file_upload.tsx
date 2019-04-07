@@ -33,7 +33,7 @@ class FileUpload extends Component<
   render() {
     return (
       <div>
-        <Button outline onClick={this.toggle}>
+        <Button size="sm" outline onClick={this.toggle}>
           <FontAwesomeIcon
             style={{ marginRight: '0.40em' }}
             icon="file-upload"

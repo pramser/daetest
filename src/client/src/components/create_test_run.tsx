@@ -65,7 +65,12 @@ class CreateTestRun extends Component<
 
     return (
       <div>
-        <Button outline onClick={this.toggle} style={{ marginRight: '0.40em' }}>
+        <Button
+          outline
+          size="sm"
+          onClick={this.toggle}
+          style={{ marginRight: '0.40em' }}
+        >
           <FontAwesomeIcon style={{ marginRight: '0.40em' }} icon="file" />
           Create Test Run
         </Button>
