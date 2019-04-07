@@ -1,5 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
+import { Card, CardHeader, CardBody, Col, Row, Input, Table } from 'reactstrap';
 
 class Config extends Component<
   any,
@@ -23,14 +24,33 @@ class Config extends Component<
   render() {
     return (
       <div className="Config">
-        <div className="alm">
-          <span>{this.state.alm.name}</span>
-        </div>
-        <div className="users">
-          {this.state.users.map((user: any) => (
-            <span>{user.name}</span>
-          ))}
-        </div>
+        <Card>
+          <CardHeader>ALM Integration</CardHeader>
+          <CardBody>
+            <Row>
+              <Col size={4}>{this.state.alm.name}</Col>
+              <Col size={8}>
+                <Input type="text" value={this.state.alm.url} />
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
+        <Table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>E-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.users.map((user: any) => (
+              <tr>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     );
   }

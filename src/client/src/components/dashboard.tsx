@@ -38,8 +38,8 @@ class Dashboard extends Component {
             <div className="Dashboard">
               <button onClick={() => refetch()}>Refresh</button>
               <Card>
-                <CardHeader>Total Tests</CardHeader>
-                <CardBody>{testsTotalCount}</CardBody>
+                <CardHeader>Test Success Breakdown</CardHeader>
+                <CardBody>Hello</CardBody>
               </Card>
               <Card>
                 <CardHeader>Failing Tests</CardHeader>
