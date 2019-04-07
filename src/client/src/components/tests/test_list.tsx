@@ -8,12 +8,13 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 // Types
-import { TestRun, TestRunType } from '../../types/Types';
+import { TestRun } from '../../types/Types';
 
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Components
+import TestIcon from './test_icon';
 import CreateTestRun from '../create_test_run';
 import FileUpload from '../file_upload';
 
@@ -110,7 +111,9 @@ const ResultRow = (props: {
           </Badge>
         </div>
       </td>
-      <TestIcon type={type} />
+      <td>
+        <TestIcon type={type} size="sm" />
+      </td>
       <Assignee />
       <Issue />
       <Chevron />
@@ -121,20 +124,6 @@ const ResultRow = (props: {
 const ResultStatus = () => (
   <td>
     <FontAwesomeIcon icon="times" color="red" />
-  </td>
-);
-
-const TestIcon = (props: { type: TestRunType }) => (
-  <td>
-    {props.type !== TestRunType.None ? (
-      <img
-        src={`${process.env.PUBLIC_URL}/images/${props.type}.png`}
-        height="50"
-        alt="None"
-      />
-    ) : (
-      'None'
-    )}
   </td>
 );
 
