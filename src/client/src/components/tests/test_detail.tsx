@@ -20,6 +20,7 @@ import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
 import { TestRun, TestCase } from '../../types/Types';
+import TestIcon from './test_icon';
 
 const TEST_RUN_BY_ID = gql`
   query testRunById($id: String!) {
@@ -67,7 +68,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
           return (
             <div className="TestDetail">
               <Query query={TEST_RUN_BY_ID} variables={{ id: runid }}>
-                {({ loading, error, data, refetch }) => {
+                {({ loading, error, data }) => {
                   if (loading) {
                     return 'Is loading...';
                   }
@@ -77,7 +78,6 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                   }
 
                   const {
-                    id,
                     filename,
                     product,
                     meta,
@@ -106,7 +106,9 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                           Meta:
                           <Badge color="secondary">{meta}</Badge>
                         </Col>
-                        <Col>{type}</Col>
+                        <Col>
+                          <TestIcon type={type} size="lg" />
+                        </Col>
                       </Row>
                     </div>
                   );
