@@ -1,8 +1,9 @@
 // Dependencies
 import React, { Component } from 'react';
 import {
-  Card,
-  CardBody,
+  Row,
+  Col,
+  Badge,
   Table,
   Collapse,
   Input,
@@ -79,15 +80,34 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                     id,
                     filename,
                     product,
-                    meta
+                    meta,
+                    type
                   } = data.testRunById as TestRun;
 
                   return (
                     <div>
-                      <h3>{filename}</h3>
-                      <Card>
-                        <CardBody>{`product: ${product} - meta: ${meta}`}</CardBody>
-                      </Card>
+                      <Row>
+                        <Col>
+                          <h3>{filename}</h3>
+                        </Col>
+                        <Col style={{ textAlign: 'right' }}>
+                          <Button outline size="sm">
+                            Edit
+                          </Button>
+                        </Col>
+                      </Row>
+                      <hr />
+                      <Row>
+                        <Col>
+                          Product:
+                          <Badge color="primary">{product}</Badge>
+                        </Col>
+                        <Col>
+                          Meta:
+                          <Badge color="secondary">{meta}</Badge>
+                        </Col>
+                        <Col>{type}</Col>
+                      </Row>
                     </div>
                   );
                 }}
