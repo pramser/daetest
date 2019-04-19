@@ -14,12 +14,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Textarea from 'react-textarea-autosize';
 
 import Prism from 'prismjs';
-import '../../prism.css';
+import '../prism.css';
 
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
-import { TestRun, TestCase } from '../../types/Types';
+import { TestRun, TestCase } from '../types/Types';
 import TestIcon from './test_icon';
 
 const TEST_RUN_BY_ID = gql`

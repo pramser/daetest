@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { TestRunType } from '../../types/Types';
+import { TestRunType } from '../types/Types';
 
 class TestIcon extends Component<{ type: TestRunType; size: string }, any> {
   render() {

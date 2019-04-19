@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 // Components
 import Header from './components/header';
 import Dashboard from './components/dashboard';
-import Tests from './components/tests/tests';
+import Tests from './components/tests';
 import Config from './components/config';
 
 class App extends Component {

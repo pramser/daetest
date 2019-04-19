@@ -8,15 +8,15 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 // Types
-import { TestRun } from '../../types/Types';
+import { TestRun } from '../types/Types';
 
 // Data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Components
 import TestIcon from './test_icon';
-import CreateTestRun from '../create_test_run';
-import FileUpload from '../file_upload';
+import CreateTestRun from './create_test_run';
+import FileUpload from './file_upload';
 
 const GET_TEST_RUNS = gql`
   {
