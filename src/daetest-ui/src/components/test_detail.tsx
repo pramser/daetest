@@ -108,7 +108,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                       <hr />
                       <Row>
                         <Col className="meta-col">
-                          <MetaIcon text="P" size="lg" />
+                          <MetaIcon text="P" size="lg" color="primary" />
                           <div className="meta-info">
                             <Badge className="meta-pill" color="primary">
                               {product}
@@ -124,7 +124,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                           </div>
                         </Col>
                         <Col className="meta-col">
-                          <MetaIcon text="U" size="lg" />
+                          <MetaIcon text="U" size="lg" color="secondary" />
                           <div className="meta-info">
                             <Badge className="meta-pill" color="secondary">
                               {meta}

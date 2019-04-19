@@ -62,7 +62,6 @@ body {
 
 .MetaIcon {
   font-size: 2em;
-  border: 1px solid black;
   border-radius: 0.25em;
   display: flex;
   flex-direction: row;
