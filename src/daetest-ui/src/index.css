@@ -60,6 +60,16 @@ body {
   margin-left: 0.75em;
 }
 
+.MetaIcon {
+  font-size: 2em;
+  border: 1px solid black;
+  border-radius: 0.25em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .Config {
   display: flex;
   flex-direction: column;

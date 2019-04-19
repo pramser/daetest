@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import {
   Row,
   Col,
-  Badge,
   Table,
   Collapse,
   Input,
   ButtonGroup,
-  Button
+  Button,
+  Badge
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Textarea from 'react-textarea-autosize';
@@ -21,6 +21,7 @@ import { Query, Mutation } from 'react-apollo';
 
 import { TestRun, TestCase } from '../types/Types';
 import TestIcon from './test_icon';
+import MetaIcon from './meta_icon';
 
 const TEST_RUN_BY_ID = gql`
   query testRunById($id: String!) {
@@ -106,7 +107,15 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                       </Row>
                       <hr />
                       <Row>
-                        <Col className="meta-col">Info</Col>
+                        <Col className="meta-col">
+                          <MetaIcon text="P" size="lg" />
+                          <div className="meta-info">
+                            <Badge className="meta-pill" color="primary">
+                              {product}
+                            </Badge>
+                            <span>Test-Product</span>
+                          </div>
+                        </Col>
                         <Col className="meta-col">
                           <TestIcon type={type} size="lg" />
                           <div className="meta-info">
@@ -114,7 +123,15 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                             <span>Version 0.0.0</span>
                           </div>
                         </Col>
-                        <Col className="meta-col">Info</Col>
+                        <Col className="meta-col">
+                          <MetaIcon text="U" size="lg" />
+                          <div className="meta-info">
+                            <Badge className="meta-pill" color="secondary">
+                              {meta}
+                            </Badge>
+                            <span>Test-Meta</span>
+                          </div>
+                        </Col>
                       </Row>
                     </div>
                   );
