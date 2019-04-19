@@ -43,6 +43,23 @@ body {
   background-color: #eee;
 }
 
+.test-guid {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.meta-col {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.meta-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.75em;
+}
+
 .Config {
   display: flex;
   flex-direction: column;

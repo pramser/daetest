@@ -78,6 +78,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                   }
 
                   const {
+                    id,
                     filename,
                     product,
                     meta,
@@ -96,25 +97,31 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                           </Button>
                         </Col>
                       </Row>
-                      <hr />
                       <Row>
                         <Col>
-                          Product:
-                          <Badge color="primary">{product}</Badge>
+                          <span className="test-guid">
+                            <b>GUID:</b> {id}
+                          </span>
                         </Col>
-                        <Col>
-                          Meta:
-                          <Badge color="secondary">{meta}</Badge>
-                        </Col>
-                        <Col>
+                      </Row>
+                      <hr />
+                      <Row>
+                        <Col className="meta-col">Info</Col>
+                        <Col className="meta-col">
                           <TestIcon type={type} size="lg" />
+                          <div className="meta-info">
+                            <span>{type}</span>
+                            <span>Version 0.0.0</span>
+                          </div>
                         </Col>
+                        <Col className="meta-col">Info</Col>
                       </Row>
                     </div>
                   );
                 }}
               </Query>
-              <br />
+              <hr />
+              <h4>Test Cases</h4>
               <Table style={{ border: '2px solid #ddd' }}>
                 <thead>
                   <tr>
