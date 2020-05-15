@@ -26,7 +26,7 @@ class FileUpload extends Component<
 
     this.state = {
       isOpen: false,
-      file: null
+      file: null,
     };
   }
 
@@ -52,7 +52,7 @@ class FileUpload extends Component<
                 getRootProps,
                 getInputProps,
                 isDragAccept,
-                isDragReject
+                isDragReject,
               }) => {
                 return (
                   <div {...getRootProps()} className="dropzone">
@@ -66,7 +66,7 @@ class FileUpload extends Component<
           </ModalBody>
           <ModalFooter>
             <Mutation mutation={UPLOAD_FILE}>
-              {uploadFile => (
+              {(uploadFile: any) => (
                 <Button
                   onClick={() =>
                     uploadFile({ variables: { file: this.state.file } })

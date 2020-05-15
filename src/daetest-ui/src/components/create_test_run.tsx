@@ -11,7 +11,7 @@ import {
   Col,
   FormGroup,
   Label,
-  Input
+  Input,
 } from 'reactstrap';
 
 import gql from 'graphql-tag';
@@ -37,7 +37,7 @@ class CreateTestRun extends Component<
 
     this.state = {
       isOpen: false,
-      testRun: {}
+      testRun: {},
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -49,8 +49,8 @@ class CreateTestRun extends Component<
         filename: 'New_File',
         product: 'bullseye',
         meta: 'new',
-        type: 'TESTMON'
-      }
+        type: 'TESTMON',
+      },
     });
   }
 
@@ -140,13 +140,13 @@ class CreateTestRun extends Component<
           </ModalBody>
           <ModalFooter>
             <Mutation mutation={CREATE_TEST_RUN}>
-              {createTestRun => (
+              {(createTestRun: any) => (
                 <Button
                   size="sm"
                   color="primary"
                   onClick={() => {
                     createTestRun({
-                      variables: { testrun: this.state.testRun }
+                      variables: { testrun: this.state.testRun },
                     })
                       .then(() => this.props.onCreate())
                       .then(() => this.setState({ isOpen: false }));

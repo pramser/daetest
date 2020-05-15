@@ -20,7 +20,7 @@ class Dashboard extends Component {
   render() {
     return (
       <Query query={GET_DASHBOARD_REPORT}>
-        {({ loading, error, data, refetch }) => {
+        {({ loading, error, data, refetch }: any) => {
           if (loading) {
             return 'Is loading...';
           }
@@ -30,8 +30,7 @@ class Dashboard extends Component {
           }
 
           const {
-            testsTotalCount,
-            testsFailingCount
+            testsFailingCount,
           } = data.getDashboardReport as DashboardReport;
 
           return (

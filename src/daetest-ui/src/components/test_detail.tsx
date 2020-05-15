@@ -8,7 +8,7 @@ import {
   Input,
   ButtonGroup,
   Button,
-  Badge
+  Badge,
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Textarea from 'react-textarea-autosize';
@@ -55,7 +55,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
 
     return (
       <Query query={TESTCASES_BY_RUN_ID} variables={{ runid }}>
-        {({ loading, error, data, refetch }) => {
+        {({ loading, error, data, refetch }: any) => {
           if (loading) {
             return 'Is loading...';
           }
@@ -69,7 +69,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
           return (
             <div className="TestDetail">
               <Query query={TEST_RUN_BY_ID} variables={{ id: runid }}>
-                {({ loading, error, data }) => {
+                {({ loading, error, data }: any) => {
                   if (loading) {
                     return 'Is loading...';
                   }
@@ -83,7 +83,7 @@ class TestDetail extends Component<{ location: { pathname: string } }, any> {
                     filename,
                     product,
                     meta,
-                    type
+                    type,
                   } = data.testRunById as TestRun;
 
                   return (
@@ -195,7 +195,7 @@ class TestCaseRow extends Component<
   componentDidMount() {
     this.setState({
       info: this.props.testcase.info,
-      result: this.props.testcase.result
+      result: this.props.testcase.result,
     });
 
     Prism.highlightAll();
@@ -237,7 +237,7 @@ class TestCaseRow extends Component<
             <div className="test-info">
               <div className="edit-info">
                 <Mutation mutation={MODIFY_TEST_CASE}>
-                  {modifyTestCase => (
+                  {(modifyTestCase: any) => (
                     <span
                       style={{ float: 'right', cursor: 'pointer' }}
                       onClick={() => {
@@ -245,8 +245,8 @@ class TestCaseRow extends Component<
                           modifyTestCase({
                             variables: {
                               id: this.props.testcase.id,
-                              testCase: { info: this.state.info }
-                            }
+                              testCase: { info: this.state.info },
+                            },
                           });
                         }
                         this.toggleEdit();
@@ -294,7 +294,7 @@ const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
 
   return (
     <Mutation mutation={MODIFY_TEST_CASE}>
-      {modifyTestCase => (
+      {(modifyTestCase: any) => (
         <td style={{ width: '10%' }}>
           <ButtonGroup>
             <Button
@@ -305,8 +305,8 @@ const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
                 modifyTestCase({
                   variables: {
                     id: props.id,
-                    testCase: { result: 'PASS' }
-                  }
+                    testCase: { result: 'PASS' },
+                  },
                 }).then(props.onUpdate('PASS'))
               }
             >
@@ -320,8 +320,8 @@ const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
                 modifyTestCase({
                   variables: {
                     id: props.id,
-                    testCase: { result: 'FAIL' }
-                  }
+                    testCase: { result: 'FAIL' },
+                  },
                 }).then(props.onUpdate('FAIL'))
               }
             >
@@ -336,12 +336,12 @@ const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
 
 const RemoveButton = (props: { id: string; onDelete: any }) => (
   <Mutation mutation={REMOVE_TEST_CASE}>
-    {removeTestCase => (
+    {(removeTestCase: any) => (
       <span
         style={{ marginRight: '0.5em' }}
         onClick={() =>
           removeTestCase({
-            variables: { id: props.id }
+            variables: { id: props.id },
           }).then(props.onDelete)
         }
       >
@@ -363,7 +363,7 @@ const NewTestCaseRow = (props: { runid: string; onCreate: any }) => (
   <tr>
     <td colSpan={3}>
       <Mutation mutation={CREATE_TEST_CASE}>
-        {createTestCase => (
+        {(createTestCase: any) => (
           <Input
             placeholder="New Test Name..."
             onKeyDown={(e: any) => {
@@ -377,9 +377,9 @@ const NewTestCaseRow = (props: { runid: string; onCreate: any }) => (
                     name: e.target.value,
                     info: '',
                     description: '',
-                    result: 'PASS'
-                  }
-                }
+                    result: 'PASS',
+                  },
+                },
               }) // Callback, then reset my test box for new tests.
                 .then(props.onCreate)
                 .then((e.target.value = null));

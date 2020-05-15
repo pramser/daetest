@@ -39,7 +39,7 @@ class TestList extends Component<{ history: any }, any> {
   render() {
     return (
       <Query query={GET_TEST_RUNS}>
-        {({ loading, error, data, refetch }) => {
+        {({ loading, error, data, refetch }: any) => {
           if (loading) {
             return 'Is loading...';
           }
