@@ -28,7 +28,7 @@
     "express": "^4.16.4",
     "graphql-iso-date": "^3.6.1",
     "graphql-yoga": "^1.16.7",
-    "knex": "^0.15.2",
+    "knex": "^0.19.5",
     "mkdirp": "^0.5.1",
     "objection": "^1.4.0",
     "pg": "^7.6.1",
