@@ -1,4 +1,4 @@
-import testRepo from "../repositories/testRepository.ts";
+import testRepo from "../repositories/test_repository.ts";
 
 export const getAllTests = async () => {
   const tests = await testRepo.selectAll();

@@ -1,6 +1,6 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
 
-import { getRoot } from "./controllers/homeController.ts";
+import { getRoot } from "./controllers/home_controller.ts";
 
 import {
   getTests,
@@ -8,7 +8,7 @@ import {
   createTest,
   updateTest,
   deleteTest,
-} from "./controllers/testController.ts";
+} from "./controllers/test_controller.ts";
 
 const router = new Router();
 

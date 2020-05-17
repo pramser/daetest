@@ -1,4 +1,4 @@
-import { getAllTests } from "../services/testService.ts";
+import { getAllTests } from "../services/test_service.ts";
 
 export async function getTests({ response }: any) {
   response.body = await getAllTests();

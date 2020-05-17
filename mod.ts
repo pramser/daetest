@@ -2,7 +2,7 @@ import { Application } from "https://deno.land/x/oak/mod.ts";
 import { APP_HOST, APP_PORT } from "./config.ts";
 import router from "./routes.ts";
 import _404 from "./controllers/404.ts";
-import errorHandler from "./controllers/errorHandler.ts";
+import errorHandler from "./controllers/error_handler.ts";
 
 const app = new Application();
 
