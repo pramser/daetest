@@ -7,5 +7,5 @@ export const APP_PORT: number = env.APP_PORT || 4000;
 export const POSTGRES_USER: string = env.POSTGRES_USER || "denouer";
 export const POSTGRES_PASSWORD: string = env.POSTGRES_PASSWORD || "secret";
 export const POSTGRES_DB: string = env.POSTGRES_DB || "denouer";
-export const POSTGRES_PORT: number = env.POSTGRES_PORT || 15432;
+export const POSTGRES_PORT: string = env.POSTGRES_PORT || 15432;
 export const POSTGRES_HOST: string = env.POSTGRES_HOST || "localhost";
