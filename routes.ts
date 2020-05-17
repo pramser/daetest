@@ -13,8 +13,8 @@ const router = new Router();
 router
   .get("/tests", getTests)
   .get("/tests/:id", getTestDetails)
-  .post("/beers", createTest)
-  .put("/beers/:id", updateTest)
-  .delete("/beers/:id", deleteTest);
+  .post("/tests", createTest)
+  .put("/tests/:id", updateTest)
+  .delete("/tests/:id", deleteTest);
 
 export default router;
