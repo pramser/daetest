@@ -1,7 +1,0 @@
-{
-  "verbose": true,
-  "watch": ["./migrations/", "./src/", ".env"],
-  "env": { "NODE_ENV": "development" },
-  "ext": "js,json,sql,graphql,ts",
-  "exec": "node -r ts-node/register -r dotenv/config --inspect"
-}
