@@ -12,5 +12,5 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(_404);
 
-console.log(`Listening on port:${APP_PORT}...`);
+console.log(`Listening on port:${APP_PORT}`);
 await app.listen(`${APP_HOST}:${APP_PORT}`);
