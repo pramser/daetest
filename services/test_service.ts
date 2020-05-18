@@ -1,5 +1,14 @@
 import testRepo from "../repositories/test_repository.ts";
 
+export const createTest = async () => {
+  await testRepo.create({
+    name: "New test",
+    info: "Test information",
+    description: "Describing the test",
+    result: 2,
+  });
+};
+
 export const getAllTests = async () => {
   const tests = await testRepo.selectAll();
 

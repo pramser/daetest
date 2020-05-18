@@ -1,13 +1,16 @@
-import { getAllTests } from "../services/test_service.ts";
+import { getAllTests, createTest } from "../services/test_service.ts";
 
 export async function getTests({ response }: any) {
   response.body = await getAllTests();
 }
 
-export function getTestDetails() {}
+export async function getTestById({ params, response }: any) {
+  response.body = "Creating new test";
+  await createTest();
+}
 
-export function createTest() {}
+export function postTest() {}
 
-export function updateTest() {}
+export function putTest() {}
 
 export function deleteTest() {}
