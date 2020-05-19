@@ -15,14 +15,14 @@ export type TestRun = {
 export enum TestRunStatus {
   Pending = 0,
   Pass,
-  Fail
+  Fail,
 }
 
 export enum TestRunType {
   None = 0,
   TestMon,
   JUnit,
-  Cucumber
+  Cucumber,
 }
 
 export type TestCase = {
@@ -36,7 +36,7 @@ export type TestCase = {
 export enum TestCaseResult {
   None = 0,
   Pass,
-  Fail
+  Fail,
 }
 
 export type DashboardReport = {

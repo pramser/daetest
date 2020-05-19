@@ -1,12 +1,12 @@
 // Dependencies
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
 
 // Components
-import Header from './components/header';
-import Dashboard from './components/dashboard';
-import Tests from './components/tests';
-import Config from './components/config';
+import Header from "./components/header";
+import Dashboard from "./components/dashboard";
+import Tests from "./components/tests";
+import Config from "./components/config";
 
 class App extends Component {
   render() {

@@ -1,5 +1,4 @@
-// Dependencies
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -7,16 +6,16 @@ import {
   Collapse,
   Nav,
   NavItem,
-  NavLink
-} from 'reactstrap';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  NavLink,
+} from "reactstrap";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HeaderProps extends RouteComponentProps<any> {}
 
 class Header extends Component<HeaderProps> {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   toggle = () => {};
@@ -32,34 +31,34 @@ class Header extends Component<HeaderProps> {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink active={this.props.location.pathname == '/'} href="/">
+                <NavLink active={this.props.location.pathname == "/"} href="/">
                   <FontAwesomeIcon
                     icon="home"
-                    style={{ marginRight: '0.40em' }}
+                    style={{ marginRight: "0.40em" }}
                   />
                   Dashboard
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  active={this.props.location.pathname == '/tests'}
+                  active={this.props.location.pathname == "/tests"}
                   href="/tests"
                 >
                   <FontAwesomeIcon
                     icon="vial"
-                    style={{ marginRight: '0.40em' }}
+                    style={{ marginRight: "0.40em" }}
                   />
                   Tests
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  active={this.props.location.pathname == '/config'}
+                  active={this.props.location.pathname == "/config"}
                   href="/config"
                 >
                   <FontAwesomeIcon
                     icon="cog"
-                    style={{ marginRight: '0.40em' }}
+                    style={{ marginRight: "0.40em" }}
                   />
                   Config
                 </NavLink>

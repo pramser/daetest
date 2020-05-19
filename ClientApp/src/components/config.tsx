@@ -1,23 +1,22 @@
-// Dependencies
-import React, { Component } from 'react';
-import { Card, CardHeader, CardBody, Col, Row, Input, Table } from 'reactstrap';
+import React, { Component } from "react";
+import { Card, CardHeader, CardBody, Col, Row, Input, Table } from "reactstrap";
 
 class Config extends Component<
   any,
   { alm: { name: string; url: string }; users: Array<any> }
 > {
   state = {
-    alm: { name: '', url: '' },
-    users: []
+    alm: { name: "", url: "" },
+    users: [],
   };
 
   componentDidMount() {
     const alm = {
-      name: 'Jira',
-      url: 'https://company.atlassian.com/'
+      name: "Jira",
+      url: "https://company.atlassian.com/",
     };
 
-    const users = [{ name: 'Patrick', email: 'pramser@gmail.com' }];
+    const users = [{ name: "Patrick", email: "pramser@gmail.com" }];
     this.setState({ alm, users });
   }
 

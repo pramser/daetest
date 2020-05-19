@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { TestRunType } from '../types/Types';
+import { TestRunType } from "../types/Types";
 
 class TestIcon extends Component<{ type: TestRunType; size: string }, any> {
   render() {
@@ -9,7 +9,7 @@ class TestIcon extends Component<{ type: TestRunType; size: string }, any> {
     return (
       <img
         src={`${process.env.PUBLIC_URL}/images/${type}.png`}
-        height={size === 'sm' ? '30' : '60'}
+        height={size === "sm" ? "30" : "60"}
         alt="Test Icon"
       />
     );
