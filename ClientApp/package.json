@@ -1,10 +1,10 @@
 {
-  "name": "test-mon-client",
-  "version": "0.1.0",
+  "name": "denouer-ui",
+  "version": "0.2.0",
   "author": "Patrick Ramser",
   "license": "ISC",
   "description": "Test results, coverage, and metrics client.",
-  "homepage": "https://github.com/pramser/test-mon#readme",
+  "homepage": "https://github.com/pramser/denouer#readme",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
