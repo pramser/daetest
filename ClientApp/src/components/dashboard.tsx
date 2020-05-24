@@ -15,7 +15,7 @@ const Dashboard: any = () => {
     return "Error occurred!";
   }
 
-  const { testsFailingCount } = data.getDashboardReport as DashboardReport;
+  const { testsFailingCount } = data as DashboardReport;
 
   return (
     <div className="Dashboard">

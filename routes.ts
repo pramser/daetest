@@ -1,7 +1,7 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
 
 import { getRoot } from "./controllers/home_controller.ts";
-
+import { getDashboard } from "./controllers/dashboard_controller.ts";
 import { getRuns } from "./controllers/run_controller.ts";
 
 import {
@@ -16,6 +16,7 @@ const router = new Router();
 
 router
   .get("/", getRoot)
+  .get("/dashboard", getDashboard)
   .get("/runs", getRuns)
   .get("/tests", getTests)
   .get("/tests/:id", getTestById)
