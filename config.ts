@@ -2,6 +2,7 @@ import { config } from "https://deno.land/x/dotenv/mod.ts";
 
 const env: any = config();
 
+export const APP_ENV: string = env.APP_ENV || "local";
 export const APP_HOST: string = env.APP_HOST || "127.0.0.1";
 export const APP_PORT: number = env.APP_PORT || 4000;
 export const POSTGRES_USER: string = env.POSTGRES_USER || "denouer";

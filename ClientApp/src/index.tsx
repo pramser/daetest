@@ -47,7 +47,7 @@ library.add(
 // Entry-point for test-mon-client
 ReactDOM.render(
   <Router>
-    <RestfulProvider base="https://localhost:8000">
+    <RestfulProvider base="http://localhost:8000">
       <App />
     </RestfulProvider>
   </Router>,

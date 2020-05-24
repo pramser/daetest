@@ -14,7 +14,7 @@ const TestList: any = (props: any) => {
     props.history.push(`/tests/${id}`);
   };
 
-  const { data, loading, error, refetch } = useGet("tests");
+  const { data, loading, error, refetch } = useGet("runs");
 
   if (loading) {
     return "Is loading...";
@@ -24,14 +24,10 @@ const TestList: any = (props: any) => {
     return "Error occurred!";
   }
 
-  var testruns = data.allTestRuns as [TestRun];
+  var testruns = data as [TestRun];
 
   return (
     <div className="TestList">
-      <div className="sub-menu">
-        {/* <CreateTestRun onCreate={() => refetch()} />
-        <FileUpload onUpload={() => refetch()} /> */}
-      </div>
       <Table style={{ border: "2px solid #ddd" }}>
         <thead>
           <tr>
@@ -45,7 +41,7 @@ const TestList: any = (props: any) => {
         </thead>
         <tbody>
           {testruns
-            .sort((a, b) => compareDesc(a.createdat, b.createdat))
+            .sort((a, b) => compareDesc(a.created_at, b.created_at))
             .map((testrun: TestRun) => (
               <ResultRow
                 key={testrun.id}
@@ -63,17 +59,17 @@ const ResultRow = (props: {
   testrun: TestRun;
   onClick?: MouseEventHandler<any>;
 }) => {
-  const { filename, product, meta, type, createdat } = props.testrun;
+  const { file_name, product, meta, type, created_at } = props.testrun;
 
   return (
     <tr className="result" onClick={props.onClick}>
       <ResultStatus />
       <td style={{ flexDirection: "column" }}>
-        <div className="file-name">{filename}</div>
+        <div className="file-name">{file_name}</div>
         <div style={{ flexDirection: "row" }}>
           <span className="result-date meta-pill">
             <FontAwesomeIcon icon="clock" className="right-pad" />
-            {distanceInWordsToNow(createdat)}
+            {distanceInWordsToNow(created_at)}
           </span>
           <Badge className="meta-pill" color="primary">
             {product}

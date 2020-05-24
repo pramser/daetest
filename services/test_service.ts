@@ -1,40 +1,14 @@
-import testRepo from "../repositories/test_repository.ts";
+import testRepository from "../repositories/test_repository.ts";
+import { Test } from "../interfaces.ts";
 
-export const createTest = async () => {
-  await testRepo.create({
-    name: "New test",
-    info: "Test information",
-    description: "Describing the test",
-    result: 2,
-  });
+export const createTest = (test: Test): Test => {
+  return testRepository.create(test);
 };
 
-export const getAllTests = async () => {
-  const tests = await testRepo.selectAll();
-
-  var result = new Array();
-
-  tests.rows.map((test: any) => {
-    var obj: any = new Object();
-
-    tests.rowDescription.columns.map((el: any, i: any) => {
-      obj[el.name] = test[i];
-    });
-    result.push(obj);
-  });
-
-  return result;
+export const getAllTests = (): Test[] => {
+  return testRepository.selectAll();
 };
 
-export const getSingleTest = async (testId: number) => {
-  const tests = await testRepo.selectById(testId);
-
-  var obj: any = new Object();
-  tests.rows.map((test: any) => {
-    tests.rowDescription.columns.map((el: any, i: any) => {
-      obj[el.name] = test[i];
-    });
-  });
-
-  return obj;
+export const getSingleTest = (testId: number): Test => {
+  return testRepository.selectById(testId);
 };

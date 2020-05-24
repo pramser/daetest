@@ -1,15 +1,15 @@
 export type TestRun = {
   id: string;
   path: string;
-  filename: string;
-  mimetype: string;
+  file_name: string;
+  mime_type: string;
   encoding: string;
 
   product: string;
   meta: string;
   status: TestRunStatus;
   type: TestRunType;
-  createdat: Date;
+  created_at: Date;
 };
 
 export enum TestRunStatus {

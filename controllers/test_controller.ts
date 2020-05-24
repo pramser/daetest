@@ -1,15 +1,48 @@
-import { getAllTests, createTest } from "../services/test_service.ts";
+import { Test } from "../interfaces.ts";
+import {
+  getAllTests,
+  getSingleTest,
+  createTest,
+} from "../services/test_service.ts";
 
 export async function getTests({ response }: any) {
   response.body = await getAllTests();
 }
 
 export async function getTestById({ params, response }: any) {
-  response.body = "Creating new test";
-  await createTest();
+  const id = params.id;
+
+  if (!id) {
+    response.status = 400;
+    response.body = { msg: "invalid id" };
+    return;
+  }
+
+  const test = await getSingleTest(id);
+
+  if (!test) {
+    response.status = 400;
+    response.body = { msg: `id: ${id} not found` };
+    return;
+  }
+
+  response.body = test;
 }
 
-export function postTest() {}
+export async function postTest({ request, response }: any) {
+  if (!request.hasBody) {
+    response.status = 400;
+    response.body = { msg: "invalid data" };
+    return;
+  }
+
+  const {
+    value: { name, description, info, result },
+  } = await request.body();
+
+  const test = await createTest(new Test({ name, description, info, result }));
+  response.body = { msg: "test created", test };
+}
 
 export function putTest() {}
 
