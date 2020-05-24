@@ -1,6 +1,7 @@
 import { Test } from "../interfaces.ts";
 import {
   getAllTests,
+  getTestsForRun,
   getSingleTest,
   createTest,
 } from "../services/test_service.ts";
@@ -27,6 +28,26 @@ export async function getTestById({ params, response }: any) {
   }
 
   response.body = test;
+}
+
+export async function getTestsByRunId({ params, response }: any) {
+  const runId = params.runId;
+
+  if (!runId) {
+    response.status = 400;
+    response.body = { msg: "invalid id" };
+    return;
+  }
+
+  const tests = await getTestsForRun(runId);
+
+  if (!tests) {
+    response.status = 400;
+    response.body = { msg: `runId: ${runId} not found` };
+    return;
+  }
+
+  response.body = tests;
 }
 
 export async function postTest({ request, response }: any) {

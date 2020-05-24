@@ -21,7 +21,16 @@ import TestIcon from "./test_icon";
 import MetaIcon from "./meta_icon";
 
 const RunDetail: any = (props: any) => {
-  const { data } = useGet("runs/2");
+  const { data, loading, error, refetch } = useGet("runs/1");
+
+  if (loading) {
+    return "Is loading...";
+  }
+
+  if (error) {
+    return "Error occurred!";
+  }
+
   const { id, file_name, product, meta, type } = data as TestRun;
 
   return (
@@ -77,9 +86,16 @@ const RunDetail: any = (props: any) => {
   );
 };
 
-const TestCases = (props: any) => {
-  const { data, refetch } = useGet(`tests?runId=${props.runId}`);
-  const { testcases } = data;
+const TestCases: any = (props: any) => {
+  const { loading, error, data, refetch } = useGet(`tests?runId=1`);
+
+  if (loading) {
+    return "Is loading...";
+  }
+
+  if (error) {
+    return "Error occurred!";
+  }
 
   return (
     <div>
@@ -93,7 +109,7 @@ const TestCases = (props: any) => {
           </tr>
         </thead>
         <tbody>
-          {testcases.map((testcase: any) => (
+          {data.map((testcase: any) => (
             <TestCaseRow
               key={testcase.id}
               testcase={testcase}

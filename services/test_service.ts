@@ -9,6 +9,10 @@ export const getAllTests = (): Test[] => {
   return testRepository.selectAll();
 };
 
+export const getTestsForRun = (runId: number): Test[] => {
+  return testRepository.selectByRunId(runId);
+};
+
 export const getSingleTest = (testId: number): Test => {
   return testRepository.selectById(testId);
 };

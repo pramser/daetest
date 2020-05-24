@@ -7,6 +7,7 @@ import { getRuns, getRunById } from "./controllers/run_controller.ts";
 import {
   getTests,
   getTestById,
+  getTestsByRunId,
   postTest,
   putTest,
   deleteTest,
@@ -21,6 +22,7 @@ router
   .get("/runs/:id", getRunById)
   .get("/tests", getTests)
   .get("/tests/:id", getTestById)
+  .get("/tests?runId=:runId", getTestsByRunId)
   .post("/tests", postTest)
   .put("/tests/:id", putTest)
   .delete("/tests/:id", deleteTest);

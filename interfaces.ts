@@ -22,13 +22,15 @@ export enum TestResult {
 
 export class Test implements IModel {
   id: number;
+  run_id: number;
   name: string;
   info: string;
   description: string;
   result: TestResult;
 
-  constructor({ id, name, info, description, result }: any) {
+  constructor({ id, run_id, name, info, description, result }: any) {
     this.id = id;
+    this.run_id = run_id;
     this.name = name;
     this.info = info;
     this.description = description;

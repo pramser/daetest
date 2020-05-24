@@ -87,6 +87,10 @@ class DatabaseTestRepository implements IRepository<Test> {
 
     return obj as Test;
   }
+
+  selectByRunId(runId: number): Test[] {
+    return [];
+  }
 }
 
 class InMemoryTestRepository implements IRepository<Test> {
@@ -95,6 +99,7 @@ class InMemoryTestRepository implements IRepository<Test> {
   tests = [
     {
       id: 1,
+      run_id: 1,
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
@@ -124,6 +129,10 @@ class InMemoryTestRepository implements IRepository<Test> {
 
   selectById(id: number): Test {
     return this.tests.find((test) => test.id == id) as Test;
+  }
+
+  selectByRunId(runId: number): Test[] {
+    return this.tests.filter((test) => (test.run_id = runId));
   }
 }
 
