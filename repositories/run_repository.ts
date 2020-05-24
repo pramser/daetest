@@ -1,6 +1,6 @@
 import { IRepository, Run } from "../interfaces.ts";
 
-class InMemoryTestRepository implements IRepository<Run> {
+class InMemoryRunRepository implements IRepository<Run> {
   runs_index = 2;
 
   runs = [
@@ -26,6 +26,18 @@ class InMemoryTestRepository implements IRepository<Run> {
       meta: "ui",
       status: 3,
       type: 3,
+      created_at: new Date(2020, 2, 2),
+    },
+    {
+      id: 3,
+      file_path: "../file_path",
+      file_name: "file_name.denouer",
+      mime_type: "application/denouer",
+      encoding: "UTC-8",
+      product: "denouer",
+      meta: "ui",
+      status: 1,
+      type: 1,
       created_at: new Date(2020, 2, 2),
     },
   ] as Run[];
@@ -55,4 +67,4 @@ class InMemoryTestRepository implements IRepository<Run> {
   }
 }
 
-export default new InMemoryTestRepository();
+export default new InMemoryRunRepository();
