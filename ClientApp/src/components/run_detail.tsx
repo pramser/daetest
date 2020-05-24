@@ -16,7 +16,7 @@ import { useGet } from "restful-react";
 import Prism from "prismjs";
 import "../prism.css";
 
-import { TestRun, TestCase } from "../types/Types";
+import { TestRun, TestCase, TestRunType } from "../types/Types";
 import TestIcon from "./test_icon";
 import MetaIcon from "./meta_icon";
 
@@ -66,7 +66,9 @@ const RunDetail: any = (props: any) => {
         <Col className="meta-col">
           <TestIcon type={type} size="lg" />
           <div className="meta-info">
-            <span>{type}</span>
+            <Badge className="meta-pill" color="info">
+              {TestRunType[type]}
+            </Badge>
             <span>Version 0.0.0</span>
           </div>
         </Col>
