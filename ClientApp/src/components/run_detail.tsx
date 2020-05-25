@@ -84,7 +84,7 @@ const RunDetail: any = (props: any) => {
 };
 
 const TestCases: any = ({ runId }: any) => {
-  const { loading, error, data, refetch } = useGet(`tests?runId=${runId}`);
+  const { loading, error, data, refetch } = useGet(`runs/${runId}/tests`);
 
   if (loading) {
     return "Is loading...";
