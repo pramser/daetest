@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import TestIcon from "./test_icon";
 
-const TestList: any = (props: any) => {
+const RunList: any = (props: any) => {
   const handleRowClick = (id: string) => {
     props.history.push(`/tests/${id}`);
   };
@@ -105,4 +105,4 @@ const Chevron = () => (
   </td>
 );
 
-export default TestList;
+export default RunList;
