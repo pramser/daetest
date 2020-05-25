@@ -16,7 +16,7 @@ import { useGet } from "restful-react";
 import Prism from "prismjs";
 import "../prism.css";
 
-import { TestRun, TestCase, TestRunType } from "../types/Types";
+import { TestRun, TestCase, TestRunType } from "../types";
 import TestIcon from "./test_icon";
 import MetaIcon from "./meta_icon";
 

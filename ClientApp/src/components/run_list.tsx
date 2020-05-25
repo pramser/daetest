@@ -6,7 +6,7 @@ import compareDesc from "date-fns/compare_desc";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { TestRun } from "../types/Types";
+import { TestRun } from "../types";
 import TestIcon from "./test_icon";
 
 const RunList: any = (props: any) => {

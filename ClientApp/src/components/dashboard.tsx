@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardHeader, CardBody } from "reactstrap";
 
-import { DashboardReport } from "../types/Types";
+import { DashboardReport } from "../types";
 import { useGet } from "restful-react";
 
 const Dashboard: any = () => {

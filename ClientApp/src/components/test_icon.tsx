@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TestRunType } from "../types/Types";
+import { TestRunType } from "../types";
 
 interface TestIconProps {
   type: TestRunType;
