@@ -94,7 +94,7 @@ class DatabaseTestRepository implements IRepository<Test> {
 }
 
 class InMemoryTestRepository implements IRepository<Test> {
-  tests_index = 1;
+  tests_index = 11;
 
   tests = [
     {
