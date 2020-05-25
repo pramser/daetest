@@ -24,7 +24,7 @@ const RunList: any = (props: any) => {
     return "Error occurred!";
   }
 
-  var testruns = data as [TestRun];
+  var runs = data as [TestRun];
 
   return (
     <div className="TestList">
@@ -40,13 +40,13 @@ const RunList: any = (props: any) => {
           </tr>
         </thead>
         <tbody>
-          {testruns
+          {runs
             .sort((a, b) => compareDesc(a.created_at, b.created_at))
-            .map((testrun: TestRun) => (
+            .map((run: TestRun) => (
               <ResultRow
-                key={testrun.id}
-                testrun={testrun}
-                onClick={() => handleRowClick(testrun.id)}
+                key={run.id}
+                run={run}
+                onClick={() => handleRowClick(run.id)}
               />
             ))}
         </tbody>
@@ -56,12 +56,12 @@ const RunList: any = (props: any) => {
 };
 
 interface ResultRowProps {
-  testrun: TestRun;
+  run: TestRun;
   onClick?: MouseEventHandler<any>;
 }
 
-const ResultRow = ({ testrun, onClick }: ResultRowProps) => {
-  const { file_name, product, meta, type, created_at } = testrun;
+const ResultRow = ({ run, onClick }: ResultRowProps) => {
+  const { file_name, product, meta, type, created_at } = run;
 
   return (
     <tr className="result" onClick={onClick}>
