@@ -120,7 +120,7 @@ const TestCases: any = ({ runId }: any) => {
               onDelete={() => refetch()}
             />
           ))}
-          <NewTestCaseRow runid={runId} onCreate={() => refetch()} />
+          <NewTestCaseRow runId={runId} onCreate={() => refetch()} />
         </tbody>
       </Table>
     </div>
@@ -277,16 +277,41 @@ const RemoveButton = ({ id, onDelete }: RemoveButtonProps) => {
 };
 
 interface NewTestCaseRowProps {
-  runid: string;
+  runId: string;
   onCreate: any;
 }
 
-const NewTestCaseRow = (props: NewTestCaseRowProps) => (
-  <tr>
-    <td colSpan={3}>
-      <Input placeholder="New Test Name..." onKeyDown={() => null} />
-    </td>
-  </tr>
-);
+const NewTestCaseRow = ({ runId, onCreate }: NewTestCaseRowProps) => {
+  const { mutate: postTest } = useMutate({
+    verb: "POST",
+    path: `tests`,
+  });
+
+  return (
+    <tr>
+      <td colSpan={3}>
+        <Input
+          placeholder="New Test Name..."
+          onKeyDown={(e: any) => {
+            if (e.keyCode !== 13) {
+              return;
+            }
+
+            const body = {
+              run_id: runId,
+              name: e.target.value,
+              description: "",
+              info: "",
+              result: "PASS",
+            };
+            postTest(body)
+              .then(onCreate)
+              .then((e.target.value = null));
+          }}
+        />
+      </td>
+    </tr>
+  );
+};
 
 export default RunDetail;
