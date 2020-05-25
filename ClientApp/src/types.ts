@@ -20,7 +20,7 @@ export enum TestRunStatus {
 
 export enum TestRunType {
   None = 0,
-  TestMon,
+  Denouer,
   JUnit,
   Cucumber,
 }
