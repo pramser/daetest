@@ -1,12 +1,12 @@
 import React, { MouseEventHandler } from "react";
+
 import { Table, Badge } from "reactstrap";
 import { useGet } from "restful-react";
 import compareDesc from "date-fns/compare_desc";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
-
-import { TestRun } from "../types/Types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { TestRun } from "../types/Types";
 import TestIcon from "./test_icon";
 
 const RunList: any = (props: any) => {
@@ -14,7 +14,7 @@ const RunList: any = (props: any) => {
     props.history.push(`/tests/${id}`);
   };
 
-  const { data, loading, error, refetch } = useGet("runs");
+  const { data, loading, error } = useGet("runs");
 
   if (loading) {
     return "Is loading...";
@@ -55,14 +55,16 @@ const RunList: any = (props: any) => {
   );
 };
 
-const ResultRow = (props: {
+interface ResultRowProps {
   testrun: TestRun;
   onClick?: MouseEventHandler<any>;
-}) => {
-  const { file_name, product, meta, type, created_at } = props.testrun;
+}
+
+const ResultRow = ({ testrun, onClick }: ResultRowProps) => {
+  const { file_name, product, meta, type, created_at } = testrun;
 
   return (
-    <tr className="result" onClick={props.onClick}>
+    <tr className="result" onClick={onClick}>
       <ResultStatus />
       <td style={{ flexDirection: "column" }}>
         <div className="file-name">{file_name}</div>
