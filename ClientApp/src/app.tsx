@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Component } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 
 // Components
@@ -8,16 +8,12 @@ import Dashboard from "./components/dashboard";
 import Tests from "./components/tests";
 import Config from "./components/config";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <Routes />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Header />
+    <Routes />
+  </div>
+);
 
 const Routes = () => (
   <div className="App-content">
