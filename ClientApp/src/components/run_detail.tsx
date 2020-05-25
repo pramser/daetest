@@ -23,7 +23,7 @@ import MetaIcon from "./meta_icon";
 const RunDetail: any = (props: any) => {
   const paths = props.location.pathname.split("/");
   const runId = paths[paths.length - 1];
-  const { data, loading, error, refetch } = useGet(`runs/${runId}`);
+  const { data, loading, error } = useGet(`runs/${runId}`);
 
   if (loading) {
     return "Is loading...";
@@ -45,13 +45,6 @@ const RunDetail: any = (props: any) => {
           <Button outline size="sm">
             Edit
           </Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <span className="test-guid">
-            <b>GUID:</b> {id}
-          </span>
         </Col>
       </Row>
       <hr />
@@ -140,11 +133,10 @@ const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
   const [info, setInfo] = useState(testcase.info);
   const [result, setResult] = useState(testcase.result);
 
-  const toggleInfo = () => {
-    setCollapse(!collapse);
-  };
-
   const toggleEdit = () => {
+    if (isEditing) {
+      putTest({ info });
+    }
     setIsEditing(!isEditing);
   };
 
@@ -170,7 +162,7 @@ const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
           <span>{name}</span>
           <span
             style={{ float: "right", marginRight: "0.5em" }}
-            onClick={() => toggleInfo()}
+            onClick={() => setCollapse(!collapse)}
           >
             <FontAwesomeIcon icon="chevron-down" color="grey" />
           </span>
@@ -180,12 +172,7 @@ const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
             <div className="edit-info">
               <span
                 style={{ float: "right", cursor: "pointer" }}
-                onClick={() => {
-                  if (isEditing) {
-                    putTest({ info });
-                  }
-                  toggleEdit();
-                }}
+                onClick={toggleEdit}
               >
                 <FontAwesomeIcon
                   icon="edit"
