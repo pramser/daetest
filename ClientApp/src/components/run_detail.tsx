@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Textarea from "react-textarea-autosize";
-import { useGet } from "restful-react";
+import { useGet, useMutate } from "restful-react";
 
 import Prism from "prismjs";
 import "../prism.css";
@@ -260,11 +260,21 @@ interface RemoveButtonProps {
   onDelete: any;
 }
 
-const RemoveButton = (props: RemoveButtonProps) => (
-  <span style={{ marginRight: "0.5em" }} onClick={() => null}>
-    <FontAwesomeIcon icon="times" color="grey" />
-  </span>
-);
+const RemoveButton = ({ id, onDelete }: RemoveButtonProps) => {
+  const { mutate: deleteTest } = useMutate({
+    verb: "DELETE",
+    path: `tests`,
+  });
+
+  return (
+    <span
+      style={{ marginRight: "0.5em" }}
+      onClick={() => deleteTest(id).then(onDelete)}
+    >
+      <FontAwesomeIcon icon="times" color="grey" />
+    </span>
+  );
+};
 
 interface NewTestCaseRowProps {
   runid: string;
