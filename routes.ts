@@ -22,7 +22,7 @@ router
   .get("/runs/:id", getRunById)
   .get("/tests", getTests)
   .get("/tests/:id", getTestById)
-  .get("/tests?runId=:runId", getTestsByRunId)
+  .get("/runs/:id/tests", getTestsByRunId)
   .post("/tests", postTest)
   .put("/tests/:id", putTest)
   .delete("/tests/:id", deleteTest);

@@ -33,7 +33,7 @@ export async function getTestById({ params, response }: any) {
 }
 
 export async function getTestsByRunId({ params, response }: any) {
-  const runId = params.runId;
+  const runId = params.id;
 
   if (!runId) {
     response.status = 400;
