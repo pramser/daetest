@@ -85,7 +85,7 @@ const RunDetail: any = (props: any) => {
         </Col>
       </Row>
       <hr />
-      <TestCases runId={1} />
+      <TestCases runId={id} />
     </div>
   );
 };
