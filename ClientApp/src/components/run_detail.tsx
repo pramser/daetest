@@ -88,7 +88,7 @@ const RunDetail: any = (props: any) => {
   );
 };
 
-const TestCases: any = (props: any) => {
+const TestCases: any = ({ runId }: any) => {
   const { loading, error, data, refetch } = useGet(`tests?runId=1`);
 
   if (loading) {
@@ -118,7 +118,7 @@ const TestCases: any = (props: any) => {
               onDelete={() => refetch()}
             />
           ))}
-          <NewTestCaseRow runid={props.runId} onCreate={() => refetch()} />
+          <NewTestCaseRow runid={runId} onCreate={() => refetch()} />
         </tbody>
       </Table>
     </div>
@@ -220,7 +220,13 @@ class TestCaseRow extends Component<
   }
 }
 
-const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
+interface TestResultProps {
+  id: string;
+  result: string;
+  onUpdate: any;
+}
+
+const TestResult = (props: TestResultProps) => {
   const isPass = props.result === "PASS";
 
   return (
@@ -247,13 +253,23 @@ const TestResult = (props: { id: string; result: string; onUpdate: any }) => {
   );
 };
 
-const RemoveButton = (props: { id: string; onDelete: any }) => (
+interface RemoveButtonProps {
+  id: string;
+  onDelete: any;
+}
+
+const RemoveButton = (props: RemoveButtonProps) => (
   <span style={{ marginRight: "0.5em" }} onClick={() => null}>
     <FontAwesomeIcon icon="times" color="grey" />
   </span>
 );
 
-const NewTestCaseRow = (props: { runid: string; onCreate: any }) => (
+interface NewTestCaseRowProps {
+  runid: string;
+  onCreate: any;
+}
+
+const NewTestCaseRow = (props: NewTestCaseRowProps) => (
   <tr>
     <td colSpan={3}>
       <Input placeholder="New Test Name..." onKeyDown={() => null} />
