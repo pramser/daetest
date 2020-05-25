@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -13,62 +13,54 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HeaderProps extends RouteComponentProps<any> {}
 
-class Header extends Component<HeaderProps> {
-  state = {
-    isOpen: false,
-  };
+const Header = (props: HeaderProps) => {
+  const [isOpen] = useState(false);
+  const toggle = () => {};
 
-  toggle = () => {};
-
-  render() {
-    return (
-      <header>
-        <Navbar className="Header" light expand="md">
-          <NavbarBrand className="Header-brand" href="/">
-            denouer
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink active={this.props.location.pathname == "/"} href="/">
-                  <FontAwesomeIcon
-                    icon="home"
-                    style={{ marginRight: "0.40em" }}
-                  />
-                  Dashboard
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  active={this.props.location.pathname == "/tests"}
-                  href="/tests"
-                >
-                  <FontAwesomeIcon
-                    icon="vial"
-                    style={{ marginRight: "0.40em" }}
-                  />
-                  Tests
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  active={this.props.location.pathname == "/config"}
-                  href="/config"
-                >
-                  <FontAwesomeIcon
-                    icon="cog"
-                    style={{ marginRight: "0.40em" }}
-                  />
-                  Config
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </header>
-    );
-  }
-}
+  return (
+    <header>
+      <Navbar className="Header" light expand="md">
+        <NavbarBrand className="Header-brand" href="/">
+          denouer
+        </NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink active={props.location.pathname == "/"} href="/">
+                <FontAwesomeIcon
+                  icon="home"
+                  style={{ marginRight: "0.40em" }}
+                />
+                Dashboard
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                active={props.location.pathname == "/tests"}
+                href="/tests"
+              >
+                <FontAwesomeIcon
+                  icon="vial"
+                  style={{ marginRight: "0.40em" }}
+                />
+                Tests
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                active={props.location.pathname == "/config"}
+                href="/config"
+              >
+                <FontAwesomeIcon icon="cog" style={{ marginRight: "0.40em" }} />
+                Config
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </header>
+  );
+};
 
 export default withRouter(Header);
