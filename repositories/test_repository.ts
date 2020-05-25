@@ -185,9 +185,15 @@ class InMemoryTestRepository implements IRepository<Test> {
     return test;
   }
 
-  update(id: number, test: Test): Test {
-    var index = this.tests.findIndex((test) => test.id == id);
-    this.tests[index] = test;
+  update(id: number, test: any): Test {
+    var index = this.tests.findIndex((t) => t.id == id);
+    var m_test = this.tests[index] as any;
+
+    Object.keys(test).forEach((key: any) => {
+      if (test[key]) m_test[key] = test[key];
+    });
+
+    this.tests[index] = m_test;
     return test;
   }
 
