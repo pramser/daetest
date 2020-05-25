@@ -21,7 +21,9 @@ import TestIcon from "./test_icon";
 import MetaIcon from "./meta_icon";
 
 const RunDetail: any = (props: any) => {
-  const { data, loading, error, refetch } = useGet("runs/1");
+  const paths = props.location.pathname.split("/");
+  const runId = paths[paths.length - 1];
+  const { data, loading, error, refetch } = useGet(`runs/${runId}`);
 
   if (loading) {
     return "Is loading...";
@@ -89,7 +91,7 @@ const RunDetail: any = (props: any) => {
 };
 
 const TestCases: any = ({ runId }: any) => {
-  const { loading, error, data, refetch } = useGet(`tests?runId=1`);
+  const { loading, error, data, refetch } = useGet(`tests?runId=${runId}`);
 
   if (loading) {
     return "Is loading...";
