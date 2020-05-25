@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   Row,
   Col,
@@ -127,100 +127,90 @@ const TestCases: any = ({ runId }: any) => {
   );
 };
 
-class TestCaseRow extends Component<
-  { testcase: TestCase; onDelete: any },
-  { collapse: boolean; isEditing: boolean; info: string; result: string }
-> {
-  state = { collapse: false, isEditing: false, info: "", result: "PASS" };
-
-  constructor(props: any) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      info: this.props.testcase.info,
-      result: this.props.testcase.result,
-    });
-
-    Prism.highlightAll();
-  }
-
-  toggleInfo() {
-    this.setState({ collapse: !this.state.collapse });
-  }
-
-  toggleEdit() {
-    this.setState({ isEditing: !this.state.isEditing });
-  }
-
-  onChange(e: any) {
-    this.setState({ info: e.target.value });
-  }
-
-  render() {
-    const { id, name } = this.props.testcase;
-
-    return (
-      <tr key={id}>
-        <TestResult
-          id={id}
-          result={this.state.result}
-          onUpdate={(result: string) => this.setState({ result })}
-        />
-        <td style={{ width: "90%", flexDirection: "column" }}>
-          <div>
-            <span>{name}</span>
-            <span
-              style={{ float: "right", marginRight: "0.5em" }}
-              onClick={() => this.toggleInfo()}
-            >
-              <FontAwesomeIcon icon="chevron-down" color="grey" />
-            </span>
-          </div>
-          <Collapse isOpen={this.state.collapse}>
-            <div className="test-info">
-              <div className="edit-info">
-                <span
-                  style={{ float: "right", cursor: "pointer" }}
-                  onClick={() => null}
-                >
-                  <FontAwesomeIcon
-                    icon="edit"
-                    color="white"
-                    style={{ marginRight: "0.2em" }}
-                  />
-                  Edit
-                </span>
-              </div>
-              {this.state.isEditing === true ? (
-                <Textarea
-                  className="edit-box"
-                  onChange={this.onChange}
-                  value={this.state.info}
-                />
-              ) : (
-                <pre className="language-javascript">
-                  {this.state.info
-                    ? this.state.info
-                    : "Click edit to add test data..."}
-                </pre>
-              )}
-            </div>
-          </Collapse>
-        </td>
-        <td>
-          <RemoveButton
-            id={this.props.testcase.id}
-            onDelete={this.props.onDelete}
-          />
-        </td>
-      </tr>
-    );
-  }
+interface TestCaseRowProps {
+  testcase: TestCase;
+  onDelete: any;
 }
+
+const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
+  Prism.highlightAll();
+
+  const [collapse, setCollapse] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [info, setInfo] = useState(testcase.info);
+  const [result, setResult] = useState(testcase.result);
+
+  const toggleInfo = () => {
+    setCollapse(!collapse);
+  };
+
+  const toggleEdit = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const onChange = (e: any) => {
+    setInfo(e.target.value);
+  };
+
+  const { id, name } = testcase;
+  const { mutate: putTest } = useMutate({
+    verb: "PUT",
+    path: `tests/${id}`,
+  });
+
+  return (
+    <tr key={id}>
+      <TestResult
+        id={id}
+        result={result}
+        onUpdate={(r: string) => setResult(r)}
+      />
+      <td style={{ width: "90%", flexDirection: "column" }}>
+        <div>
+          <span>{name}</span>
+          <span
+            style={{ float: "right", marginRight: "0.5em" }}
+            onClick={() => toggleInfo()}
+          >
+            <FontAwesomeIcon icon="chevron-down" color="grey" />
+          </span>
+        </div>
+        <Collapse isOpen={collapse}>
+          <div className="test-info">
+            <div className="edit-info">
+              <span
+                style={{ float: "right", cursor: "pointer" }}
+                onClick={() => {
+                  if (isEditing) {
+                    putTest({ info });
+                  }
+                  toggleEdit();
+                }}
+              >
+                <FontAwesomeIcon
+                  icon="edit"
+                  color="white"
+                  style={{ marginRight: "0.2em" }}
+                />
+                Edit
+              </span>
+            </div>
+            {isEditing === true ? (
+              <Textarea className="edit-box" onChange={onChange} value={info} />
+            ) : (
+              <pre className="language-javascript">
+                {info ? info : "Click edit to add test data..."}
+              </pre>
+            )}
+          </div>
+        </Collapse>
+      </td>
+      <td>
+        <RemoveButton id={testcase.id} onDelete={onDelete} />
+      </td>
+    </tr>
+  );
+};
 
 interface TestResultProps {
   id: string;
@@ -228,8 +218,13 @@ interface TestResultProps {
   onUpdate: any;
 }
 
-const TestResult = (props: TestResultProps) => {
-  const isPass = props.result === "PASS";
+const TestResult = ({ id, result, onUpdate }: TestResultProps) => {
+  const isPass = result === "PASS";
+
+  const { mutate: putTest } = useMutate({
+    verb: "PUT",
+    path: `tests/${id}`,
+  });
 
   return (
     <td style={{ width: "10%" }}>
@@ -238,7 +233,7 @@ const TestResult = (props: TestResultProps) => {
           outline
           color={isPass ? "success" : "secondary"}
           disabled={isPass}
-          onClick={() => null}
+          onClick={() => putTest({ result: "PASS" }).then(onUpdate("PASS"))}
         >
           <FontAwesomeIcon icon="check" color={isPass ? "green" : "grey"} />
         </Button>
@@ -246,7 +241,7 @@ const TestResult = (props: TestResultProps) => {
           outline
           color={!isPass ? "danger" : "secondary"}
           disabled={!isPass}
-          onClick={() => null}
+          onClick={() => putTest({ result: "FAIL" }).then(onUpdate("FAIL"))}
         >
           <FontAwesomeIcon icon="times" color={!isPass ? "red" : "grey"} />
         </Button>
