@@ -204,7 +204,7 @@ class InMemoryTestRepository implements IRepository<Test> {
   }
 
   selectByRunId(runId: number): Test[] {
-    return this.tests.filter((test) => (test.run_id = runId));
+    return this.tests.filter((test) => test.run_id == runId);
   }
 }
 
