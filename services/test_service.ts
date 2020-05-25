@@ -5,6 +5,14 @@ export const createTest = (test: Test): Test => {
   return testRepository.create(test);
 };
 
+export const updateTest = (testId: number, test: Test): Test => {
+  return testRepository.update(testId, test);
+};
+
+export const removeTest = (testId: number): void => {
+  return testRepository.delete(testId);
+};
+
 export const getAllTests = (): Test[] => {
   return testRepository.selectAll();
 };
