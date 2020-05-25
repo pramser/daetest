@@ -48,9 +48,15 @@ class InMemoryRunRepository implements IRepository<Run> {
     return run;
   }
 
-  update(id: number, run: Run): Run {
-    var index = this.runs.findIndex((run) => run.id == id);
-    this.runs[index] = run;
+  update(id: number, run: any): Run {
+    var index = this.runs.findIndex((r) => r.id == id);
+    var m_run = this.runs[index] as any;
+
+    Object.keys(run).forEach((key: any) => {
+      if (run[key]) m_run[key] = run[key];
+    });
+
+    this.runs[index] = m_run;
     return run;
   }
 

@@ -1,4 +1,9 @@
-import { getAllRuns, getSingleRun } from "../services/run_service.ts";
+import { Run } from "../interfaces.ts";
+import {
+  getAllRuns,
+  getSingleRun,
+  updateRun,
+} from "../services/run_service.ts";
 
 export async function getRuns({ response }: any) {
   response.body = await getAllRuns();
@@ -21,5 +26,51 @@ export async function getRunById({ params, response }: any) {
     return;
   }
 
+  response.body = run;
+}
+
+export async function putRun({ params, request, response }: any) {
+  const id = params.id;
+
+  if (!id) {
+    response.status = 400;
+    response.body = { msg: "invalid id" };
+    return;
+  }
+
+  if (!request.hasBody) {
+    response.status = 400;
+    response.body = { msg: "invalid data" };
+    return;
+  }
+
+  const {
+    value: {
+      file_path,
+      file_name,
+      mime_type,
+      encoding,
+      product,
+      meta,
+      status,
+      type,
+      created_at,
+    },
+  } = await request.body();
+
+  const run = await updateRun(
+    id,
+    new Run({
+      file_path,
+      file_name,
+      mime_type,
+      encoding,
+      product,
+      meta,
+      status,
+      type,
+      created_at,
+    })
+  );
   response.body = run;
 }
