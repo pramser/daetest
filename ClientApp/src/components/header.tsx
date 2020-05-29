@@ -29,7 +29,7 @@ const Header = (props: HeaderProps) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink active={props.location.pathname == "/"} href="/">
+              <NavLink active={props.location.pathname === "/"} href="/">
                 <FontAwesomeIcon
                   icon="home"
                   style={{ marginRight: "0.40em" }}
@@ -39,7 +39,7 @@ const Header = (props: HeaderProps) => {
             </NavItem>
             <NavItem>
               <NavLink
-                active={props.location.pathname == "/tests"}
+                active={props.location.pathname === "/tests"}
                 href="/tests"
               >
                 <FontAwesomeIcon
@@ -51,7 +51,7 @@ const Header = (props: HeaderProps) => {
             </NavItem>
             <NavItem>
               <NavLink
-                active={props.location.pathname == "/config"}
+                active={props.location.pathname === "/config"}
                 href="/config"
               >
                 <FontAwesomeIcon icon="cog" style={{ marginRight: "0.40em" }} />
