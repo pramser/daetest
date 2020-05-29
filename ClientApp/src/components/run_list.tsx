@@ -2,8 +2,7 @@ import React, { MouseEventHandler } from "react";
 
 import { Table, Badge } from "reactstrap";
 import { useGet } from "restful-react";
-import compareDesc from "date-fns/compare_desc";
-import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
+import { compareDesc, formatDistanceToNow } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { TestRun } from "../types";
@@ -71,7 +70,7 @@ const ResultRow = ({ run, onClick }: ResultRowProps) => {
         <div style={{ flexDirection: "row" }}>
           <span className="result-date meta-pill">
             <FontAwesomeIcon icon="clock" className="right-pad" />
-            {distanceInWordsToNow(created_at)}
+            {formatDistanceToNow(created_at)}
           </span>
           <Badge className="meta-pill" color="primary">
             {product}
