@@ -1,5 +1,7 @@
 export function getDashboard({ response }: any) {
   response.body = {
-    testsFailingCount: 10,
+    testsTotal: 762,
+    testsFailingCount: 64,
+    testsAddedInThirtyDays: 45,
   };
 }
