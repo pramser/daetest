@@ -41,7 +41,9 @@ const RunList: any = (props: RouteComponentProps) => {
         </thead>
         <tbody>
           {runs
-            .sort((a, b) => compareDesc(a.created_at, b.created_at))
+            .sort((a, b) =>
+              compareDesc(new Date(a.created_at), new Date(b.created_at))
+            )
             .map((run: TestRun) => (
               <ResultRow
                 key={run.id}
