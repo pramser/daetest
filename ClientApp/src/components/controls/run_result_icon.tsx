@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Result } from "../../types";
 
-const ResultIcon = (props: any) => {
+const RunResultIcon = (props: any) => {
   if (props.status === Result.Pass)
     return <FontAwesomeIcon icon="check" color="green" />;
 
@@ -12,4 +12,4 @@ const ResultIcon = (props: any) => {
   return <FontAwesomeIcon icon="dot-circle" color="grey" />;
 };
 
-export default ResultIcon;
+export default RunResultIcon;

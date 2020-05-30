@@ -4,7 +4,7 @@ import { formatDistanceToNow } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge } from "reactstrap";
 
-import { Assignee, Chevron, Issue, ResultIcon, RunIcon } from ".";
+import { Assignee, Chevron, Issue, RunResultIcon, RunTypeIcon } from ".";
 import { Run } from "../../types";
 
 interface RunTableRowProps {
@@ -18,7 +18,7 @@ const RunTableRow = ({ run, onClick }: RunTableRowProps) => {
   return (
     <tr className="result" onClick={onClick}>
       <td>
-        <ResultIcon status={status} />
+        <RunResultIcon status={status} />
       </td>
       <td style={{ flexDirection: "column" }}>
         <div className="file-name">{file_name}</div>
@@ -36,7 +36,7 @@ const RunTableRow = ({ run, onClick }: RunTableRowProps) => {
         </div>
       </td>
       <td>
-        <RunIcon type={type} size="sm" />
+        <RunTypeIcon type={type} size="sm" />
       </td>
       <Assignee />
       <Issue />

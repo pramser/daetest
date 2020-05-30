@@ -7,7 +7,7 @@ interface RunIconProps {
   size: string;
 }
 
-const RunIcon = ({ type, size }: RunIconProps) => {
+const RunTypeIcon = ({ type, size }: RunIconProps) => {
   const name = RunType[type];
 
   return (
@@ -19,4 +19,4 @@ const RunIcon = ({ type, size }: RunIconProps) => {
   );
 };
 
-export default RunIcon;
+export default RunTypeIcon;
