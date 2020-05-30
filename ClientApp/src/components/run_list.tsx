@@ -1,13 +1,12 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import { Table, Badge } from "reactstrap";
+import { Table } from "reactstrap";
 import { useGet } from "restful-react";
-import { compareDesc, formatDistanceToNow } from "date-fns";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { compareDesc } from "date-fns";
 
+import { RunTableRow } from "./fields";
 import { Run } from "../types";
-import { Assignee, Chevron, Issue, ResultIcon, RunIcon } from "./fields";
 
 const RunList: any = (props: RouteComponentProps) => {
   const handleRowClick = (id: string) => {
@@ -45,7 +44,7 @@ const RunList: any = (props: RouteComponentProps) => {
               compareDesc(new Date(a.created_at), new Date(b.created_at))
             )
             .map((run: Run) => (
-              <ResultRow
+              <RunTableRow
                 key={run.id}
                 run={run}
                 onClick={() => handleRowClick(run.id)}
@@ -54,44 +53,6 @@ const RunList: any = (props: RouteComponentProps) => {
         </tbody>
       </Table>
     </div>
-  );
-};
-
-interface ResultRowProps {
-  run: Run;
-  onClick?: MouseEventHandler<any>;
-}
-
-const ResultRow = ({ run, onClick }: ResultRowProps) => {
-  const { file_name, product, meta, type, status, created_at } = run;
-
-  return (
-    <tr className="result" onClick={onClick}>
-      <td>
-        <ResultIcon status={status} />
-      </td>
-      <td style={{ flexDirection: "column" }}>
-        <div className="file-name">{file_name}</div>
-        <div style={{ flexDirection: "row" }}>
-          <span className="result-date meta-pill">
-            <FontAwesomeIcon icon="clock" className="right-pad" />
-            {formatDistanceToNow(new Date(created_at))}
-          </span>
-          <Badge className="meta-pill" color="primary">
-            {product}
-          </Badge>
-          <Badge className="meta-pill" color="secondary">
-            {meta}
-          </Badge>
-        </div>
-      </td>
-      <td>
-        <RunIcon type={type} size="sm" />
-      </td>
-      <Assignee />
-      <Issue />
-      <Chevron />
-    </tr>
   );
 };
 
