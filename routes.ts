@@ -2,7 +2,13 @@ import { Router } from "https://deno.land/x/oak/mod.ts";
 
 import { getRoot } from "./controllers/home_controller.ts";
 import { getDashboard } from "./controllers/dashboard_controller.ts";
-import { getRuns, getRunById, putRun } from "./controllers/run_controller.ts";
+
+import {
+  getRuns,
+  getRunById,
+  postRun,
+  putRun,
+} from "./controllers/run_controller.ts";
 
 import {
   getTests,
@@ -20,6 +26,7 @@ router
   .get("/dashboard", getDashboard)
   .get("/runs", getRuns)
   .get("/runs/:id", getRunById)
+  .post("/runs", postRun)
   .put("/runs/:id", putRun)
   .get("/tests", getTests)
   .get("/tests/:id", getTestById)

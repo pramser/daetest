@@ -3,6 +3,7 @@ import {
   getAllRuns,
   getSingleRun,
   updateRun,
+  createRun,
 } from "../services/run_service.ts";
 
 export async function getRuns({ response }: any) {
@@ -27,6 +28,43 @@ export async function getRunById({ params, response }: any) {
   }
 
   response.body = run;
+}
+
+export async function postRun({ request, response }: any) {
+  if (!request.hasBody) {
+    response.status = 400;
+    response.body = { msg: "invalid data" };
+    return;
+  }
+
+  const {
+    value: {
+      file_path,
+      file_name,
+      mime_type,
+      encoding,
+      product,
+      meta,
+      status,
+      type,
+      created_at,
+    },
+  } = await request.body();
+
+  const run = await createRun(
+    new Run({
+      file_path,
+      file_name,
+      mime_type,
+      encoding,
+      product,
+      meta,
+      status,
+      type,
+      created_at,
+    })
+  );
+  response.body = { msg: "run created", run };
 }
 
 export async function putRun({ params, request, response }: any) {
