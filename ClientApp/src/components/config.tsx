@@ -29,7 +29,7 @@ class Config extends Component<
             <Row>
               <Col size={4}>{this.state.alm.name}</Col>
               <Col size={8}>
-                <Input type="text" value={this.state.alm.url} />
+                <Input type="text" value={this.state.alm.url} readOnly />
               </Col>
             </Row>
           </CardBody>
@@ -42,8 +42,8 @@ class Config extends Component<
             </tr>
           </thead>
           <tbody>
-            {this.state.users.map((user: any) => (
-              <tr>
+            {this.state.users.map((user: any, i: number) => (
+              <tr key={i}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
               </tr>
