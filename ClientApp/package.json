@@ -4,7 +4,6 @@
   "author": "Patrick Ramser",
   "license": "ISC",
   "description": "Test results, coverage, and metrics client.",
-  "homepage": "https://github.com/pramser/denouer#readme",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
