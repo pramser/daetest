@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from "react";
+import { RouteComponentProps } from "react-router-dom";
 
 import { Table, Badge } from "reactstrap";
 import { useGet } from "restful-react";
@@ -8,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TestRun } from "../types";
 import TestIcon from "./test_icon";
 
-const RunList: any = (props: any) => {
+const RunList: any = (props: RouteComponentProps) => {
   const handleRowClick = (id: string) => {
     props.history.push(`/tests/${id}`);
   };

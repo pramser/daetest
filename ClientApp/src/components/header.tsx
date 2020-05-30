@@ -11,11 +11,7 @@ import {
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface HeaderProps extends RouteComponentProps<any> {
-  location: any;
-}
-
-const Header = (props: HeaderProps) => {
+const Header = (props: RouteComponentProps) => {
   const [isOpen] = useState(false);
   const toggle = () => {};
 
