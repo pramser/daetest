@@ -1,4 +1,4 @@
-export type TestRun = {
+export type Run = {
   id: string;
   path: string;
   file_name: string;
@@ -7,33 +7,27 @@ export type TestRun = {
 
   product: string;
   meta: string;
-  status: TestRunStatus;
-  type: TestRunType;
+  status: Result;
+  type: RunType;
   created_at: Date;
 };
 
-export enum TestRunStatus {
-  Pending = 0,
-  Pass,
-  Fail,
-}
-
-export enum TestRunType {
+export enum RunType {
   None = 0,
   Denouer,
   JUnit,
   Cucumber,
 }
 
-export type TestCase = {
+export type Test = {
   id: string;
   name: string;
   info: string;
   description: string;
-  result: string;
+  result: Result;
 };
 
-export enum TestCaseResult {
+export enum Result {
   None = 0,
   Pass,
   Fail,
@@ -42,9 +36,9 @@ export enum TestCaseResult {
 export type DashboardReport = {
   testsTotalCount: number;
   testsFailingCount: number;
-  testsFailing: [TestCase];
+  testsFailing: [Test];
   testsUnassignedCount: number;
-  testsUnassigned: [TestCase];
+  testsUnassigned: [Test];
   assignmentMetadatas: [AssignmentMetadata];
   productMetadatas: [ProductMetadata];
 };

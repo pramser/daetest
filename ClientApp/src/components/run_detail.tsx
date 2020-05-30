@@ -16,7 +16,7 @@ import { useGet, useMutate } from "restful-react";
 import Prism from "prismjs";
 import "../prism.css";
 
-import { TestRun, TestCase, TestRunType } from "../types";
+import { Run, Test, RunType, Result } from "../types";
 import TestIcon from "./test_icon";
 import MetaIcon from "./meta_icon";
 
@@ -33,7 +33,7 @@ const RunDetail: any = (props: any) => {
     return "Error occurred!";
   }
 
-  const { id, file_name, product, meta, type } = data as TestRun;
+  const { id, file_name, product, meta, type } = data as Run;
 
   return (
     <div>
@@ -62,7 +62,7 @@ const RunDetail: any = (props: any) => {
           <TestIcon type={type} size="lg" />
           <div className="meta-info">
             <Badge className="meta-pill" color="info">
-              {TestRunType[type]}
+              {RunType[type]}
             </Badge>
             <span>Version 0.0.0</span>
           </div>
@@ -121,7 +121,7 @@ const TestCases: any = ({ runId }: any) => {
 };
 
 interface TestCaseRowProps {
-  testcase: TestCase;
+  testcase: Test;
   onDelete: any;
 }
 
@@ -155,7 +155,7 @@ const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
       <TestResult
         id={id}
         result={result}
-        onUpdate={(r: string) => setResult(r)}
+        onUpdate={(r: Result) => setResult(r)}
       />
       <td style={{ width: "90%", flexDirection: "column" }}>
         <div>
@@ -201,12 +201,12 @@ const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
 
 interface TestResultProps {
   id: string;
-  result: string;
+  result: Result;
   onUpdate: any;
 }
 
 const TestResult = ({ id, result, onUpdate }: TestResultProps) => {
-  const isPass = result === "PASS";
+  const isPass = result === Result.Pass;
 
   const { mutate: putTest } = useMutate({
     verb: "PUT",

@@ -1,14 +1,14 @@
 import React from "react";
 
-import { TestRunType } from "../types";
+import { RunType } from "../types";
 
-interface TestIconProps {
-  type: TestRunType;
+interface RunIconProps {
+  type: RunType;
   size: string;
 }
 
-const TestIcon = ({ type, size }: TestIconProps) => {
-  const name = TestRunType[type];
+const RunIcon = ({ type, size }: RunIconProps) => {
+  const name = RunType[type];
 
   return (
     <img
@@ -19,4 +19,4 @@ const TestIcon = ({ type, size }: TestIconProps) => {
   );
 };
 
-export default TestIcon;
+export default RunIcon;

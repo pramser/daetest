@@ -6,7 +6,7 @@ import { useGet } from "restful-react";
 import { compareDesc, formatDistanceToNow } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { TestRun, TestRunStatus } from "../types";
+import { Run, Result } from "../types";
 import TestIcon from "./test_icon";
 
 const RunList: any = (props: RouteComponentProps) => {
@@ -24,7 +24,7 @@ const RunList: any = (props: RouteComponentProps) => {
     return "Error occurred!";
   }
 
-  var runs = data as [TestRun];
+  var runs = data as [Run];
 
   return (
     <div className="TestList">
@@ -44,7 +44,7 @@ const RunList: any = (props: RouteComponentProps) => {
             .sort((a, b) =>
               compareDesc(new Date(a.created_at), new Date(b.created_at))
             )
-            .map((run: TestRun) => (
+            .map((run: Run) => (
               <ResultRow
                 key={run.id}
                 run={run}
@@ -58,7 +58,7 @@ const RunList: any = (props: RouteComponentProps) => {
 };
 
 interface ResultRowProps {
-  run: TestRun;
+  run: Run;
   onClick?: MouseEventHandler<any>;
 }
 
@@ -96,13 +96,13 @@ const ResultRow = ({ run, onClick }: ResultRowProps) => {
 };
 
 const ResultStatus = (props: any) => {
-  if (props.status === TestRunStatus.Pass)
+  if (props.status === Result.Pass)
     return <FontAwesomeIcon icon="check" color="green" />;
 
-  if (props.status === TestRunStatus.Fail)
+  if (props.status === Result.Fail)
     return <FontAwesomeIcon icon="times" color="red" />;
 
-  return <FontAwesomeIcon icon="pause" color="blue" />;
+  return <FontAwesomeIcon icon="dot-circle" color="grey" />;
 };
 
 const Assignee = () => <td>n/a</td>;

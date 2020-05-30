@@ -23,9 +23,9 @@ import {
   faFile,
   faFileUpload,
   faHome,
-  faPause,
   faTimes,
   faVial,
+  faDotCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 // vial, file, chevron-down, times, clock, chevron-right
@@ -37,11 +37,11 @@ library.add(
   faChevronRight,
   faClock,
   faCog,
+  faDotCircle,
   faEdit,
   faFile,
   faFileUpload,
   faHome,
-  faPause,
   faTimes,
   faVial
 );
