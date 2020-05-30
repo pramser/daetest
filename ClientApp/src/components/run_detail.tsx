@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RouteComponentProps } from "react-router-dom";
 import {
   Row,
   Col,
@@ -17,10 +18,9 @@ import Prism from "prismjs";
 import "../prism.css";
 
 import { Run, Test, RunType, Result } from "../types";
-import RunIcon from "./run_icon";
-import MetaIcon from "./meta_icon";
+import { MetaIcon, RunIcon } from "./fields";
 
-const RunDetail: any = (props: any) => {
+const RunDetail: any = (props: RouteComponentProps) => {
   const paths = props.location.pathname.split("/");
   const runId = paths[paths.length - 1];
   const { data, loading, error } = useGet(`runs/${runId}`);

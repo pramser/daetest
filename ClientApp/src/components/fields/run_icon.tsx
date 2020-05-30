@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RunType } from "../types";
+import { RunType } from "../../types";
 
 interface RunIconProps {
   type: RunType;
