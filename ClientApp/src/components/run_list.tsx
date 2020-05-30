@@ -70,7 +70,7 @@ const ResultRow = ({ run, onClick }: ResultRowProps) => {
         <div style={{ flexDirection: "row" }}>
           <span className="result-date meta-pill">
             <FontAwesomeIcon icon="clock" className="right-pad" />
-            {formatDistanceToNow(created_at)}
+            {formatDistanceToNow(new Date(created_at))}
           </span>
           <Badge className="meta-pill" color="primary">
             {product}
