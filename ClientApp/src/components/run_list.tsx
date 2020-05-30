@@ -6,7 +6,7 @@ import { useGet } from "restful-react";
 import { compareDesc, formatDistanceToNow } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { TestRun } from "../types";
+import { TestRun, TestRunStatus } from "../types";
 import TestIcon from "./test_icon";
 
 const RunList: any = (props: RouteComponentProps) => {
@@ -61,11 +61,13 @@ interface ResultRowProps {
 }
 
 const ResultRow = ({ run, onClick }: ResultRowProps) => {
-  const { file_name, product, meta, type, created_at } = run;
+  const { file_name, product, meta, type, status, created_at } = run;
 
   return (
     <tr className="result" onClick={onClick}>
-      <ResultStatus />
+      <td>
+        <ResultStatus status={status} />
+      </td>
       <td style={{ flexDirection: "column" }}>
         <div className="file-name">{file_name}</div>
         <div style={{ flexDirection: "row" }}>
@@ -91,15 +93,19 @@ const ResultRow = ({ run, onClick }: ResultRowProps) => {
   );
 };
 
-const ResultStatus = () => (
-  <td>
-    <FontAwesomeIcon icon="times" color="red" />
-  </td>
-);
+const ResultStatus = (props: any) => {
+  if (props.status === TestRunStatus.Pass)
+    return <FontAwesomeIcon icon="check" color="green" />;
 
-const Assignee = () => <td>{"n/a"}</td>;
+  if (props.status === TestRunStatus.Fail)
+    return <FontAwesomeIcon icon="times" color="red" />;
 
-const Issue = () => <td>{"n/a"}</td>;
+  return <FontAwesomeIcon icon="pause" color="blue" />;
+};
+
+const Assignee = () => <td>n/a</td>;
+
+const Issue = () => <td>n/a</td>;
 
 const Chevron = () => (
   <td>

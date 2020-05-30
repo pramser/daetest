@@ -23,6 +23,7 @@ import {
   faFile,
   faFileUpload,
   faHome,
+  faPause,
   faTimes,
   faVial,
 } from "@fortawesome/free-solid-svg-icons";
@@ -40,6 +41,7 @@ library.add(
   faFile,
   faFileUpload,
   faHome,
+  faPause,
   faTimes,
   faVial
 );
