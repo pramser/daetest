@@ -17,7 +17,7 @@ import Prism from "prismjs";
 import "../prism.css";
 
 import { Run, Test, RunType, Result } from "../types";
-import TestIcon from "./test_icon";
+import RunIcon from "./run_icon";
 import MetaIcon from "./meta_icon";
 
 const RunDetail: any = (props: any) => {
@@ -59,7 +59,7 @@ const RunDetail: any = (props: any) => {
           </div>
         </Col>
         <Col className="meta-col">
-          <TestIcon type={type} size="lg" />
+          <RunIcon type={type} size="lg" />
           <div className="meta-info">
             <Badge className="meta-pill" color="info">
               {RunType[type]}

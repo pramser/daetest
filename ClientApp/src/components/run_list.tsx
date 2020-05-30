@@ -7,7 +7,7 @@ import { compareDesc, formatDistanceToNow } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Run, Result } from "../types";
-import TestIcon from "./test_icon";
+import TestIcon from "./run_icon";
 
 const RunList: any = (props: RouteComponentProps) => {
   const handleRowClick = (id: string) => {
