@@ -5,7 +5,7 @@ import { Table } from "reactstrap";
 import { useGet } from "restful-react";
 import { compareDesc } from "date-fns";
 
-import { RunTableRow } from "./fields";
+import { RunTableRow } from "./controls";
 import { Run } from "../types";
 
 const RunList: any = (props: RouteComponentProps) => {

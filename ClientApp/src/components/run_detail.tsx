@@ -18,7 +18,7 @@ import Prism from "prismjs";
 import "../prism.css";
 
 import { Run, Test, RunType, Result } from "../types";
-import { MetaIcon, RunIcon } from "./fields";
+import { MetaIcon, RunIcon } from "./controls";
 
 const RunDetail: any = (props: RouteComponentProps) => {
   const paths = props.location.pathname.split("/");
@@ -106,7 +106,7 @@ const TestCases: any = ({ runId }: any) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((testcase: any) => (
+          {data.map((testcase: Test) => (
             <TestCaseRow
               key={testcase.id}
               testcase={testcase}
@@ -151,7 +151,7 @@ const TestCaseRow = ({ testcase, onDelete }: TestCaseRowProps) => {
   });
 
   return (
-    <tr key={id}>
+    <tr>
       <TestResult
         id={id}
         result={result}
