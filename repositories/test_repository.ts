@@ -1,4 +1,4 @@
-import client from "../db/database.ts";
+import client from "../database/database.ts";
 import { IRepository, Test, TestResult } from "../interfaces.ts";
 import { APP_ENV } from "../config.ts";
 
