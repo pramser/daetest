@@ -5,6 +5,7 @@ import {
   POSTGRES_PASSWORD,
   POSTGRES_PORT,
   POSTGRES_USER,
+  APP_ENV,
 } from "../config.ts";
 
 class Database {
@@ -22,7 +23,7 @@ class Database {
       port: POSTGRES_PORT,
     });
 
-    await this.client.connect();
+    (await APP_ENV) == "local" ? null : this.client.connect();
   }
 }
 
