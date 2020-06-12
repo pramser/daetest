@@ -13,7 +13,7 @@ export type Run = {
 };
 
 export enum RunType {
-  None = 0,
+  Unknown = 0,
   Denouer,
   JUnit,
   Cucumber,
