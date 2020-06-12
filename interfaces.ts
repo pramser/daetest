@@ -20,6 +20,13 @@ export enum TestResult {
   Fail,
 }
 
+export enum RunType {
+  Unknown = 0,
+  Denouer,
+  JUnit,
+  Cucumber,
+}
+
 export class Test implements IModel {
   id: number;
   run_id: number;
@@ -75,4 +82,8 @@ export class Run implements IModel {
     this.type = type;
     this.created_at = created_at;
   }
+}
+
+export interface IFileParser {
+  parseFile(file: any): [];
 }
