@@ -22,15 +22,22 @@ import {
 const router = new Router();
 
 router
+  // root
   .get("/", getRoot)
+
+  // dashboard
   .get("/dashboard", getDashboard)
+
+  // runs
   .get("/runs", getRuns)
   .get("/runs/:id", getRunById)
+  .get("/runs/:id/tests", getTestsByRunId)
   .post("/runs", postRun)
   .put("/runs/:id", putRun)
+
+  // tests
   .get("/tests", getTests)
   .get("/tests/:id", getTestById)
-  .get("/runs/:id/tests", getTestsByRunId)
   .post("/tests", postTest)
   .put("/tests/:id", putTest)
   .delete("/tests/:id", deleteTest);
