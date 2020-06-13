@@ -1,8 +1,15 @@
 import runRepository from "../repositories/run_repository.ts";
-import { Run } from "../interfaces.ts";
+import testRepository from "../repositories/test_repository.ts"
+import { Run, Test } from "../interfaces.ts";
 
-export const createRun = (run: Run): Run => {
-  return runRepository.create(run);
+export const createRun = (run: Run, tests: Test[] = []): Run => {
+  var createdRun = runRepository.create(run);
+
+  if (tests.length > 0) {
+    testRepository.createBatch(tests);
+  }
+
+  return createdRun;
 };
 
 export const updateRun = (runId: number, run: Run): Run => {

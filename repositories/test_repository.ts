@@ -13,6 +13,10 @@ class DatabaseTestRepository implements IRepository<Test> {
     );
   }
 
+  createBatch(tests: Test[]): void {
+    tests.forEach(test => this.create(test));
+  }
+
   update(id: number, test: Test): Test {
     var query = `UPDATE beers `;
     var hasSet = false;
@@ -183,6 +187,11 @@ class InMemoryTestRepository implements IRepository<Test> {
     test.id = this.tests_index++;
     this.tests = [...this.tests, test];
     return test;
+  }
+
+  createBatch(tests: Test[]): Test[] {
+    this.tests = [...this.tests, ...tests];
+    return tests;
   }
 
   update(id: number, test: any): Test {

@@ -5,6 +5,8 @@ export interface IModel {
 export interface IRepository<TModel> {
   create(model: TModel): TModel;
 
+  createBatch(models: []): void;
+
   update(id: number, model: TModel): TModel;
 
   delete(id: number): void;

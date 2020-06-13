@@ -48,6 +48,10 @@ class InMemoryRunRepository implements IRepository<Run> {
     return run;
   }
 
+  createBatch(runs: Run[]): void {
+    throw new Error("not implemented");
+  }
+
   update(id: number, run: any): Run {
     var index = this.runs.findIndex((r) => r.id == id);
     var m_run = this.runs[index] as any;
