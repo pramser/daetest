@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { Table, Row, Col, Button } from "reactstrap";
 import { useGet } from "restful-react";
 import { compareDesc } from "date-fns";
 
-import { RunTableRow } from "./controls";
+import { RunTableRow, CreateRunModal } from "./controls";
 import { Run } from "../types";
 
 const RunList: any = (props: RouteComponentProps) => {
@@ -14,6 +14,7 @@ const RunList: any = (props: RouteComponentProps) => {
   };
 
   const { data, loading, error } = useGet("runs");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (loading) {
     return "Is loading...";
@@ -32,9 +33,17 @@ const RunList: any = (props: RouteComponentProps) => {
           <h3>Runs</h3>
         </Col>
         <Col style={{ textAlign: "right" }}>
-          <Button outline size="sm">
+          <Button
+            outline
+            size="sm"
+            onClick={() => setIsModalOpen(!isModalOpen)}
+          >
             Create Run
           </Button>
+          <CreateRunModal
+            isOpen={isModalOpen}
+            toggle={() => setIsModalOpen(!isModalOpen)}
+          />
         </Col>
       </Row>
       <hr />

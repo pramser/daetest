@@ -1,5 +1,6 @@
 export { default as Assignee } from "./assignee";
 export { default as Chevron } from "./chevron";
+export { default as CreateRunModal } from "./create_run_modal";
 export { default as Issue } from "./issue";
 export { default as MetaIcon } from "./meta_icon";
 export { default as RemoveButton } from "./remove_button";
