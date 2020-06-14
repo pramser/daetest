@@ -5,7 +5,6 @@ import {
   updateRun,
   createRun,
 } from "../services/run_service.ts";
-import FileConverter from "../parsers/file_importer.ts";
 
 export async function getRuns({ response }: any) {
   response.body = await getAllRuns();
@@ -52,7 +51,7 @@ export async function postRun({ request, response }: any) {
     },
   } = await request.body();
 
-  const run = new Run({
+  const run = await createRun(new Run({
     file_path,
     file_name,
     mime_type,
@@ -62,17 +61,8 @@ export async function postRun({ request, response }: any) {
     status,
     type,
     created_at,
-  });
-
-  if (file_path) {
-    console.log("adding tests for file_path");
-    let fileConverter = new FileConverter(type);
-    fileConverter.convertFile(file_path, (tests) => createRun(run, tests));
-    return;
-  }
-
-  const createdRun = await createRun(run);
-  response.body = { msg: "run created", createdRun };
+  }));
+  response.body = { msg: "run created", run };
 }
 
 export async function putRun({ params, request, response }: any) {
