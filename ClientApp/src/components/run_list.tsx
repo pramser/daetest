@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import { Table } from "reactstrap";
+import { Table, Row, Col, Button } from "reactstrap";
 import { useGet } from "restful-react";
 import { compareDesc } from "date-fns";
 
@@ -27,6 +27,17 @@ const RunList: any = (props: RouteComponentProps) => {
 
   return (
     <div className="TestList">
+      <Row>
+        <Col>
+          <h3>Runs</h3>
+        </Col>
+        <Col style={{ textAlign: "right" }}>
+          <Button outline size="sm">
+            Create Run
+          </Button>
+        </Col>
+      </Row>
+      <hr />
       <Table style={{ border: "2px solid #ddd" }}>
         <thead>
           <tr>
