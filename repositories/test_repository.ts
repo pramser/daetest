@@ -1,5 +1,5 @@
 import client from "../database/database.ts";
-import { IRepository, Test, TestResult } from "../interfaces.ts";
+import { IRepository, Test, Result } from "../interfaces.ts";
 import { APP_ENV } from "../config.ts";
 
 class DatabaseTestRepository implements IRepository<Test> {
@@ -107,7 +107,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Pass,
+      result: Result.Pass,
     },
     {
       id: 2,
@@ -115,7 +115,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Fail,
+      result: Result.Fail,
     },
     {
       id: 3,
@@ -123,7 +123,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.None,
+      result: Result.Unknown,
     },
     {
       id: 4,
@@ -131,7 +131,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Pass,
+      result: Result.Pass,
     },
     {
       id: 5,
@@ -139,7 +139,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Pass,
+      result: Result.Pass,
     },
     {
       id: 6,
@@ -147,7 +147,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Pass,
+      result: Result.Pass,
     },
     {
       id: 7,
@@ -155,7 +155,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Fail,
+      result: Result.Fail,
     },
     {
       id: 8,
@@ -163,7 +163,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.None,
+      result: Result.Unknown,
     },
     {
       id: 9,
@@ -171,7 +171,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Pass,
+      result: Result.Pass,
     },
     {
       id: 10,
@@ -179,7 +179,7 @@ class InMemoryTestRepository implements IRepository<Test> {
       name: "Name of the test",
       description: "Describe the test",
       info: "Information on the test",
-      result: TestResult.Pass,
+      result: Result.Pass,
     },
   ] as Test[];
 

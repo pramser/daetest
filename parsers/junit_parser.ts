@@ -12,7 +12,7 @@ export default class JUnitParser implements IFileParser {
     return [];
   }
 
-  buildTests(objs: []): Test[] {
+  buildTests(objs: any[]): Test[] {
     let tests: any = [];
     objs.forEach((obj: any) => {
       const test = new Test({

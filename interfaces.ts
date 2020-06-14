@@ -51,8 +51,8 @@ export class Run implements IModel {
   id: number;
   file_name: string;
   product: string;
-  result: number;
-  type: number;
+  result: Result;
+  type: RunType;
   created_at: Date;
 
   constructor({
