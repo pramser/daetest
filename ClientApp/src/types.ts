@@ -1,13 +1,8 @@
 export type Run = {
   id: string;
-  path: string;
   file_name: string;
-  mime_type: string;
-  encoding: string;
-
   product: string;
-  meta: string;
-  status: Result;
+  result: Result;
   type: RunType;
   created_at: Date;
 };

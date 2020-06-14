@@ -19,7 +19,7 @@ const RunDetail: any = (props: RouteComponentProps) => {
     return "Error occurred!";
   }
 
-  const { id, file_name, product, meta, type } = data as Run;
+  const { id, file_name, product, type } = data as Run;
 
   return (
     <div>
@@ -56,9 +56,6 @@ const RunDetail: any = (props: RouteComponentProps) => {
         <Col className="meta-col">
           <MetaIcon text="U" size="lg" color="secondary" />
           <div className="meta-info">
-            <Badge className="meta-pill" color="secondary">
-              {meta}
-            </Badge>
             <span>Test-Meta</span>
           </div>
         </Col>

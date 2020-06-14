@@ -13,12 +13,12 @@ interface RunTableRowProps {
 }
 
 const RunTableRow = ({ run, onClick }: RunTableRowProps) => {
-  const { file_name, product, meta, type, status, created_at } = run;
+  const { file_name, product, type, result, created_at } = run;
 
   return (
     <tr className="result" onClick={onClick}>
       <td>
-        <RunResultIcon status={status} />
+        <RunResultIcon status={result} />
       </td>
       <td style={{ flexDirection: "column" }}>
         <div className="file-name">{file_name}</div>
@@ -29,9 +29,6 @@ const RunTableRow = ({ run, onClick }: RunTableRowProps) => {
           </span>
           <Badge className="meta-pill" color="primary">
             {product}
-          </Badge>
-          <Badge className="meta-pill" color="secondary">
-            {meta}
           </Badge>
         </div>
       </td>
