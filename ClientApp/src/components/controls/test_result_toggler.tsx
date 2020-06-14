@@ -29,7 +29,9 @@ const TestResultToggler = ({
           outline
           color={isPass ? "success" : "secondary"}
           disabled={isPass}
-          onClick={() => putTest({ result: "PASS" }).then(onUpdate("PASS"))}
+          onClick={() =>
+            putTest({ result: Result.Pass }).then(onUpdate(Result.Pass))
+          }
         >
           <FontAwesomeIcon icon="check" color={isPass ? "green" : "grey"} />
         </Button>
@@ -37,7 +39,9 @@ const TestResultToggler = ({
           outline
           color={!isPass ? "danger" : "secondary"}
           disabled={!isPass}
-          onClick={() => putTest({ result: "FAIL" }).then(onUpdate("FAIL"))}
+          onClick={() =>
+            putTest({ result: Result.Fail }).then(onUpdate(Result.Fail))
+          }
         >
           <FontAwesomeIcon icon="times" color={!isPass ? "red" : "grey"} />
         </Button>
