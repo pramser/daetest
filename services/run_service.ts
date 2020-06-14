@@ -1,12 +1,25 @@
 import runRepository from "../repositories/run_repository.ts";
 import testRepository from "../repositories/test_repository.ts"
+import FileConverter from "../parsers/file_importer.ts";
 import { Run, Test } from "../interfaces.ts";
 
-export const createRun = (run: Run, tests: Test[] = []): Run => {
+// TODO: download file and store it in './temp'
+// import { download } from "https://deno.land/x/download";
+
+export const createRun = (run: Run): Run => {
   var createdRun = runRepository.create(run);
 
-  if (tests.length > 0) {
-    testRepository.createBatch(tests);
+  if (createdRun.file_name) {
+    console.log("adding tests for file_path");
+    let fileConverter = new FileConverter(createdRun.type);
+    const isFileConverted = fileConverter.convertFile(createdRun.file_name, (tests: Test[]) => {
+      if (tests.length > 0) {
+        testRepository.createBatch(tests);
+      }
+    });
+
+    // TODO: delete file post-conversion
+    if (isFileConverted) console.log("tests added for file_path");
   }
 
   return createdRun;

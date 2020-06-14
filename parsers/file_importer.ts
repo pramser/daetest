@@ -2,7 +2,7 @@ import {
   existsSync,
   readFileStrSync,
 } from "https://deno.land/std@0.57.0/fs/mod.ts";
-import { IFileParser, RunType } from "../interfaces.ts";
+import { IFileParser, RunType, Test } from "../interfaces.ts";
 import JUnitParser from "./junit_parser.ts";
 
 export default class FileConverter {
@@ -21,7 +21,7 @@ export default class FileConverter {
     }
   }
 
-  convertFile(filePath: string, callback: (tests: []) => void) {
+  convertFile(filePath: string, callback: (tests: Test[]) => void) {
     if (!filePath || !existsSync(filePath)) {
       throw Error("invalid filePath; try again");
     }
@@ -33,10 +33,10 @@ export default class FileConverter {
     let file = readFileStrSync(filePath);
     if (!file) return false;
 
-    let testcases = this.file_parser.parseFile(file);
-    if (!testcases) return false;
+    let tests = this.file_parser.parseFile(file);
+    if (!tests) return false;
 
-    callback(testcases);
+    callback(tests);
     return true;
   }
 }
