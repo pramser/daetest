@@ -1,4 +1,4 @@
-import { IRepository, Run } from "../interfaces.ts";
+import { IRepository, Run, Result, RunType } from "../interfaces.ts";
 
 class InMemoryRunRepository implements IRepository<Run> {
   runs_index = 2;
@@ -6,38 +6,26 @@ class InMemoryRunRepository implements IRepository<Run> {
   runs = [
     {
       id: 1,
-      file_path: "../file_path",
       file_name: "file_name.xml",
-      mime_type: "application/xml",
-      encoding: "UTC-8",
       product: "denouer",
-      meta: "e2e",
-      status: 2,
-      type: 2,
+      result: Result.Pass,
+      type: RunType.JUnit,
       created_at: new Date(2020, 2, 2),
     },
     {
       id: 2,
-      file_path: "../file_path",
       file_name: "file_name.feature",
-      mime_type: "application/feature",
-      encoding: "UTC-8",
       product: "denouer",
-      meta: "ui",
-      status: 3,
-      type: 3,
+      result: Result.Fail,
+      type: RunType.Cucumber,
       created_at: new Date(2020, 2, 2),
     },
     {
       id: 3,
-      file_path: "../file_path",
       file_name: "file_name.denouer",
-      mime_type: "application/denouer",
-      encoding: "UTC-8",
       product: "denouer",
-      meta: "ui",
-      status: 1,
-      type: 1,
+      result: Result.Unknown,
+      type: RunType.Denouer,
       created_at: new Date(2020, 2, 2),
     },
   ] as Run[];
