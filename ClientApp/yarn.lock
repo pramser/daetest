@@ -2209,15 +2209,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/react-fontawesome@npm:^0.1.9":
-  version: 0.1.9
-  resolution: "@fortawesome/react-fontawesome@npm:0.1.9"
+"@fortawesome/react-fontawesome@npm:^0.1.10":
+  version: 0.1.10
+  resolution: "@fortawesome/react-fontawesome@npm:0.1.10"
   dependencies:
     prop-types: ^15.7.2
   peerDependencies:
     "@fortawesome/fontawesome-svg-core": ^1.2.20
     react: 16.x
-  checksum: 3/329cb2f82702663508072b8a077912e8a197f7da2cd4a7acfe71f37fced7a21922b83017b8520d218da371f006bcdef7b9c483ad56b0f2e30c5d3709f8b140e1
+  checksum: 3/a91a0afc4954ad1fa7602a4f1483269155a066a9cceee053a20c8c876d57c9af6eb7790741c1e9b1481b7ae2111e1d8c8c0194e8ec7114b1f8fdb259793fbe93
   languageName: node
   linkType: hard
 
@@ -2715,10 +2715,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.0.5":
-  version: 14.0.5
-  resolution: "@types/node@npm:14.0.5"
-  checksum: 3/38a9f9b66c2657b4ba520e40073369d4a33438dd45f9c001d98a7cda40e88a5ea28485c320fa00fc706b5473b549cacc9a8b9796e4d69681c032619e12f73f7d
+"@types/node@npm:^14.0.13":
+  version: 14.0.13
+  resolution: "@types/node@npm:14.0.13"
+  checksum: 3/2f2be6f7f1a916b0f4d58949bd934a8e41c0dcb15c493c17c3eaf78da3065c09650030f0dfe2e8c11880d597ee001d7cd925129218037fdb4432e80f7d895673
   languageName: node
   linkType: hard
 
@@ -2798,13 +2798,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^16.9.35":
+"@types/react@npm:*":
   version: 16.9.35
   resolution: "@types/react@npm:16.9.35"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^2.2.0
   checksum: 3/17c41e59d76634d3c9e21d30bda9afe311e99d2dd37274c8763a9ae3e20d775ee0220d456f11cc0de2ec337306ae7d9f329177b40c2ef299b35881620e7703c2
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^16.9.36":
+  version: 16.9.36
+  resolution: "@types/react@npm:16.9.36"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^2.2.0
+  checksum: 3/63731d81fcd0407ea17f265aa042bbf01f208798ca773e1a158ccb721798cffb4b398cc1c098fe8a71ff053601a51171bb607c3ff2ba14e1ff063aefe94f08cd
   languageName: node
   linkType: hard
 
@@ -5771,10 +5781,10 @@ __metadata:
   dependencies:
     "@fortawesome/fontawesome-svg-core": ^1.2.28
     "@fortawesome/free-solid-svg-icons": ^5.13.0
-    "@fortawesome/react-fontawesome": ^0.1.9
-    "@types/node": ^14.0.5
+    "@fortawesome/react-fontawesome": ^0.1.10
+    "@types/node": ^14.0.13
     "@types/prismjs": ^1.16.1
-    "@types/react": ^16.9.35
+    "@types/react": ^16.9.36
     "@types/react-dom": ^16.9.8
     "@types/react-dropzone": ^5.1.0
     "@types/react-router-dom": ^5.1.5
@@ -5790,8 +5800,8 @@ __metadata:
     react-scripts: ^3.4.1
     react-textarea-autosize: ^8.0.1
     reactstrap: ^8.4.1
-    restful-react: ^12.0.0
-    typescript: ^3.9.3
+    restful-react: ^13.0.0
+    typescript: ^3.9.5
   languageName: unknown
   linkType: soft
 
@@ -13598,9 +13608,9 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"restful-react@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "restful-react@npm:12.0.0"
+"restful-react@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "restful-react@npm:13.0.0"
   dependencies:
     case: ^1.6.2
     chalk: ^3.0.0
@@ -13622,7 +13632,7 @@ resolve@1.1.7:
     react: ^16.8.5
   bin:
     restful-react: dist/bin/restful-react.js
-  checksum: 3/586822b74349d1fc986ea851d099de9f5b27472796ebe9b8464fc2845ec521c7705b8ed97caa677506f424c2b91bd32269a21b303bca22fd951af135c199ff05
+  checksum: 3/dc1da864eebb3a8d2f2562231f9e8beed1469148b3c89caecfd68f205c3c6c9bcadf4e65f217e75e92a9bc9ab4c0d8de3e3b4d62df6e86e4c6b489cb5552b5d9
   languageName: node
   linkType: hard
 
@@ -15313,23 +15323,23 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-typescript@^3.9.3:
-  version: 3.9.4
-  resolution: "typescript@npm:3.9.4"
+typescript@^3.9.5:
+  version: 3.9.5
+  resolution: "typescript@npm:3.9.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3/f364e86609679566abda039acf35030b78d738c456dae201bad71722b47aa753ea42f3076a2767b72b63a1b8641f1ffb3984dcbdf088bd401b4e7118e3601893
+  checksum: 3/15618435493667083eb43dc7b36c4d3dd47fd9e9c8a14f0ac4019bbf6124b6cc518b6ed506400913db1bf50831207ee8201b5d827680076930b562923f4f18a0
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^3.9.3#builtin<compat/typescript>":
-  version: 3.9.4
-  resolution: "typescript@patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"
+"typescript@patch:typescript@^3.9.5#builtin<compat/typescript>":
+  version: 3.9.5
+  resolution: "typescript@patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3/6fe6acffaf466fe06116a9adb089914b070b8363c38fa1c80a4728452eb8fc88b7977930b61a860ab37080733eddf4dacf25dc88f0dd14efe6d8312ed6fcfb12
+  checksum: 3/347b57e017c6f6c956eb7fc3c392e764bb924b1758103207cfb9c465210d4134212a164a064c259d524f055b86b023ebecc3e3ab5b5d666c1c0d96e1397149f6
   languageName: node
   linkType: hard
 

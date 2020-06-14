@@ -39,11 +39,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@fortawesome/react-fontawesome",
-        "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.9"
+        "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.10"
       ],
       [
         "@types/node",
-        "npm:14.0.5"
+        "npm:14.0.13"
       ],
       [
         "@types/prismjs",
@@ -51,7 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/react",
-        "npm:16.9.35"
+        "npm:16.9.36"
       ],
       [
         "@types/react-dom",
@@ -115,11 +115,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "restful-react",
-        "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:12.0.0"
+        "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:13.0.0"
       ],
       [
         "typescript",
-        "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"
+        "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"
       ]
     ],
     "locationBlacklistData": [
@@ -131,10 +131,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@fortawesome/fontawesome-svg-core", "npm:1.2.28"],
             ["@fortawesome/free-solid-svg-icons", "npm:5.13.0"],
-            ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.9"],
-            ["@types/node", "npm:14.0.5"],
+            ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.10"],
+            ["@types/node", "npm:14.0.13"],
             ["@types/prismjs", "npm:1.16.1"],
-            ["@types/react", "npm:16.9.35"],
+            ["@types/react", "npm:16.9.36"],
             ["@types/react-dom", "npm:16.9.8"],
             ["@types/react-dropzone", "npm:5.1.0"],
             ["@types/react-router-dom", "npm:5.1.5"],
@@ -150,8 +150,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:3.4.1"],
             ["react-textarea-autosize", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:8.0.1"],
             ["reactstrap", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:8.4.1"],
-            ["restful-react", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:12.0.0"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["restful-react", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:13.0.0"],
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "linkType": "SOFT",
         }]
@@ -2988,10 +2988,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@fortawesome/react-fontawesome", [
-        ["virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.9", {
-          "packageLocation": "./.yarn/$$virtual/@fortawesome-react-fontawesome-virtual-97dccb8621/0/cache/@fortawesome-react-fontawesome-npm-0.1.9-e8fd684dea-3.zip/node_modules/@fortawesome/react-fontawesome/",
+        ["virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.10", {
+          "packageLocation": "./.yarn/$$virtual/@fortawesome-react-fontawesome-virtual-e6ad50686a/0/cache/@fortawesome-react-fontawesome-npm-0.1.10-6bb5a2c5a4-3.zip/node_modules/@fortawesome/react-fontawesome/",
           "packageDependencies": [
-            ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.9"],
+            ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.10"],
             ["@fortawesome/fontawesome-svg-core", "npm:1.2.28"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:16.13.1"]
@@ -3556,10 +3556,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
-        ["npm:14.0.5", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-14.0.5-e76752face-3.zip/node_modules/@types/node/",
+        ["npm:14.0.13", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.0.13-12d0173e00-3.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:14.0.5"]
+            ["@types/node", "npm:14.0.13"]
           ],
           "linkType": "HARD",
         }],
@@ -3612,6 +3612,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-react-npm-16.9.35-a326cd7543-3.zip/node_modules/@types/react/",
           "packageDependencies": [
             ["@types/react", "npm:16.9.35"],
+            ["@types/prop-types", "npm:15.7.3"],
+            ["csstype", "npm:2.6.10"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:16.9.36", {
+          "packageLocation": "./.yarn/cache/@types-react-npm-16.9.36-b06d308e4a-3.zip/node_modules/@types/react/",
+          "packageDependencies": [
+            ["@types/react", "npm:16.9.36"],
             ["@types/prop-types", "npm:15.7.3"],
             ["csstype", "npm:2.6.10"]
           ],
@@ -3731,7 +3740,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["functional-red-black-tree", "npm:1.0.1"],
             ["regexpp", "npm:3.1.0"],
             ["tsutils", "virtual:f195f2e4dcbc8d13e73a28c6979b05a633da7ea44fa2d25f057eb60d0e08d2af1f0e3c94ab9c94cc0c3a0f584588fc69613ec417e49d9f4a149213ee94c2afcd#npm:3.17.1"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "packagePeers": [
             "eslint",
@@ -3768,7 +3777,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/typescript-estree", "virtual:c9beb149a6c857e7fbe63b74aa4b4c349e3cf99785a65e1f93d4801e93f4ab198a289c2a7c03643a0787638a3cadef52602e994c1c97fafafba9b5888893cfc6#npm:2.34.0"],
             ["eslint", "npm:6.8.0"],
             ["eslint-visitor-keys", "npm:1.1.0"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "packagePeers": [
             "eslint",
@@ -3807,7 +3816,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.15"],
             ["semver", "npm:7.3.2"],
             ["tsutils", "virtual:f195f2e4dcbc8d13e73a28c6979b05a633da7ea44fa2d25f057eb60d0e08d2af1f0e3c94ab9c94cc0c3a0f584588fc69613ec417e49d9f4a149213ee94c2afcd#npm:3.17.1"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "packagePeers": [
             "typescript"
@@ -7081,10 +7090,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["denouer-ui", "workspace:."],
             ["@fortawesome/fontawesome-svg-core", "npm:1.2.28"],
             ["@fortawesome/free-solid-svg-icons", "npm:5.13.0"],
-            ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.9"],
-            ["@types/node", "npm:14.0.5"],
+            ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.10"],
+            ["@types/node", "npm:14.0.13"],
             ["@types/prismjs", "npm:1.16.1"],
-            ["@types/react", "npm:16.9.35"],
+            ["@types/react", "npm:16.9.36"],
             ["@types/react-dom", "npm:16.9.8"],
             ["@types/react-dropzone", "npm:5.1.0"],
             ["@types/react-router-dom", "npm:5.1.5"],
@@ -7100,8 +7109,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:3.4.1"],
             ["react-textarea-autosize", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:8.0.1"],
             ["reactstrap", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:8.4.1"],
-            ["restful-react", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:12.0.0"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["restful-react", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:13.0.0"],
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "linkType": "SOFT",
         }]
@@ -15121,7 +15130,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["style-loader", "npm:0.23.1"],
             ["terser-webpack-plugin", "virtual:2faf4b9ddbfb47cd99ed1a53d6a83200c183e4ba4517d05fe754e900d6eb5cf4c36cc35541a65492b3dc32c8c73b888154aad729ec7da03aa45bdbeed0f9f3bf#npm:2.3.5"],
             ["ts-pnp", "virtual:2faf4b9ddbfb47cd99ed1a53d6a83200c183e4ba4517d05fe754e900d6eb5cf4c36cc35541a65492b3dc32c8c73b888154aad729ec7da03aa45bdbeed0f9f3bf#npm:1.1.6"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"],
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"],
             ["url-loader", "virtual:2faf4b9ddbfb47cd99ed1a53d6a83200c183e4ba4517d05fe754e900d6eb5cf4c36cc35541a65492b3dc32c8c73b888154aad729ec7da03aa45bdbeed0f9f3bf#npm:2.3.0"],
             ["webpack", "npm:4.42.0"],
             ["webpack-dev-server", "virtual:2faf4b9ddbfb47cd99ed1a53d6a83200c183e4ba4517d05fe754e900d6eb5cf4c36cc35541a65492b3dc32c8c73b888154aad729ec7da03aa45bdbeed0f9f3bf#npm:3.10.3"],
@@ -15696,10 +15705,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["restful-react", [
-        ["virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:12.0.0", {
-          "packageLocation": "./.yarn/$$virtual/restful-react-virtual-b40b368c9b/0/cache/restful-react-npm-12.0.0-791df69db1-3.zip/node_modules/restful-react/",
+        ["virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:13.0.0", {
+          "packageLocation": "./.yarn/$$virtual/restful-react-virtual-4bb774ae75/0/cache/restful-react-npm-13.0.0-ff115821ef-3.zip/node_modules/restful-react/",
           "packageDependencies": [
-            ["restful-react", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:12.0.0"],
+            ["restful-react", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:13.0.0"],
             ["case", "npm:1.6.3"],
             ["chalk", "npm:3.0.0"],
             ["commander", "npm:4.1.1"],
@@ -17449,7 +17458,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/ts-pnp-virtual-a05bc50f80/0/cache/ts-pnp-npm-1.1.6-cc542a3af4-3.zip/node_modules/ts-pnp/",
           "packageDependencies": [
             ["ts-pnp", "virtual:2faf4b9ddbfb47cd99ed1a53d6a83200c183e4ba4517d05fe754e900d6eb5cf4c36cc35541a65492b3dc32c8c73b888154aad729ec7da03aa45bdbeed0f9f3bf#npm:1.1.6"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "packagePeers": [
             "typescript"
@@ -17495,7 +17504,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["tsutils", "virtual:f195f2e4dcbc8d13e73a28c6979b05a633da7ea44fa2d25f057eb60d0e08d2af1f0e3c94ab9c94cc0c3a0f584588fc69613ec417e49d9f4a149213ee94c2afcd#npm:3.17.1"],
             ["tslib", "npm:1.13.0"],
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "packagePeers": [
             "typescript"
@@ -17603,10 +17612,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["typescript", [
-        ["patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75", {
-          "packageLocation": "./.yarn/cache/typescript-patch-ad951acdf1-3.zip/node_modules/typescript/",
+        ["patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75", {
+          "packageLocation": "./.yarn/cache/typescript-patch-3eb110dd9d-3.zip/node_modules/typescript/",
           "packageDependencies": [
-            ["typescript", "patch:typescript@npm%3A3.9.4#builtin<compat/typescript>::version=3.9.4&hash=8cac75"]
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"]
           ],
           "linkType": "HARD",
         }]
