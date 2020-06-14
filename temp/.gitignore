@@ -1,0 +1,4 @@
+# .gitignore for imported test files
+
+# result files
+*.xml
