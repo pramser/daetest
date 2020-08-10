@@ -1,4 +1,4 @@
-import { walk, readFileStr } from "https://deno.land/std/fs/mod.ts";
+import { walk, readFileStr } from "https://deno.land/std@0.60.0/fs/mod.ts";
 import client from "./database.ts";
 
 const dir = "./db/migrations";

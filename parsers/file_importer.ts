@@ -1,7 +1,7 @@
 import {
   existsSync,
   readFileStrSync,
-} from "https://deno.land/std/fs/mod.ts";
+} from "https://deno.land/std@0.60.0/fs/mod.ts";
 import { IFileParser, RunType, Test } from "../interfaces.ts";
 import JUnitParser from "./junit_parser.ts";
 

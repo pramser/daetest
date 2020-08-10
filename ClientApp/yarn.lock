@@ -2080,6 +2080,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.10.2":
+  version: 7.11.2
+  resolution: "@babel/runtime@npm:7.11.2"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 3/2f127ad60a0f0568faa0044e5b48329d8166c7fd3a0a3ce774070010a1c441ebf5570f526dd6bb26e214fb1a01bb987ab6a4c3f60a00f04d02448939f4c61e1e
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.10.1, @babel/template@npm:^7.4.0":
   version: 7.10.1
   resolution: "@babel/template@npm:7.10.1"
@@ -2184,40 +2193,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-common-types@npm:^0.2.28":
-  version: 0.2.28
-  resolution: "@fortawesome/fontawesome-common-types@npm:0.2.28"
-  checksum: 3/e34fbf3a05a37ecf3e3a6c3d1c03443598c30206e2a429f022dd8a84313b447cb7c0512f40b1f6eabbf981072413c38eb6a6f0d17f8ac8c1788fda35bacdf9b8
+"@fortawesome/fontawesome-common-types@npm:^0.2.30":
+  version: 0.2.30
+  resolution: "@fortawesome/fontawesome-common-types@npm:0.2.30"
+  checksum: 3/3cfb72b3bc7f6471256bed75c9bfde4f19e5a7956ab01c9022289a3e675e27b8691b8cb7fab63a6725e8e3eab47da975e76b834e4c35d9a8a71d3e7b279cc196
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^1.2.28":
-  version: 1.2.28
-  resolution: "@fortawesome/fontawesome-svg-core@npm:1.2.28"
+"@fortawesome/fontawesome-svg-core@npm:^1.2.30":
+  version: 1.2.30
+  resolution: "@fortawesome/fontawesome-svg-core@npm:1.2.30"
   dependencies:
-    "@fortawesome/fontawesome-common-types": ^0.2.28
-  checksum: 3/a449bb801992f43b4c7c127dffa53785bfa5eed4741966aa7d082dc6257edc24b286bcd5cc47a114efe2c19089756ca46cb23d9f5dc99e528647bf07449cc665
+    "@fortawesome/fontawesome-common-types": ^0.2.30
+  checksum: 3/56ab4184eca91b013a7d8d804e8efb3ce93969a8514f788ae61412f4040c9263fb72d7e3d5169c310020c44baca6001108f3350244a150e104c6c39fafe09c6f
   languageName: node
   linkType: hard
 
-"@fortawesome/free-solid-svg-icons@npm:^5.13.0":
-  version: 5.13.0
-  resolution: "@fortawesome/free-solid-svg-icons@npm:5.13.0"
+"@fortawesome/free-solid-svg-icons@npm:^5.14.0":
+  version: 5.14.0
+  resolution: "@fortawesome/free-solid-svg-icons@npm:5.14.0"
   dependencies:
-    "@fortawesome/fontawesome-common-types": ^0.2.28
-  checksum: 3/933e61e9d36485b8ece2ceee9aaefeff4959f8c113cb2ab48bdcc259552fea53973fafdc90cd7c927ff00bbb2953779bb1f0705b61c46839ed47bb89a6032de6
+    "@fortawesome/fontawesome-common-types": ^0.2.30
+  checksum: 3/304999f6a65d2eea82bf9dcfa1e982765c4f9ab48085b27eee4990e0d13c12147278991ed75905474ae7077283657517243a5ef7dff78336c7e9261b6f68a49b
   languageName: node
   linkType: hard
 
-"@fortawesome/react-fontawesome@npm:^0.1.10":
-  version: 0.1.10
-  resolution: "@fortawesome/react-fontawesome@npm:0.1.10"
+"@fortawesome/react-fontawesome@npm:^0.1.11":
+  version: 0.1.11
+  resolution: "@fortawesome/react-fontawesome@npm:0.1.11"
   dependencies:
     prop-types: ^15.7.2
   peerDependencies:
     "@fortawesome/fontawesome-svg-core": ^1.2.20
     react: 16.x
-  checksum: 3/a91a0afc4954ad1fa7602a4f1483269155a066a9cceee053a20c8c876d57c9af6eb7790741c1e9b1481b7ae2111e1d8c8c0194e8ec7114b1f8fdb259793fbe93
+  checksum: 3/ede137d0f7d205295d30caeaabb1651f2d60ee2adcefda14578e4259c2c80e8ca47a4f1f6c4a22cca98d6acb19e8cfa3357e3c5dd3897fcc48269a93b1104af6
   languageName: node
   linkType: hard
 
@@ -2715,10 +2724,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.0.13":
-  version: 14.0.13
-  resolution: "@types/node@npm:14.0.13"
-  checksum: 3/2f2be6f7f1a916b0f4d58949bd934a8e41c0dcb15c493c17c3eaf78da3065c09650030f0dfe2e8c11880d597ee001d7cd925129218037fdb4432e80f7d895673
+"@types/node@npm:^14.0.27":
+  version: 14.0.27
+  resolution: "@types/node@npm:14.0.27"
+  checksum: 3/54ecf408eb94f44685e12ef395d8d9d5789cb9e209f171153b6b951272af6b8da099778d09d66454aa5d35ce246f3922ebd7476ed768bf3bd4267306c12a6703
   languageName: node
   linkType: hard
 
@@ -2808,23 +2817,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^16.9.36":
-  version: 16.9.36
-  resolution: "@types/react@npm:16.9.36"
+"@types/react@npm:^16.9.45":
+  version: 16.9.45
+  resolution: "@types/react@npm:16.9.45"
   dependencies:
     "@types/prop-types": "*"
-    csstype: ^2.2.0
-  checksum: 3/63731d81fcd0407ea17f265aa042bbf01f208798ca773e1a158ccb721798cffb4b398cc1c098fe8a71ff053601a51171bb607c3ff2ba14e1ff063aefe94f08cd
+    csstype: ^3.0.2
+  checksum: 3/285b9f607d2789ea2810a303b52496f8561e8352362372a84bcb069128ddb6c5a000a372067a5b456054f6680c5c922e8875fafdb97935a5814afa74ea906868
   languageName: node
   linkType: hard
 
-"@types/reactstrap@npm:^8.4.2":
-  version: 8.4.2
-  resolution: "@types/reactstrap@npm:8.4.2"
+"@types/reactstrap@npm:^8.5.0":
+  version: 8.5.0
+  resolution: "@types/reactstrap@npm:8.5.0"
   dependencies:
     "@types/react": "*"
     popper.js: ^1.14.1
-  checksum: 3/852be2fedebb46f51f70d6acbf016e6aa94403e513088bc343cdc3d07fea85fd657d751cf7477d0d41f381e40bbacf9a8782e834ecce987aea73ce20ec3c8b49
+  checksum: 3/5c8bf89b4f36480b453c8f5de4a8b073e21c52e87449edfe5cdc329eda7a6e3cbf36779478f5e108b135d4de24398ccafc93487c13c68c0452abae202716118c
   languageName: node
   linkType: hard
 
@@ -4057,13 +4066,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "bootstrap@npm:4.5.0"
+"bootstrap@npm:^4.5.2":
+  version: 4.5.2
+  resolution: "bootstrap@npm:4.5.2"
   peerDependencies:
     jquery: 1.9.1 - 3
-    popper.js: ^1.16.0
-  checksum: 3/89284a8d1bfcf508588e2eedb652374af5790d2b47d3ca7b192ec67742db99c9652181979a6ab16b91230df1efea1a8ac5a4e6ffd44265a7b5f0583d275227d3
+    popper.js: ^1.16.1
+  checksum: 3/980e7e4ebd1ba50b605a8f22e2b80cb024db23b5fb7790ff54bc3cd9345496610f36028fa14c78a50a50e1026a977aeaa60245211144f4fbf9d3eb3cd6949760
   languageName: node
   linkType: hard
 
@@ -5542,6 +5551,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"csstype@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "csstype@npm:3.0.2"
+  checksum: 3/acf2852a3c5f5e1ed84e36526e41584e09353ee57b9bd93bf17f91bd2be60545adaf86c4439b84952d1f596149e06f9da6bb28c1d1ab883c9b2ad68e143e79f4
+  languageName: node
+  linkType: hard
+
 "cyclist@npm:^1.0.1":
   version: 1.0.1
   resolution: "cyclist@npm:1.0.1"
@@ -5586,10 +5602,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.14.0":
-  version: 2.14.0
-  resolution: "date-fns@npm:2.14.0"
-  checksum: 3/93fcb999dcad1dced7c7e658f6769032783760b3989f0035186d7134858a21faeb242c31c250db66037de312007c3a562b501b9880fc707421149070a4785bcd
+"date-fns@npm:^2.15.0":
+  version: 2.15.0
+  resolution: "date-fns@npm:2.15.0"
+  checksum: 3/045c172823f361aa466338a2d2670629b2639ad33da22d5f4012d97e2726e92d8fc617a0d6c815a11086a0e6d2226192c2191c4d5c0d898c5a978794f21007cb
   languageName: node
   linkType: hard
 
@@ -5779,29 +5795,29 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "denouer-ui@workspace:."
   dependencies:
-    "@fortawesome/fontawesome-svg-core": ^1.2.28
-    "@fortawesome/free-solid-svg-icons": ^5.13.0
-    "@fortawesome/react-fontawesome": ^0.1.10
-    "@types/node": ^14.0.13
+    "@fortawesome/fontawesome-svg-core": ^1.2.30
+    "@fortawesome/free-solid-svg-icons": ^5.14.0
+    "@fortawesome/react-fontawesome": ^0.1.11
+    "@types/node": ^14.0.27
     "@types/prismjs": ^1.16.1
-    "@types/react": ^16.9.36
+    "@types/react": ^16.9.45
     "@types/react-dom": ^16.9.8
     "@types/react-dropzone": ^5.1.0
     "@types/react-router-dom": ^5.1.5
     "@types/react-textarea-autosize": ^4.3.5
-    "@types/reactstrap": ^8.4.2
-    bootstrap: ^4.5.0
-    date-fns: ^2.14.0
-    prismjs: ^1.20.0
+    "@types/reactstrap": ^8.5.0
+    bootstrap: ^4.5.2
+    date-fns: ^2.15.0
+    prismjs: ^1.21.0
     react: ^16.13.1
     react-dom: ^16.13.1
-    react-dropzone: ^11.0.1
+    react-dropzone: ^11.0.2
     react-router-dom: ^5.2.0
     react-scripts: ^3.4.1
-    react-textarea-autosize: ^8.0.1
-    reactstrap: ^8.4.1
-    restful-react: ^13.0.0
-    typescript: ^3.9.5
+    react-textarea-autosize: ^8.2.0
+    reactstrap: ^8.5.1
+    restful-react: ^14.3.0
+    typescript: ^3.9.7
   languageName: unknown
   linkType: soft
 
@@ -7470,7 +7486,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.3, glob@npm:^7.0.5, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
+"glob@npm:^7.0.3, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.1.6
   resolution: "glob@npm:7.1.6"
   dependencies:
@@ -9372,6 +9388,18 @@ fsevents@^1.2.7:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: 3/277157fdf235757b71cfbf24f6bef57576a26d9b4cf89b63d89c9044da7b0f9d16c3629c8b5fd549ae343523727a0df1598794e9a4429763cee4e17056ff8523
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^3.14.0":
+  version: 3.14.0
+  resolution: "js-yaml@npm:3.14.0"
+  dependencies:
+    argparse: ^1.0.7
+    esprima: ^4.0.0
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 3/2eb95464e5263aedc20ae2d9280f0e29b00adab15ece080ec42473d7055efaab24b904108644d115f687efe05a5bde02972b883aafa93607c4c108f667a56fa7
   languageName: node
   linkType: hard
 
@@ -12528,15 +12556,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prismjs@npm:^1.20.0":
-  version: 1.20.0
-  resolution: "prismjs@npm:1.20.0"
+"prismjs@npm:^1.21.0":
+  version: 1.21.0
+  resolution: "prismjs@npm:1.21.0"
   dependencies:
     clipboard: ^2.0.0
   dependenciesMeta:
     clipboard:
       optional: true
-  checksum: 3/b4cb8bdd48a18421e8eabf936ad38a33254250a7d8576d05a2286fbae8d07ef2b2a92a3c22f5e61fa9ba72eeff3d246326274138470f4c98d7a06adcfee4dcae
+  checksum: 3/27f763abe2b8e93ad18b64b0d08ce990cbe5c80244c80d121d9010b0a890f2ae12286d59155b9669a89007a1868e861a0ad62051a8f602a6da79b9cebe68b65a
   languageName: node
   linkType: hard
 
@@ -12908,16 +12936,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dropzone@npm:^11.0.1":
-  version: 11.0.1
-  resolution: "react-dropzone@npm:11.0.1"
+"react-dropzone@npm:^11.0.2":
+  version: 11.0.2
+  resolution: "react-dropzone@npm:11.0.2"
   dependencies:
     attr-accept: ^2.0.0
     file-selector: ^0.1.12
     prop-types: ^15.7.2
   peerDependencies:
     react: ">= 16.8"
-  checksum: 3/c5192e7367df18d77b8b4c219fd9e091d9d63e7a530ec9f983b42e32a738079f0f5f5082057a867ffd7031aa0a703638d7e873476cb6a27b96c0f330e4166523
+  checksum: 3/fb4d3dbe92954ddd0d137fec97c58169f1c33a735fda3bf1070ffc0e41d6b42490234d77be4c7535a6f8cbe1b1e608f502946d82678f80c1c52ac61bf2483901
   languageName: node
   linkType: hard
 
@@ -13074,16 +13102,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-textarea-autosize@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "react-textarea-autosize@npm:8.0.1"
+"react-textarea-autosize@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "react-textarea-autosize@npm:8.2.0"
   dependencies:
-    "@babel/runtime": ^7.8.4
+    "@babel/runtime": ^7.10.2
     use-composed-ref: ^1.0.0
     use-latest: ^1.0.0
   peerDependencies:
     react: ^16.8.0
-  checksum: 3/4f7e8e807e9d1a6f0a52de60430dddef5a1e5893651b9c0219bb46cbeeff2e5715243b08d7f492a1d88e8d9825e62a54ecbdb334b2782a30c76a14365963969c
+  checksum: 3/27d83f57c59254366cb13255d3a7771813bf771f2f5b14c273497dbf80d26dc6c4f646feeff8b789c18a0c313ad04d9ba26a63fb5a9e4cfeaffc0569cc224643
   languageName: node
   linkType: hard
 
@@ -13113,20 +13141,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"reactstrap@npm:^8.4.1":
-  version: 8.4.1
-  resolution: "reactstrap@npm:8.4.1"
+"reactstrap@npm:^8.5.1":
+  version: 8.5.1
+  resolution: "reactstrap@npm:8.5.1"
   dependencies:
     "@babel/runtime": ^7.2.0
     classnames: ^2.2.3
     prop-types: ^15.5.8
-    react-lifecycles-compat: ^3.0.4
     react-popper: ^1.3.6
     react-transition-group: ^2.3.1
   peerDependencies:
     react: ^16.3.0
     react-dom: ^16.3.0
-  checksum: 3/fc082c2db16fa1af54d3706054ff54ca9de506cb54ab88156aed9ca98fdf14303c241be90ffbe20bebe74893e310718a8436239abeddf9100a46c49f9e6e68cd
+  checksum: 3/afa5cba1a9ebff336ec4b7e8970bbffef2070cf7925e761a43cd499d441877866f181d46197545b9a55483809811f999efe1dd4628c3cd304754607833ba802e
   languageName: node
   linkType: hard
 
@@ -13608,15 +13635,16 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"restful-react@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "restful-react@npm:13.0.0"
+"restful-react@npm:^14.3.0":
+  version: 14.3.0
+  resolution: "restful-react@npm:14.3.0"
   dependencies:
     case: ^1.6.2
     chalk: ^3.0.0
     commander: ^4.1.0
     ibm-openapi-validator: ^0.16.0
     inquirer: ^7.0.3
+    js-yaml: ^3.14.0
     lodash: ^4.17.15
     lodash-es: ^4.17.15
     openapi3-ts: ^1.3.0
@@ -13627,12 +13655,11 @@ resolve@1.1.7:
     swagger2openapi: ^5.3.2
     tslib: ^1.10.0
     url: ^0.11.0
-    yamljs: ^0.3.0
   peerDependencies:
     react: ^16.8.5
   bin:
     restful-react: dist/bin/restful-react.js
-  checksum: 3/dc1da864eebb3a8d2f2562231f9e8beed1469148b3c89caecfd68f205c3c6c9bcadf4e65f217e75e92a9bc9ab4c0d8de3e3b4d62df6e86e4c6b489cb5552b5d9
+  checksum: 3/9a8aafe77a67169f27cc3ea473a0ef663a4f37d27295c0d6fbea7a265703f05840da80c687c27434cd8c34f855f02745a6d8730142cd24ea92d67154ee789477
   languageName: node
   linkType: hard
 
@@ -15323,23 +15350,23 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-typescript@^3.9.5:
-  version: 3.9.5
-  resolution: "typescript@npm:3.9.5"
+typescript@^3.9.7:
+  version: 3.9.7
+  resolution: "typescript@npm:3.9.7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3/15618435493667083eb43dc7b36c4d3dd47fd9e9c8a14f0ac4019bbf6124b6cc518b6ed506400913db1bf50831207ee8201b5d827680076930b562923f4f18a0
+  checksum: 3/10848a9c35fd8c70a8792b8bd9485317534bcd58768793d3b7d9c7486e9fd30cf345f83fa2a324e0bf6088bc8a4d8d061d58fda38b18c2ff187cf01fbbff6267
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^3.9.5#builtin<compat/typescript>":
-  version: 3.9.5
-  resolution: "typescript@patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=8cac75"
+"typescript@patch:typescript@^3.9.7#builtin<compat/typescript>":
+  version: 3.9.7
+  resolution: "typescript@patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=8cac75"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3/347b57e017c6f6c956eb7fc3c392e764bb924b1758103207cfb9c465210d4134212a164a064c259d524f055b86b023ebecc3e3ab5b5d666c1c0d96e1397149f6
+  checksum: 3/520abe4c1a6ca47dd812e5a73a3383688aa343f8ec5b3be07ca95724873c28116feb3f1a2c74373e2c0806cba8060bf207eec47e26e502042d4076a115209f11
   languageName: node
   linkType: hard
 
@@ -16400,19 +16427,6 @@ typescript@^3.9.5:
   version: 1.10.0
   resolution: "yaml@npm:1.10.0"
   checksum: 3/d4cc9f9724f8d0aebc2cf52e4e6aa7059f12d50deb54b5225d103462fb2af36e5c0bb419101ca4b1f0cd3b4db9e4139cf2c690e863ac6227648d39d6f4e2522c
-  languageName: node
-  linkType: hard
-
-"yamljs@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "yamljs@npm:0.3.0"
-  dependencies:
-    argparse: ^1.0.7
-    glob: ^7.0.5
-  bin:
-    json2yaml: ./bin/json2yaml
-    yaml2json: ./bin/yaml2json
-  checksum: 3/3ee0f59843b8626d81b8d4919f0f36d6a35d5d0eb1a11ef471593a30a7c579b8b7df9f013809d3d60e37d4084f0db313a1c663ad4bd6e5f343017ad350c6b234
   languageName: node
   linkType: hard
 
