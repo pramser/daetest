@@ -51,7 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/react",
-        "npm:16.9.45"
+        "npm:16.9.46"
       ],
       [
         "@types/react-dom",
@@ -134,7 +134,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.11"],
             ["@types/node", "npm:14.0.27"],
             ["@types/prismjs", "npm:1.16.1"],
-            ["@types/react", "npm:16.9.45"],
+            ["@types/react", "npm:16.9.46"],
             ["@types/react-dom", "npm:16.9.8"],
             ["@types/react-dropzone", "npm:5.1.0"],
             ["@types/react-router-dom", "npm:5.1.5"],
@@ -3625,10 +3625,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:16.9.45", {
-          "packageLocation": "./.yarn/cache/@types-react-npm-16.9.45-ceb99e0533-3.zip/node_modules/@types/react/",
+        ["npm:16.9.46", {
+          "packageLocation": "./.yarn/cache/@types-react-npm-16.9.46-151d7789b5-3.zip/node_modules/@types/react/",
           "packageDependencies": [
-            ["@types/react", "npm:16.9.45"],
+            ["@types/react", "npm:16.9.46"],
             ["@types/prop-types", "npm:15.7.3"],
             ["csstype", "npm:3.0.2"]
           ],
@@ -7108,7 +7108,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/react-fontawesome", "virtual:3e3b2f6c8fed4410db218a5b3dc7258843f5205c51ab94ba777d993d84b26cda53ed1b665129be7a0efc14d3fe23bfb6acaa656c24ea260a67b953e83b7534d6#npm:0.1.11"],
             ["@types/node", "npm:14.0.27"],
             ["@types/prismjs", "npm:1.16.1"],
-            ["@types/react", "npm:16.9.45"],
+            ["@types/react", "npm:16.9.46"],
             ["@types/react-dom", "npm:16.9.8"],
             ["@types/react-dropzone", "npm:5.1.0"],
             ["@types/react-router-dom", "npm:5.1.5"],
